@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 
-const metrics = [
-  { value: '11270', label: 'FRC Team NOVA' },
-  { value: '6', label: 'documented work areas' },
-  { value: 'DFM', label: 'design-for-manufacturing focus' },
-  { value: 'CAD / CAM', label: 'fabrication workflow' },
+const contents = [
+  { value: '01', label: 'About', href: '#about' },
+  { value: '02', label: 'Projects', href: '#projects' },
+  { value: '03', label: 'Skills', href: '#skills' },
+  { value: '04', label: 'Build log', href: '#build-log' },
+  { value: '05', label: 'Contact', href: '#contact' },
 ]
 
 const projects = [
@@ -147,9 +148,10 @@ function App() {
         </a>
 
         <nav aria-label="Primary navigation">
+          <a href="#about">About</a>
           <a href="#projects">Projects</a>
-          <a href="#toolchain">Toolchain</a>
-          <a href="#logbook">Logbook</a>
+          <a href="#skills">Skills</a>
+          <a href="#build-log">Build log</a>
           <a href="#contact">Contact</a>
         </nav>
 
@@ -187,7 +189,7 @@ function App() {
             <a className="actionButton primary" href="#projects">
               View project records
             </a>
-            <a className="actionButton secondary" href="#logbook">
+            <a className="actionButton secondary" href="#build-log">
               Read build process
             </a>
           </div>
@@ -221,16 +223,16 @@ function App() {
         </div>
       </section>
 
-      <section className="metricStrip reveal" aria-label="Portfolio metrics">
-        {metrics.map((metric) => (
-          <div key={metric.label}>
-            <strong>{metric.value}</strong>
-            <span>{metric.label}</span>
-          </div>
+      <section className="metricStrip reveal" aria-label="Portfolio contents">
+        {contents.map((item) => (
+          <a href={item.href} key={item.label}>
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </a>
         ))}
       </section>
 
-      <section className="aboutBoard reveal">
+      <section className="aboutBoard reveal" id="about">
         <div>
           <p className="eyebrow">Identity</p>
           <h2>Not just a robotics profile. A developing engineering workspace.</h2>
@@ -299,7 +301,7 @@ function App() {
         </div>
       </section>
 
-      <section className="toolchainSection reveal" id="toolchain">
+      <section className="toolchainSection reveal" id="skills">
         <div className="sectionHeader compact">
           <p className="eyebrow">Toolchain</p>
           <h2>Engineering console, organized by workflow.</h2>
@@ -318,7 +320,7 @@ function App() {
         </div>
       </section>
 
-      <section className="logbookSection" id="logbook">
+      <section className="logbookSection" id="build-log">
         <div className="sectionHeader reveal">
           <p className="eyebrow">Build logbook</p>
           <h2>A simple process for turning rough ideas into physical systems.</h2>
