@@ -1,160 +1,252 @@
+import { useState } from 'react'
+
 const projects = [
   {
     title: '3D Printed Robot Chassis',
     type: 'Robotics',
-    description:
-      'A starter platform for testing wheel spacing, battery placement, and sensor mounts before adding electronics.',
-    details: ['CAD layout', 'FDM printing', 'Iterative prototyping'],
+    note: 'Testing wheel spacing, battery placement, and sensor mounts.',
+    tags: ['CAD', 'FDM print', 'V1 prototype'],
   },
   {
     title: 'Gear Train Experiments',
-    type: 'Mechanical design',
-    description:
-      'Printable gear sets for learning torque, speed, tolerance, and how tiny design changes affect motion.',
-    details: ['Fusion 360', 'Tolerances', 'Motion testing'],
+    type: 'Mechanical',
+    note: 'Learning how gear size changes speed, torque, and print tolerance.',
+    tags: ['Fusion 360', 'Tolerances', 'Motion'],
   },
   {
     title: 'Arduino Sensor Rig',
     type: 'Electronics',
-    description:
-      'A breadboard-based test station for reading sensors, logging values, and planning future robot behavior.',
-    details: ['Arduino', 'Breadboarding', 'Data collection'],
+    note: 'A breadboard setup for reading sensors before adding them to a robot.',
+    tags: ['Arduino', 'Breadboard', 'Testing'],
   },
 ]
 
-const tools = [
-  'Fusion 360',
-  'Onshape',
-  '3D printing',
-  'Arduino',
-  'Python',
-  'Soldering',
-  'CAD sketches',
-  'Mechanical testing',
-]
+const tools = ['Fusion 360', 'Onshape', 'Arduino', 'Python', '3D printing', 'Hand tools']
 
-const steps = [
-  'Sketch the idea and decide what problem the build should solve.',
-  'Make a rough CAD version, print or assemble the first prototype, then test it.',
-  'Measure what changed, improve the design, and document the next version.',
+const templates = [
+  {
+    id: 'notebook',
+    name: 'Maker Notebook',
+    short: 'Build logs, sketches, experiments, and lessons learned.',
+  },
+  {
+    id: 'workshop',
+    name: 'Workshop Wall',
+    short: 'A neat project board with tools, parts, and build tiles.',
+  },
+  {
+    id: 'binder',
+    name: 'Project Binder',
+    short: 'Simple school portfolio pages with clean project reports.',
+  },
+  {
+    id: 'lab',
+    name: 'Prototype Lab',
+    short: 'A lightweight lab dashboard for projects and model viewers.',
+  },
+  {
+    id: 'gallery',
+    name: 'Build Gallery',
+    short: 'Photo-first, casual, and personal.',
+  },
 ]
 
 function App() {
+  const [activeTemplate, setActiveTemplate] = useState(templates[0].id)
+
   return (
-    <main>
-      <nav className="nav" aria-label="Main navigation">
-        <a className="brand" href="#top" aria-label="Boxieace home">
-          Boxieace
-        </a>
-        <div className="navLinks">
-          <a href="#projects">Projects</a>
-          <a href="#tools">Tools</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-
-      <section className="hero" id="top">
-        <img
-          className="heroImage"
-          src="/engineering-workbench.png"
-          alt="Engineering workbench with a small robot prototype, tools, and 3D printed parts"
-        />
-        <div className="heroOverlay" />
-        <div className="heroContent">
-          <p className="eyebrow">Grade 9 engineering portfolio</p>
-          <h1>Robotics, 3D printing, and prototypes that keep getting better.</h1>
-          <p className="intro">
-            I build student engineering projects with CAD, printed parts,
-            electronics, and a lot of testing. This site is where my best builds,
-            notes, and lessons will live.
-          </p>
-          <div className="heroActions">
-            <a className="button primary" href="#projects">
-              View projects
-            </a>
-            <a className="button secondary" href="#contact">
-              Get in touch
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="section introGrid" aria-label="Portfolio highlights">
+    <main className="appShell">
+      <header className="templateHeader">
         <div>
-          <p className="sectionLabel">Current focus</p>
-          <h2>Building the habits of an engineer early.</h2>
+          <p className="kicker">Boxieace portfolio drafts</p>
+          <h1>Pick a direction, then we can tune it.</h1>
         </div>
         <p>
-          The goal is not just to show finished projects. It is to show how the
-          idea changed, what failed, what got measured, and what the next version
-          should do better.
+          Five different starter designs for a grade 9 engineering portfolio.
+          They use the same project content so the style is easier to compare.
         </p>
-      </section>
+      </header>
 
-      <section className="section" id="projects">
-        <div className="sectionHeader">
-          <p className="sectionLabel">Featured work</p>
-          <h2>Project starting points</h2>
-        </div>
-        <div className="projectGrid">
-          {projects.map((project) => (
-            <article className="projectCard" key={project.title}>
-              <div>
-                <p className="projectType">{project.type}</p>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-              </div>
-              <div className="tagRow">
-                {project.details.map((detail) => (
-                  <span key={detail}>{detail}</span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <nav className="templatePicker" aria-label="Template picker">
+        {templates.map((template) => (
+          <button
+            className={activeTemplate === template.id ? 'active' : ''}
+            key={template.id}
+            onClick={() => setActiveTemplate(template.id)}
+            type="button"
+          >
+            <span>{template.name}</span>
+            <small>{template.short}</small>
+          </button>
+        ))}
+      </nav>
 
-      <section className="section split" id="tools">
+      <TemplatePreview id={activeTemplate} />
+    </main>
+  )
+}
+
+function TemplatePreview({ id }) {
+  const previews = {
+    notebook: <MakerNotebook />,
+    workshop: <WorkshopWall />,
+    binder: <ProjectBinder />,
+    lab: <PrototypeLab />,
+    gallery: <BuildGallery />,
+  }
+
+  return <section className="previewStage">{previews[id]}</section>
+}
+
+function MakerNotebook() {
+  return (
+    <article className="template notebook">
+      <div className="notebookHero">
         <div>
-          <p className="sectionLabel">Workshop stack</p>
-          <h2>Tools I use to turn ideas into working prototypes.</h2>
+          <p className="handLabel">Engineering notebook</p>
+          <h2>Hi, I&apos;m Boxieace. I make robots, printed parts, and small prototypes.</h2>
+          <p>
+            This version is more about the process: what I tried, what broke,
+            what I changed, and what I want to build next.
+          </p>
         </div>
-        <div className="toolGrid">
+        <img src="/engineering-workbench.png" alt="Engineering workbench" />
+      </div>
+      <div className="logGrid">
+        {projects.map((project, index) => (
+          <section className="logEntry" key={project.title}>
+            <span>Entry {index + 1}</span>
+            <h3>{project.title}</h3>
+            <p>{project.note}</p>
+            <ul>
+              <li>Goal: make one working version</li>
+              <li>Next: add real photos and test notes</li>
+            </ul>
+          </section>
+        ))}
+      </div>
+    </article>
+  )
+}
+
+function WorkshopWall() {
+  return (
+    <article className="template workshop">
+      <div className="workshopTop">
+        <div>
+          <p className="kicker">Workshop wall</p>
+          <h2>Parts, tools, and projects in progress.</h2>
+        </div>
+        <div className="toolRack">
           {tools.map((tool) => (
             <span key={tool}>{tool}</span>
           ))}
         </div>
-      </section>
+      </div>
+      <div className="pegboard">
+        {projects.map((project) => (
+          <section className="partBin" key={project.title}>
+            <p>{project.type}</p>
+            <h3>{project.title}</h3>
+            <span>{project.note}</span>
+          </section>
+        ))}
+      </div>
+    </article>
+  )
+}
 
-      <section className="section process">
-        <div className="sectionHeader">
-          <p className="sectionLabel">Process</p>
-          <h2>How each project page can be written</h2>
-        </div>
-        <div className="stepGrid">
-          {steps.map((step, index) => (
-            <article className="step" key={step}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <p>{step}</p>
-            </article>
+function ProjectBinder() {
+  return (
+    <article className="template binder">
+      <aside className="binderTabs">
+        <span>About</span>
+        <span>Projects</span>
+        <span>Skills</span>
+        <span>Contact</span>
+      </aside>
+      <div className="binderPage">
+        <p className="kicker">Project binder</p>
+        <h2>Engineering portfolio</h2>
+        <p>
+          A straightforward layout for school, clubs, competitions, or anyone
+          who wants to quickly understand what each project does.
+        </p>
+        <div className="reportList">
+          {projects.map((project) => (
+            <section className="reportRow" key={project.title}>
+              <div>
+                <h3>{project.title}</h3>
+                <p>{project.note}</p>
+              </div>
+              <span>{project.type}</span>
+            </section>
           ))}
         </div>
-      </section>
+      </div>
+    </article>
+  )
+}
 
-      <section className="section contact" id="contact">
+function PrototypeLab() {
+  return (
+    <article className="template lab">
+      <div className="labHeader">
         <div>
-          <p className="sectionLabel">Next update</p>
-          <h2>Add real photos, CAD screenshots, and build notes.</h2>
+          <p className="kicker">Prototype lab</p>
+          <h2>Project tests, model files, and build notes.</h2>
+        </div>
+        <div className="statusBox">
+          <span>Next feature</span>
+          <strong>3D model viewer</strong>
+        </div>
+      </div>
+      <div className="labGrid">
+        <section className="modelViewerMock">
+          <div className="modelShape" />
+          <p>STL / OBJ / GLB preview area</p>
+        </section>
+        <section className="labPanel">
+          <h3>How project assets could work</h3>
           <p>
-            Replace the starter cards with your actual projects as you collect
-            images and write down what each version taught you.
+            Put files in <code>public/projects/project-name/</code>, then show
+            photos, SVG sketches, downloadable STLs, and an inspectable 3D model.
+          </p>
+          <div className="fileList">
+            <span>chassis.glb</span>
+            <span>bracket.stl</span>
+            <span>wiring-sketch.svg</span>
+          </div>
+        </section>
+      </div>
+    </article>
+  )
+}
+
+function BuildGallery() {
+  return (
+    <article className="template gallery">
+      <div className="galleryHero">
+        <img src="/engineering-workbench.png" alt="Engineering workbench" />
+        <div>
+          <p className="kicker">Build gallery</p>
+          <h2>Stuff I made, tested, fixed, and learned from.</h2>
+          <p>
+            This style is the most casual: photos first, short captions, and
+            simple notes that sound like a real student made them.
           </p>
         </div>
-        <a className="button primary" href="mailto:hello@example.com">
-          Email me
-        </a>
-      </section>
-    </main>
+      </div>
+      <div className="photoGrid">
+        {projects.map((project) => (
+          <section className="photoCard" key={project.title}>
+            <div className="photoPlaceholder">{project.type}</div>
+            <h3>{project.title}</h3>
+            <p>{project.note}</p>
+          </section>
+        ))}
+      </div>
+    </article>
   )
 }
 
