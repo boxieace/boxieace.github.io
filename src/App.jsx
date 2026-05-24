@@ -155,7 +155,7 @@ function App() {
           <a href="#contact">Contact</a>
         </nav>
 
-        <div className="themeSwitch" aria-label="Theme selector">
+        <div className={`themeSwitch ${theme}`} aria-label="Theme selector">
           <button
             className={theme === 'dark' ? 'active' : ''}
             onClick={() => setTheme('dark')}
