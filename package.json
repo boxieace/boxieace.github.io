@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "cp index.source.html index.html",
     "build": "vite build",
+    "postbuild": "cp dist/index.html index.html",
     "preview": "vite preview",
     "lint": "eslint ."
   },

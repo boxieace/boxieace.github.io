@@ -1,148 +1,112 @@
 import { useEffect, useState } from 'react'
 
-const stats = [
+const metrics = [
   { value: '11270', label: 'FRC Team NOVA' },
-  { value: '7', label: 'featured builds' },
-  { value: 'CAD -> CAM', label: 'design workflow' },
+  { value: '6', label: 'documented work areas' },
+  { value: 'DFM', label: 'design-for-manufacturing focus' },
+  { value: 'CAD / CAM', label: 'fabrication workflow' },
 ]
 
 const projects = [
   {
-    title: 'FRC Team NOVA 11270 Robotics',
-    category: 'Robotics team systems',
-    summary:
-      'Competition robotics experience across team branding, human player practice, pit layout, outreach, sponsorship work, and match strategy.',
-    details: [
-      'Helped connect technical work with team identity, presentation, and event readiness.',
-      'Worked around real competition constraints: fast decisions, pit organization, teamwork, and communication.',
-      'Built experience with how mechanical, electrical, strategy, and outreach roles fit together.',
-    ],
-    signal: 'Teamwork / strategy / competition',
+    title: 'FRC Team NOVA 11270 Robotics Experience',
+    type: 'Robotics chapter',
+    tags: ['FRC', 'team systems', 'strategy', 'pit workflow'],
+    problem:
+      'Robotics competitions require more than a machine. The team needs organization, communication, branding, event setup, strategy, and people who understand how the system works under pressure.',
+    process:
+      'Contributed through team branding, human player experience, pit layout/design, outreach and sponsorship support, and competition preparation.',
+    result:
+      'Built a practical understanding of how engineering teams operate: technical work, presentation, logistics, and match strategy all connect.',
   },
   {
-    title: 'NOVA 11270 3D Printed Keychains & Pins',
-    category: 'Design and batch production',
-    summary:
-      'Custom galaxy blue and purple team keychains and pins designed for events, trading, and team identity.',
-    details: [
-      'Designed parts for multi-colour 3D printing with clean top surfaces and readable team styling.',
-      'Optimized batch layouts, print time, and organization into containers for event use.',
-      'Turned a branding idea into a small manufacturing workflow.',
-    ],
-    signal: 'AMS printing / batching / identity',
+    title: 'NOVA 11270 Keychains and Pins',
+    type: 'Small-batch manufacturing',
+    tags: ['3D printing', 'AMS', 'batch production', 'team identity'],
+    problem:
+      'Team trading items needed to look sharp, match the NOVA identity, and be realistic to manufacture in batches without wasting time or material.',
+    process:
+      'Designed galaxy blue/purple keychains and pins for multi-colour printing, then organized production into containers for events and trading.',
+    result:
+      'Turned a team-branding idea into a repeatable fabrication workflow involving design, print-time planning, colour changes, and batch organization.',
   },
   {
-    title: 'Bambu Lab P1S + AMS Print Optimization',
-    category: 'Technical troubleshooting',
-    summary:
-      'A practical print tuning case study covering multi-colour print quality, purge settings, temperature errors, and batch speed.',
-    details: [
-      'Investigated nozzle, hotend, thermistor, and temperature error behavior during printing.',
-      'Tuned colour transitions and reduced waste where possible while protecting quality.',
-      'Improved batch timing and top surface finish through iteration and test prints.',
-    ],
-    signal: 'P1S / AMS / purge tuning',
+    title: 'Bambu Lab P1S / AMS Optimization',
+    type: 'Troubleshooting case study',
+    tags: ['P1S', 'AMS', 'purge tuning', 'hotend diagnostics'],
+    problem:
+      'Multi-colour printing introduces real tradeoffs: purge waste, print time, colour transition quality, top-surface finish, and occasional temperature or hardware errors.',
+    process:
+      'Investigated purge settings, nozzle/hotend behavior, thermistor and temperature errors, print layout, and batch timing.',
+    result:
+      'Improved the reliability and efficiency of multi-colour prints while learning how machine setup affects final part quality.',
   },
   {
     title: 'Laser-Cut / CNC NOVA Magnet Design',
-    category: 'Design for manufacturability',
-    summary:
-      'A team-themed magnet designed around fabrication constraints instead of just visual appearance.',
-    details: [
-      'Designed connected cutout geometry with no floating pieces.',
-      'Worked around minimum detail sizes near 1.5 mm so the design could actually be made.',
-      'Balanced team branding with laser/CNC manufacturing limits.',
-    ],
-    signal: 'DfM / cut geometry / constraints',
+    type: 'Design constraints',
+    tags: ['laser/CNC', 'connected geometry', '1.5 mm details', 'DFM'],
+    problem:
+      'A team-themed magnet had to work as a fabricated object, not just as a graphic. Floating pieces, overly small details, and disconnected geometry would fail.',
+    process:
+      'Reworked the design around manufacturable cut paths, connected cutout geometry, and minimum detail sizes around 1.5 mm.',
+    result:
+      'Produced a cleaner design direction shaped by fabrication constraints, material behavior, and real manufacturing limits.',
   },
   {
-    title: 'CNC / Diamond Engraving Research',
-    category: 'Manufacturing process research',
-    summary:
-      'Research into impact engraving, diamond conical engraver tips, setup variables, and compatible materials.',
-    details: [
-      'Studied engraving depth, pressure, and how tip geometry affects marks.',
-      'Compared materials such as polycarbonate, acrylic, and powder-coated surfaces.',
-      'Built process knowledge for engraving setups before cutting real parts.',
-    ],
-    signal: 'Engraving / materials / setup',
+    title: 'Diamond Impact Engraving Research',
+    type: 'Manufacturing research',
+    tags: ['engraving', 'materials', 'machine setup', 'process testing'],
+    problem:
+      'Engraving quality depends on material, surface finish, depth, tip shape, and machine settings. Good results require process knowledge before cutting final parts.',
+    process:
+      'Researched impact engraving, diamond conical tips, engraving depth, and material compatibility including polycarbonate, acrylic, and powder-coated surfaces.',
+    result:
+      'Built a stronger understanding of engraving setup variables and how to approach manufacturing tests before committing to final materials.',
   },
   {
-    title: 'Raspberry Pi Escape Room Puzzle Box',
-    category: 'Hardware and software integration',
-    summary:
-      'An interactive physical puzzle system with servo locks, RFID or keypad input, LEDs, LCD hints, buzzer feedback, and a timed sequence.',
-    details: [
-      'Combines mechanical locking, input handling, feedback, and puzzle state logic.',
-      'Designed as a real object people can touch, solve, and reset.',
-      'Good fit for documenting wiring, code, timing, and enclosure design.',
-    ],
-    signal: 'Pi / servos / interactive system',
-  },
-  {
-    title: 'Vision Target Shooting Game',
-    category: 'Computer vision and embedded feedback',
-    summary:
-      'A Raspberry Pi game concept using Pi Camera or OpenCV, joystick input, LEDs, target detection, and scoring feedback.',
-    details: [
-      'Connects computer vision with physical controls and visible feedback.',
-      'Uses target detection to make gameplay respond to real-world movement.',
-      'A strong base for experimenting with accuracy, lighting, scoring, and latency.',
-    ],
-    signal: 'OpenCV / camera / scoring',
+    title: 'Robotics Branding and Engineering Portfolio Planning',
+    type: 'Technical communication',
+    tags: ['visual identity', 'signage', 'documentation', 'portfolio system'],
+    problem:
+      'Engineering work needs to be understandable. Teams, mentors, sponsors, and programs need clear documentation, organized visuals, and a strong technical story.',
+    process:
+      'Worked on team visual identity, signage/pit presentation, project organization, and the structure for documenting fabrication and robotics work.',
+    result:
+      'Created a portfolio direction that connects engineering decisions, build constraints, and finished artifacts without making FRC the entire identity.',
   },
 ]
 
-const skills = [
+const toolchain = [
   {
     group: 'Robotics',
-    items: ['FRC teamwork', 'mechanism thinking', 'competition strategy', 'sensors', 'pit workflow'],
+    items: ['FRC team workflow', 'competition strategy', 'mechanism thinking', 'pit organization'],
   },
   {
     group: 'Fabrication',
-    items: ['3D printing', 'AMS printing', 'laser cutting', 'CNC', 'diamond engraving'],
+    items: ['Bambu P1S', 'AMS printing', 'laser/CNC design', 'diamond engraving research'],
   },
   {
     group: 'Design',
-    items: ['CAD-style thinking', 'product design', 'team branding', 'design constraints'],
+    items: ['CAD-style planning', 'manufacturing constraints', 'team branding', 'technical layouts'],
   },
   {
-    group: 'Programming / Hardware',
-    items: ['Raspberry Pi', 'OpenCV', 'servo control', 'LEDs', 'LCDs', 'keypads', 'RFID'],
-  },
-  {
-    group: 'Engineering Process',
-    items: ['prototyping', 'testing', 'troubleshooting', 'iteration', 'documentation'],
+    group: 'Process',
+    items: ['prototyping', 'batch production', 'troubleshooting', 'documentation'],
   },
 ]
 
-const buildLog = [
-  {
-    phase: 'Idea',
-    text: 'Start with a physical problem: a team giveaway, a robot role, a puzzle interaction, or a fabrication limit.',
-  },
-  {
-    phase: 'Prototype',
-    text: 'Create a fast first version in CAD, print, wiring, code, or layout so the idea can be tested early.',
-  },
-  {
-    phase: 'Problem',
-    text: 'Find the weak point: print time, tolerances, unsupported geometry, colour transitions, wiring, or sensor behavior.',
-  },
-  {
-    phase: 'Fix',
-    text: 'Tune the model, change the process, improve the setup, and test the next version against the real constraint.',
-  },
-  {
-    phase: 'Result',
-    text: 'Document what worked, what still needs improvement, and what the next build should solve.',
-  },
+const logbook = [
+  ['01', 'Define', 'Start with a physical goal, a fabrication limit, or a system that needs to work in the real world.'],
+  ['02', 'Constrain', 'Identify the limits: material, detail size, print time, machine setup, geometry, or event workflow.'],
+  ['03', 'Prototype', 'Build a first version quickly enough to expose what is weak, unclear, or inefficient.'],
+  ['04', 'Refine', 'Adjust the model, process, layout, or setup based on test results and manufacturing feedback.'],
+  ['05', 'Document', 'Capture the result as a project record: problem, process, result, files, and next improvements.'],
 ]
 
 function App() {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem('portfolio-theme')
-    if (savedTheme) return savedTheme
+    if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme
     return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
   })
 
@@ -169,151 +133,183 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
-  const isDark = theme === 'dark'
-
   return (
     <main className="siteShell">
       <BlueprintBackground />
+
       <header className="navBar">
         <a className="brandMark" href="#top" aria-label="Portfolio home">
-          <span className="brandGlyph">N</span>
+          <span className="brandGlyph">BX</span>
           <span>
-            NOVA 11270
-            <small>student engineering portfolio</small>
+            Engineering Portfolio
+            <small>builder / fabricator / student</small>
           </span>
         </a>
+
         <nav aria-label="Primary navigation">
           <a href="#projects">Projects</a>
-          <a href="#skills">Toolkit</a>
-          <a href="#log">Build log</a>
+          <a href="#toolchain">Toolchain</a>
+          <a href="#logbook">Logbook</a>
           <a href="#contact">Contact</a>
         </nav>
-        <button
-          className="themeToggle"
-          onClick={() => setTheme(isDark ? 'light' : 'dark')}
-          type="button"
-          aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-        >
-          <span>{isDark ? 'Light' : 'Dark'}</span>
-        </button>
+
+        <div className="themeSwitch" aria-label="Theme selector">
+          <button
+            className={theme === 'dark' ? 'active' : ''}
+            onClick={() => setTheme('dark')}
+            type="button"
+            aria-pressed={theme === 'dark'}
+          >
+            Dark
+          </button>
+          <button
+            className={theme === 'light' ? 'active' : ''}
+            onClick={() => setTheme('light')}
+            type="button"
+            aria-pressed={theme === 'light'}
+          >
+            Light
+          </button>
+        </div>
       </header>
 
       <section className="heroSection" id="top">
         <div className="heroCopy reveal isVisible">
-          <p className="eyebrow">Robotics / fabrication / mechatronics</p>
-          <h1>Building robots, fabricating ideas, and turning engineering concepts into real systems.</h1>
+          <p className="eyebrow">Robotics / fabrication / design systems</p>
+          <h1>Engineering student building at the intersection of robotics, fabrication, and design.</h1>
           <p>
-            I am a student engineer interested in robotics, aerospace,
-            mechatronics, manufacturing, fabrication, and design. My work
-            combines FRC competition experience, CAD-style design, 3D printing,
-            CNC/engraving research, hardware troubleshooting, and physical
-            interactive systems.
+            I build physical systems that combine design, fabrication, and
+            problem-solving. My work focuses on turning rough ideas into
+            testable, manufacturable projects through prototypes, constraints,
+            iteration, and real-world testing.
           </p>
           <div className="heroActions">
             <a className="actionButton primary" href="#projects">
-              View systems
+              View project records
             </a>
-            <a className="actionButton secondary" href="#log">
-              Open build log
+            <a className="actionButton secondary" href="#logbook">
+              Read build process
             </a>
           </div>
         </div>
 
-        <div className="heroVisual reveal isVisible" aria-label="Animated engineering interface">
-          <div className="orbitSystem">
-            <span className="orbit orbitOne" />
-            <span className="orbit orbitTwo" />
-            <span className="corePart" />
-            <span className="part partA">CAD</span>
-            <span className="part partB">CAM</span>
-            <span className="part partC">FRC</span>
-            <span className="part partD">Pi</span>
+        <div className="engineeringBoard reveal isVisible" aria-label="Engineering dashboard preview">
+          <div className="boardHeader">
+            <span>Portfolio system</span>
+            <strong>Fabrication archive</strong>
           </div>
-          <div className="telemetryPanel panelOne">
-            <span>print queue</span>
-            <strong>AMS batch 04</strong>
-            <div className="meter"><i /></div>
+          <div className="boardDiagram">
+            <span className="axis xAxis" />
+            <span className="axis yAxis" />
+            <div className="machineBlock mainBlock">CAD</div>
+            <div className="machineBlock blockA">PRINT</div>
+            <div className="machineBlock blockB">CNC</div>
+            <div className="machineBlock blockC">FRC</div>
           </div>
-          <div className="telemetryPanel panelTwo">
-            <span>robot system</span>
-            <strong>pit ready</strong>
-            <div className="signalBars"><i /><i /><i /></div>
+          <div className="measurementRail">
+            <span>0</span>
+            <span>25</span>
+            <span>50</span>
+            <span>75</span>
+            <span>100</span>
+          </div>
+          <div className="boardFooter">
+            <span>constraints</span>
+            <span>iteration</span>
+            <span>manufacturing</span>
           </div>
         </div>
       </section>
 
-      <section className="statStrip reveal" aria-label="Portfolio highlights">
-        {stats.map((stat) => (
-          <div key={stat.label}>
-            <strong>{stat.value}</strong>
-            <span>{stat.label}</span>
+      <section className="metricStrip reveal" aria-label="Portfolio metrics">
+        {metrics.map((metric) => (
+          <div key={metric.label}>
+            <strong>{metric.value}</strong>
+            <span>{metric.label}</span>
           </div>
         ))}
       </section>
 
-      <section className="sectionGrid aboutSection reveal" id="about">
+      <section className="aboutBoard reveal">
         <div>
-          <p className="eyebrow">About me</p>
-          <h2>I like projects where the design has to survive contact with the real world.</h2>
+          <p className="eyebrow">Identity</p>
+          <h2>Not just a robotics profile. A developing engineering workspace.</h2>
         </div>
-        <div className="textPanel">
+        <div className="aboutCopy">
           <p>
-            I am drawn to physical systems: mechanisms, printed parts, sensors,
-            wiring, machine setup, and the messy middle where an idea becomes
-            something you can test. I like improving designs through hands-on
-            iteration, not just making them look finished.
+            This portfolio documents the systems, tools, and experiments I use
+            to grow as an engineering student. FRC Team NOVA 11270 is an
+            important chapter, but the larger direction is robotics,
+            fabrication, aerospace-minded design, mechatronics, and
+            manufacturing.
           </p>
           <p>
-            Through FRC Team NOVA 11270 and independent builds, I have worked on
-            robotics, team fabrication, 3D printing workflows, CNC/engraving
-            research, engineering branding, and hardware/software experiments.
+            The work here is intentionally practical: design for
+            manufacturability, batch production, machine troubleshooting,
+            branding as technical communication, and project records that show
+            how an idea becomes something physical.
           </p>
         </div>
       </section>
 
       <section className="projectSection" id="projects">
         <div className="sectionHeader reveal">
-          <p className="eyebrow">Featured projects</p>
-          <h2>Fabrication archive and robotics systems.</h2>
+          <p className="eyebrow">Project records</p>
+          <h2>Technical spec sheets for real work.</h2>
           <p>
-            These cards are written like real engineering work: what the project
-            involved, what constraints mattered, and what skills were tested.
+            Each record is framed as problem, process, and result so the
+            portfolio shows engineering thinking instead of a list of finished
+            objects.
           </p>
         </div>
+
         <div className="projectGrid">
           {projects.map((project, index) => (
             <article className="projectCard reveal" key={project.title}>
-              <div className="cardTopline">
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <small>{project.category}</small>
+              <div className="projectIndex">{String(index + 1).padStart(2, '0')}</div>
+              <div className="projectBody">
+                <div className="projectHeading">
+                  <span>{project.type}</span>
+                  <h3>{project.title}</h3>
+                </div>
+
+                <div className="specColumns">
+                  <section>
+                    <h4>Problem</h4>
+                    <p>{project.problem}</p>
+                  </section>
+                  <section>
+                    <h4>Process</h4>
+                    <p>{project.process}</p>
+                  </section>
+                  <section>
+                    <h4>Result</h4>
+                    <p>{project.result}</p>
+                  </section>
+                </div>
+
+                <div className="tagRow">
+                  {project.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
               </div>
-              <h3>{project.title}</h3>
-              <p>{project.summary}</p>
-              <ul>
-                {project.details.map((detail) => (
-                  <li key={detail}>{detail}</li>
-                ))}
-              </ul>
-              <div className="projectSignal">{project.signal}</div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="skillsSection reveal" id="skills">
-        <div className="consoleHeader">
-          <div>
-            <p className="eyebrow">Engineering console</p>
-            <h2>Toolkit organized by how I actually build.</h2>
-          </div>
-          <span className="consoleStatus">systems online</span>
+      <section className="toolchainSection reveal" id="toolchain">
+        <div className="sectionHeader compact">
+          <p className="eyebrow">Toolchain</p>
+          <h2>Engineering console, organized by workflow.</h2>
         </div>
-        <div className="skillsConsole">
-          {skills.map((skill) => (
-            <article className="skillModule" key={skill.group}>
-              <h3>{skill.group}</h3>
+        <div className="toolchainGrid">
+          {toolchain.map((group) => (
+            <article className="toolModule" key={group.group}>
+              <h3>{group.group}</h3>
               <div>
-                {skill.items.map((item) => (
+                {group.items.map((item) => (
                   <span key={item}>{item}</span>
                 ))}
               </div>
@@ -322,46 +318,47 @@ function App() {
         </div>
       </section>
 
-      <section className="logSection" id="log">
+      <section className="logbookSection" id="logbook">
         <div className="sectionHeader reveal">
-          <p className="eyebrow">Build log</p>
-          <h2>How a project moves from idea to working system.</h2>
+          <p className="eyebrow">Build logbook</p>
+          <h2>A simple process for turning rough ideas into physical systems.</h2>
         </div>
-        <div className="timeline">
-          {buildLog.map((entry) => (
-            <article className="timelineItem reveal" key={entry.phase}>
-              <span>{entry.phase}</span>
-              <p>{entry.text}</p>
+        <div className="logbookRail">
+          {logbook.map(([number, phase, text]) => (
+            <article className="logbookItem reveal" key={phase}>
+              <span>{number}</span>
+              <h3>{phase}</h3>
+              <p>{text}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="modelSection reveal">
+      <section className="assetSection reveal">
         <div>
-          <p className="eyebrow">Project assets</p>
-          <h2>Ready for real files: STL, OBJ, SVG, and web-friendly GLB models.</h2>
+          <p className="eyebrow">Archive structure</p>
+          <h2>Built to hold files, photos, notes, and fabrication references.</h2>
           <p>
-            Project folders can hold photos, SVG sketches, printable STL files,
-            and GLB models for an inspectable 3D viewer. The portfolio is set up
-            to grow into a real fabrication archive as projects are documented.
+            Future project folders can include STL files for printing, SVG files
+            for laser/CNC work, process photos, CAD exports, and notes about
+            settings, constraints, and revisions.
           </p>
         </div>
-        <div className="assetRack">
-          <span>robot-chassis.glb</span>
-          <span>nova-pin.stl</span>
-          <span>magnet-cut.svg</span>
-          <span>engraving-test.obj</span>
+        <div className="assetList">
+          <span>/projects/nova-keychains/</span>
+          <span>/projects/magnet-design/</span>
+          <span>/projects/engraving-research/</span>
+          <span>/projects/p1s-ams-optimization/</span>
         </div>
       </section>
 
       <section className="contactSection reveal" id="contact">
         <div>
           <p className="eyebrow">Contact</p>
-          <h2>For robotics, fabrication, mentoring, and engineering opportunities.</h2>
+          <h2>For robotics mentors, engineering programs, and project collaborators.</h2>
           <p>
-            Replace these placeholder links with your real GitHub, email,
-            resume, and project archive when you are ready.
+            Replace the placeholders with your real email, resume, GitHub, and
+            project archive links as the portfolio fills in.
           </p>
         </div>
         <div className="contactActions">
