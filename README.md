@@ -1,6 +1,6 @@
-# Boxieace Engineering Portfolio
+# Boxieace Robotics & Fabrication Portfolio
 
-A Vite + React portfolio for robotics, 3D printing, CAD, and student engineering projects.
+A Vite + React portfolio for robotics, FRC Team NOVA 11270, 3D printing, CNC/engraving research, and hardware/software engineering projects.
 
 ## Local development
 

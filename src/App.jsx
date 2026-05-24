@@ -1,252 +1,387 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+const stats = [
+  { value: '11270', label: 'FRC Team NOVA' },
+  { value: '7', label: 'featured builds' },
+  { value: 'CAD -> CAM', label: 'design workflow' },
+]
 
 const projects = [
   {
-    title: '3D Printed Robot Chassis',
-    type: 'Robotics',
-    note: 'Testing wheel spacing, battery placement, and sensor mounts.',
-    tags: ['CAD', 'FDM print', 'V1 prototype'],
+    title: 'FRC Team NOVA 11270 Robotics',
+    category: 'Robotics team systems',
+    summary:
+      'Competition robotics experience across team branding, human player practice, pit layout, outreach, sponsorship work, and match strategy.',
+    details: [
+      'Helped connect technical work with team identity, presentation, and event readiness.',
+      'Worked around real competition constraints: fast decisions, pit organization, teamwork, and communication.',
+      'Built experience with how mechanical, electrical, strategy, and outreach roles fit together.',
+    ],
+    signal: 'Teamwork / strategy / competition',
   },
   {
-    title: 'Gear Train Experiments',
-    type: 'Mechanical',
-    note: 'Learning how gear size changes speed, torque, and print tolerance.',
-    tags: ['Fusion 360', 'Tolerances', 'Motion'],
+    title: 'NOVA 11270 3D Printed Keychains & Pins',
+    category: 'Design and batch production',
+    summary:
+      'Custom galaxy blue and purple team keychains and pins designed for events, trading, and team identity.',
+    details: [
+      'Designed parts for multi-colour 3D printing with clean top surfaces and readable team styling.',
+      'Optimized batch layouts, print time, and organization into containers for event use.',
+      'Turned a branding idea into a small manufacturing workflow.',
+    ],
+    signal: 'AMS printing / batching / identity',
   },
   {
-    title: 'Arduino Sensor Rig',
-    type: 'Electronics',
-    note: 'A breadboard setup for reading sensors before adding them to a robot.',
-    tags: ['Arduino', 'Breadboard', 'Testing'],
+    title: 'Bambu Lab P1S + AMS Print Optimization',
+    category: 'Technical troubleshooting',
+    summary:
+      'A practical print tuning case study covering multi-colour print quality, purge settings, temperature errors, and batch speed.',
+    details: [
+      'Investigated nozzle, hotend, thermistor, and temperature error behavior during printing.',
+      'Tuned colour transitions and reduced waste where possible while protecting quality.',
+      'Improved batch timing and top surface finish through iteration and test prints.',
+    ],
+    signal: 'P1S / AMS / purge tuning',
+  },
+  {
+    title: 'Laser-Cut / CNC NOVA Magnet Design',
+    category: 'Design for manufacturability',
+    summary:
+      'A team-themed magnet designed around fabrication constraints instead of just visual appearance.',
+    details: [
+      'Designed connected cutout geometry with no floating pieces.',
+      'Worked around minimum detail sizes near 1.5 mm so the design could actually be made.',
+      'Balanced team branding with laser/CNC manufacturing limits.',
+    ],
+    signal: 'DfM / cut geometry / constraints',
+  },
+  {
+    title: 'CNC / Diamond Engraving Research',
+    category: 'Manufacturing process research',
+    summary:
+      'Research into impact engraving, diamond conical engraver tips, setup variables, and compatible materials.',
+    details: [
+      'Studied engraving depth, pressure, and how tip geometry affects marks.',
+      'Compared materials such as polycarbonate, acrylic, and powder-coated surfaces.',
+      'Built process knowledge for engraving setups before cutting real parts.',
+    ],
+    signal: 'Engraving / materials / setup',
+  },
+  {
+    title: 'Raspberry Pi Escape Room Puzzle Box',
+    category: 'Hardware and software integration',
+    summary:
+      'An interactive physical puzzle system with servo locks, RFID or keypad input, LEDs, LCD hints, buzzer feedback, and a timed sequence.',
+    details: [
+      'Combines mechanical locking, input handling, feedback, and puzzle state logic.',
+      'Designed as a real object people can touch, solve, and reset.',
+      'Good fit for documenting wiring, code, timing, and enclosure design.',
+    ],
+    signal: 'Pi / servos / interactive system',
+  },
+  {
+    title: 'Vision Target Shooting Game',
+    category: 'Computer vision and embedded feedback',
+    summary:
+      'A Raspberry Pi game concept using Pi Camera or OpenCV, joystick input, LEDs, target detection, and scoring feedback.',
+    details: [
+      'Connects computer vision with physical controls and visible feedback.',
+      'Uses target detection to make gameplay respond to real-world movement.',
+      'A strong base for experimenting with accuracy, lighting, scoring, and latency.',
+    ],
+    signal: 'OpenCV / camera / scoring',
   },
 ]
 
-const tools = ['Fusion 360', 'Onshape', 'Arduino', 'Python', '3D printing', 'Hand tools']
+const skills = [
+  {
+    group: 'Robotics',
+    items: ['FRC teamwork', 'mechanism thinking', 'competition strategy', 'sensors', 'pit workflow'],
+  },
+  {
+    group: 'Fabrication',
+    items: ['3D printing', 'AMS printing', 'laser cutting', 'CNC', 'diamond engraving'],
+  },
+  {
+    group: 'Design',
+    items: ['CAD-style thinking', 'product design', 'team branding', 'design constraints'],
+  },
+  {
+    group: 'Programming / Hardware',
+    items: ['Raspberry Pi', 'OpenCV', 'servo control', 'LEDs', 'LCDs', 'keypads', 'RFID'],
+  },
+  {
+    group: 'Engineering Process',
+    items: ['prototyping', 'testing', 'troubleshooting', 'iteration', 'documentation'],
+  },
+]
 
-const templates = [
+const buildLog = [
   {
-    id: 'notebook',
-    name: 'Maker Notebook',
-    short: 'Build logs, sketches, experiments, and lessons learned.',
+    phase: 'Idea',
+    text: 'Start with a physical problem: a team giveaway, a robot role, a puzzle interaction, or a fabrication limit.',
   },
   {
-    id: 'workshop',
-    name: 'Workshop Wall',
-    short: 'A neat project board with tools, parts, and build tiles.',
+    phase: 'Prototype',
+    text: 'Create a fast first version in CAD, print, wiring, code, or layout so the idea can be tested early.',
   },
   {
-    id: 'binder',
-    name: 'Project Binder',
-    short: 'Simple school portfolio pages with clean project reports.',
+    phase: 'Problem',
+    text: 'Find the weak point: print time, tolerances, unsupported geometry, colour transitions, wiring, or sensor behavior.',
   },
   {
-    id: 'lab',
-    name: 'Prototype Lab',
-    short: 'A lightweight lab dashboard for projects and model viewers.',
+    phase: 'Fix',
+    text: 'Tune the model, change the process, improve the setup, and test the next version against the real constraint.',
   },
   {
-    id: 'gallery',
-    name: 'Build Gallery',
-    short: 'Photo-first, casual, and personal.',
+    phase: 'Result',
+    text: 'Document what worked, what still needs improvement, and what the next build should solve.',
   },
 ]
 
 function App() {
-  const [activeTemplate, setActiveTemplate] = useState(templates[0].id)
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('portfolio-theme')
+    if (savedTheme) return savedTheme
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+  })
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
+
+  useEffect(() => {
+    const revealItems = document.querySelectorAll('.reveal')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('isVisible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.12 },
+    )
+
+    revealItems.forEach((item) => observer.observe(item))
+    return () => observer.disconnect()
+  }, [])
+
+  const isDark = theme === 'dark'
 
   return (
-    <main className="appShell">
-      <header className="templateHeader">
-        <div>
-          <p className="kicker">Boxieace portfolio drafts</p>
-          <h1>Pick a direction, then we can tune it.</h1>
-        </div>
-        <p>
-          Five different starter designs for a grade 9 engineering portfolio.
-          They use the same project content so the style is easier to compare.
-        </p>
+    <main className="siteShell">
+      <BlueprintBackground />
+      <header className="navBar">
+        <a className="brandMark" href="#top" aria-label="Portfolio home">
+          <span className="brandGlyph">N</span>
+          <span>
+            NOVA 11270
+            <small>student engineering portfolio</small>
+          </span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Toolkit</a>
+          <a href="#log">Build log</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button
+          className="themeToggle"
+          onClick={() => setTheme(isDark ? 'light' : 'dark')}
+          type="button"
+          aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+        >
+          <span>{isDark ? 'Light' : 'Dark'}</span>
+        </button>
       </header>
 
-      <nav className="templatePicker" aria-label="Template picker">
-        {templates.map((template) => (
-          <button
-            className={activeTemplate === template.id ? 'active' : ''}
-            key={template.id}
-            onClick={() => setActiveTemplate(template.id)}
-            type="button"
-          >
-            <span>{template.name}</span>
-            <small>{template.short}</small>
-          </button>
-        ))}
-      </nav>
+      <section className="heroSection" id="top">
+        <div className="heroCopy reveal isVisible">
+          <p className="eyebrow">Robotics / fabrication / mechatronics</p>
+          <h1>Building robots, fabricating ideas, and turning engineering concepts into real systems.</h1>
+          <p>
+            I am a student engineer interested in robotics, aerospace,
+            mechatronics, manufacturing, fabrication, and design. My work
+            combines FRC competition experience, CAD-style design, 3D printing,
+            CNC/engraving research, hardware troubleshooting, and physical
+            interactive systems.
+          </p>
+          <div className="heroActions">
+            <a className="actionButton primary" href="#projects">
+              View systems
+            </a>
+            <a className="actionButton secondary" href="#log">
+              Open build log
+            </a>
+          </div>
+        </div>
 
-      <TemplatePreview id={activeTemplate} />
+        <div className="heroVisual reveal isVisible" aria-label="Animated engineering interface">
+          <div className="orbitSystem">
+            <span className="orbit orbitOne" />
+            <span className="orbit orbitTwo" />
+            <span className="corePart" />
+            <span className="part partA">CAD</span>
+            <span className="part partB">CAM</span>
+            <span className="part partC">FRC</span>
+            <span className="part partD">Pi</span>
+          </div>
+          <div className="telemetryPanel panelOne">
+            <span>print queue</span>
+            <strong>AMS batch 04</strong>
+            <div className="meter"><i /></div>
+          </div>
+          <div className="telemetryPanel panelTwo">
+            <span>robot system</span>
+            <strong>pit ready</strong>
+            <div className="signalBars"><i /><i /><i /></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="statStrip reveal" aria-label="Portfolio highlights">
+        {stats.map((stat) => (
+          <div key={stat.label}>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </div>
+        ))}
+      </section>
+
+      <section className="sectionGrid aboutSection reveal" id="about">
+        <div>
+          <p className="eyebrow">About me</p>
+          <h2>I like projects where the design has to survive contact with the real world.</h2>
+        </div>
+        <div className="textPanel">
+          <p>
+            I am drawn to physical systems: mechanisms, printed parts, sensors,
+            wiring, machine setup, and the messy middle where an idea becomes
+            something you can test. I like improving designs through hands-on
+            iteration, not just making them look finished.
+          </p>
+          <p>
+            Through FRC Team NOVA 11270 and independent builds, I have worked on
+            robotics, team fabrication, 3D printing workflows, CNC/engraving
+            research, engineering branding, and hardware/software experiments.
+          </p>
+        </div>
+      </section>
+
+      <section className="projectSection" id="projects">
+        <div className="sectionHeader reveal">
+          <p className="eyebrow">Featured projects</p>
+          <h2>Fabrication archive and robotics systems.</h2>
+          <p>
+            These cards are written like real engineering work: what the project
+            involved, what constraints mattered, and what skills were tested.
+          </p>
+        </div>
+        <div className="projectGrid">
+          {projects.map((project, index) => (
+            <article className="projectCard reveal" key={project.title}>
+              <div className="cardTopline">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <small>{project.category}</small>
+              </div>
+              <h3>{project.title}</h3>
+              <p>{project.summary}</p>
+              <ul>
+                {project.details.map((detail) => (
+                  <li key={detail}>{detail}</li>
+                ))}
+              </ul>
+              <div className="projectSignal">{project.signal}</div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="skillsSection reveal" id="skills">
+        <div className="consoleHeader">
+          <div>
+            <p className="eyebrow">Engineering console</p>
+            <h2>Toolkit organized by how I actually build.</h2>
+          </div>
+          <span className="consoleStatus">systems online</span>
+        </div>
+        <div className="skillsConsole">
+          {skills.map((skill) => (
+            <article className="skillModule" key={skill.group}>
+              <h3>{skill.group}</h3>
+              <div>
+                {skill.items.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="logSection" id="log">
+        <div className="sectionHeader reveal">
+          <p className="eyebrow">Build log</p>
+          <h2>How a project moves from idea to working system.</h2>
+        </div>
+        <div className="timeline">
+          {buildLog.map((entry) => (
+            <article className="timelineItem reveal" key={entry.phase}>
+              <span>{entry.phase}</span>
+              <p>{entry.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="modelSection reveal">
+        <div>
+          <p className="eyebrow">Project assets</p>
+          <h2>Ready for real files: STL, OBJ, SVG, and web-friendly GLB models.</h2>
+          <p>
+            Project folders can hold photos, SVG sketches, printable STL files,
+            and GLB models for an inspectable 3D viewer. The portfolio is set up
+            to grow into a real fabrication archive as projects are documented.
+          </p>
+        </div>
+        <div className="assetRack">
+          <span>robot-chassis.glb</span>
+          <span>nova-pin.stl</span>
+          <span>magnet-cut.svg</span>
+          <span>engraving-test.obj</span>
+        </div>
+      </section>
+
+      <section className="contactSection reveal" id="contact">
+        <div>
+          <p className="eyebrow">Contact</p>
+          <h2>For robotics, fabrication, mentoring, and engineering opportunities.</h2>
+          <p>
+            Replace these placeholder links with your real GitHub, email,
+            resume, and project archive when you are ready.
+          </p>
+        </div>
+        <div className="contactActions">
+          <a href="https://github.com/boxieace">GitHub</a>
+          <a href="mailto:hello@example.com">Email</a>
+          <a href="/resume.pdf">Resume</a>
+          <a href="#projects">Projects</a>
+        </div>
+      </section>
     </main>
   )
 }
 
-function TemplatePreview({ id }) {
-  const previews = {
-    notebook: <MakerNotebook />,
-    workshop: <WorkshopWall />,
-    binder: <ProjectBinder />,
-    lab: <PrototypeLab />,
-    gallery: <BuildGallery />,
-  }
-
-  return <section className="previewStage">{previews[id]}</section>
-}
-
-function MakerNotebook() {
+function BlueprintBackground() {
   return (
-    <article className="template notebook">
-      <div className="notebookHero">
-        <div>
-          <p className="handLabel">Engineering notebook</p>
-          <h2>Hi, I&apos;m Boxieace. I make robots, printed parts, and small prototypes.</h2>
-          <p>
-            This version is more about the process: what I tried, what broke,
-            what I changed, and what I want to build next.
-          </p>
-        </div>
-        <img src="/engineering-workbench.png" alt="Engineering workbench" />
-      </div>
-      <div className="logGrid">
-        {projects.map((project, index) => (
-          <section className="logEntry" key={project.title}>
-            <span>Entry {index + 1}</span>
-            <h3>{project.title}</h3>
-            <p>{project.note}</p>
-            <ul>
-              <li>Goal: make one working version</li>
-              <li>Next: add real photos and test notes</li>
-            </ul>
-          </section>
-        ))}
-      </div>
-    </article>
-  )
-}
-
-function WorkshopWall() {
-  return (
-    <article className="template workshop">
-      <div className="workshopTop">
-        <div>
-          <p className="kicker">Workshop wall</p>
-          <h2>Parts, tools, and projects in progress.</h2>
-        </div>
-        <div className="toolRack">
-          {tools.map((tool) => (
-            <span key={tool}>{tool}</span>
-          ))}
-        </div>
-      </div>
-      <div className="pegboard">
-        {projects.map((project) => (
-          <section className="partBin" key={project.title}>
-            <p>{project.type}</p>
-            <h3>{project.title}</h3>
-            <span>{project.note}</span>
-          </section>
-        ))}
-      </div>
-    </article>
-  )
-}
-
-function ProjectBinder() {
-  return (
-    <article className="template binder">
-      <aside className="binderTabs">
-        <span>About</span>
-        <span>Projects</span>
-        <span>Skills</span>
-        <span>Contact</span>
-      </aside>
-      <div className="binderPage">
-        <p className="kicker">Project binder</p>
-        <h2>Engineering portfolio</h2>
-        <p>
-          A straightforward layout for school, clubs, competitions, or anyone
-          who wants to quickly understand what each project does.
-        </p>
-        <div className="reportList">
-          {projects.map((project) => (
-            <section className="reportRow" key={project.title}>
-              <div>
-                <h3>{project.title}</h3>
-                <p>{project.note}</p>
-              </div>
-              <span>{project.type}</span>
-            </section>
-          ))}
-        </div>
-      </div>
-    </article>
-  )
-}
-
-function PrototypeLab() {
-  return (
-    <article className="template lab">
-      <div className="labHeader">
-        <div>
-          <p className="kicker">Prototype lab</p>
-          <h2>Project tests, model files, and build notes.</h2>
-        </div>
-        <div className="statusBox">
-          <span>Next feature</span>
-          <strong>3D model viewer</strong>
-        </div>
-      </div>
-      <div className="labGrid">
-        <section className="modelViewerMock">
-          <div className="modelShape" />
-          <p>STL / OBJ / GLB preview area</p>
-        </section>
-        <section className="labPanel">
-          <h3>How project assets could work</h3>
-          <p>
-            Put files in <code>public/projects/project-name/</code>, then show
-            photos, SVG sketches, downloadable STLs, and an inspectable 3D model.
-          </p>
-          <div className="fileList">
-            <span>chassis.glb</span>
-            <span>bracket.stl</span>
-            <span>wiring-sketch.svg</span>
-          </div>
-        </section>
-      </div>
-    </article>
-  )
-}
-
-function BuildGallery() {
-  return (
-    <article className="template gallery">
-      <div className="galleryHero">
-        <img src="/engineering-workbench.png" alt="Engineering workbench" />
-        <div>
-          <p className="kicker">Build gallery</p>
-          <h2>Stuff I made, tested, fixed, and learned from.</h2>
-          <p>
-            This style is the most casual: photos first, short captions, and
-            simple notes that sound like a real student made them.
-          </p>
-        </div>
-      </div>
-      <div className="photoGrid">
-        {projects.map((project) => (
-          <section className="photoCard" key={project.title}>
-            <div className="photoPlaceholder">{project.type}</div>
-            <h3>{project.title}</h3>
-            <p>{project.note}</p>
-          </section>
-        ))}
-      </div>
-    </article>
+    <div className="blueprintBackground" aria-hidden="true">
+      <span />
+      <span />
+      <span />
+    </div>
   )
 }
 
