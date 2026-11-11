@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <meta name="description" content="Master all 40 Casse-tête chapters 6–9 French vocabulary words with visual memory cues, audio drills, and a three-part mock exam.">
+  <title>Casse-tête | 40-word French vocabulary lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand"><span class="brand-mark">c<span>t</span></span><div><strong>casse-tête<span class="brand-period">.</span></strong><small>CHAPTERS 6–9 · LAB</small></div></div>
+      <div class="nav-caption">YOUR WORKSPACE</div>
+      <nav class="nav" id="navigation">
+        <button type="button" class="nav-item active" data-page="home"><span class="nav-glyph">⌂</span> Dashboard</button>
+        <button type="button" class="nav-item" data-page="learn"><span class="nav-glyph">▣</span> Flashcard studio <span class="nav-badge">40</span></button>
+        <button type="button" class="nav-item" data-page="library"><span class="nav-glyph">⊞</span> Word library</button>
+        <button type="button" class="nav-item" data-page="drill"><span class="nav-glyph">◉</span> Listening drills</button>
+        <button type="button" class="nav-item" data-page="exam"><span class="nav-glyph">✎</span> Final mock test</button>
+      </nav>
+      <div class="side-bottom">
+        <div class="sidebar-progress">
+          <div class="side-progress-label"><span>YOUR MASTERY</span><strong id="side-mastery-count">0 / 40</strong></div>
+          <div class="mini-progress"><span id="side-progress-bar"></span></div>
+          <p>Two successful recalls = mastered. Missed words come back more often.</p>
+        </div>
+        <div class="privacy"><span class="privacy-dot"></span> Progress saved on this device</div>
+      </div>
+    </aside>
+    <div class="content-shell">
+      <header class="topbar">
+        <div class="breadcrumb"><span id="breadcrumb-name">Dashboard</span><span class="breadcrumb-divider">/</span><span class="breadcrumb-detail">Casse-tête 6–9</span></div>
+        <div class="topbar-right">
+          <button class="sound-control" type="button" id="sound-check" title="Test French audio"><span>♫</span> Test sound</button>
+          <button class="timer-chip" id="timer-control" type="button"><span class="timer-led"></span><span id="timer-display">60:00</span><span id="timer-label">START FOCUS</span></button>
+        </div>
+      </header>
+      <main id="page" tabindex="-1"></main>
+      <footer class="site-footer"><span>Built for focused learning · 40 verified terms · Casse-tête, chapitres 6–9</span><button type="button" id="reset-progress">Reset my progress</button></footer>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
