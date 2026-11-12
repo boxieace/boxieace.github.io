@@ -4,7 +4,7 @@ const $=s=>document.querySelector(s);
 const W=WORDS.map((a,i)=>({id:i,fr:a[0],en:a[1],emoji:a[2],image:a[3],example:a[4],hook:a[5],def:a[6],cat:a[7]}));
 const read=(k,d)=>{try{const v=localStorage.getItem("ctlab-"+k);return v===null?d:JSON.parse(v)}catch{return d}};
 const save=(k,v)=>{try{localStorage.setItem("ctlab-"+k,JSON.stringify(v))}catch{}};
-const S={page:"home",mastery:read("mastery",{}),left:read("left",3600),running:false,last:0,idx:0,reveal:false,filter:"all",query:"",mode:"A",drill:null,exam:null,mcMode:"mixed",mcLength:20,mc:null};
+const S={page:"home",mastery:read("mastery",{}),left:read("left",3600),running:false,last:0,idx:0,reveal:false,filter:"all",query:"",mode:"A",drill:null,exam:null,mcMode:"mixed",mcLength:20,mc:null,flashHistory:read("flashHistory",{}),flashStep:read("flashStep",0),flashCurrentId:read("flashCurrentId",null),flashLastId:read("flashLastId",null)};
 const esc=v=>String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const mastered=()=>W.filter(w=>(S.mastery[w.id]||0)>=2).length;
 const sorted=()=>[...W].sort((a,b)=>(S.mastery[a.id]||0)-(S.mastery[b.id]||0)||a.id-b.id);
@@ -14,11 +14,69 @@ function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("visib
 function go(p){S.page=p;S.reveal=false;$("#navigation").querySelectorAll(".nav-item").forEach(n=>n.classList.toggle("active",n.dataset.page===p));$("#breadcrumb-name").textContent=({home:"Dashboard",learn:"Flashcard studio",library:"Word library",drill:"Listening drills",multiple:"Multiple choice",exam:"Mock test"})[p];scrollTo({top:0,behavior:"smooth"});render()}
 function button(t,p,cls="btn btn-primary"){return `<button class="${cls}" data-go="${p}">${t}</button>`}
 function header(h,s){return `<div class="page-heading"><div><div class="eyebrow">CASSE-TÊTE / VOCABULARY LAB</div><h1>${h}</h1><p>${s}</p></div></div>`}
-function home(){let m=mastered();return `<div class="eyebrow">YOUR PERSONAL FRENCH STUDY SPACE</div><h1 class="hero-title">40 words.<br><em>One focused hour.</em></h1><p class="lede">Learn chapters 6–9 through visual associations, sound, and active recall. Then prove it with a 40-question test in the exact three formats you described.</p><div class="hero-grid"><section class="hero-panel"><div class="hero-number">01 / START HERE</div><h2>Make every word<br>stick in your head.</h2><p>See it. Hear it. Connect it to something familiar. Recall it. Repeat what you miss.</p>${button("Start visual flashcards →","learn","btn btn-accent")}</section><section class="stat-panel"><div class="stat-top"><span>WORDS MASTERED</span><span>✳</span></div><div class="stat-big">${m}<span> / 40</span></div><div class="bar"><span style="width:${m/40*100}%"></span></div><p>Two successful recall attempts = mastered. Words you miss stay at the front of your study order.</p></section></div><div class="section-head"><div><h2>Your 60-minute study route</h2><p>A realistic plan to memorize, reinforce, and test all 40 terms.</p></div></div><div class="journey">${SESSION.map((x,i)=>`<button class="journey-card" data-go="${x.page}" data-phase="${i}"><div class="journey-time">0${i+1} · ${x.mins} MIN</div><div class="journey-icon">${["👀","🧠","🎧","📝","🏁"][i]}</div><h3>${x.label}</h3><p>${x.detail}</p></button>`).join("")}</div><div class="mc-teaser"><div><strong>Want quick written practice?</strong><p>English → French, French → English, or a mix. No sound, pictures, or spoilers.</p></div>${button("Open multiple choice →","multiple","btn btn-outline")}</div><p class="smallnote">Say an answer aloud before revealing it; active recall beats rereading.</p>`}
+function home(){let m=mastered();return `<div class="eyebrow">YOUR PERSONAL FRENCH STUDY SPACE</div><h1 class="hero-title">40 words.<br><em>One focused hour.</em></h1><p class="lede">Learn chapters 6–9 through visual associations, sound, and active recall. Then prove it with a 40-question test in the exact three formats you described.</p><div class="hero-grid"><section class="hero-panel"><div class="hero-number">01 / START HERE</div><h2>Make every word<br>stick in your head.</h2><p>See it. Hear it. Connect it to something familiar. Recall it. Repeat what you miss.</p>${button("Start visual flashcards →","learn","btn btn-accent")}</section><section class="stat-panel"><div class="stat-top"><span>WORDS MASTERED</span><span>✳</span></div><div class="stat-big">${m}<span> / 40</span></div><div class="bar"><span style="width:${m/40*100}%"></span></div><p>Two correct flashcard recalls retire a card. Missed words return sooner.</p></section></div><div class="section-head"><div><h2>Your 60-minute study route</h2><p>A realistic plan to memorize, reinforce, and test all 40 terms.</p></div></div><div class="journey">${SESSION.map((x,i)=>`<button class="journey-card" data-go="${x.page}" data-phase="${i}"><div class="journey-time">0${i+1} · ${x.mins} MIN</div><div class="journey-icon">${["👀","🧠","🎧","📝","🏁"][i]}</div><h3>${x.label}</h3><p>${x.detail}</p></button>`).join("")}</div><div class="mc-teaser"><div><strong>Want quick written practice?</strong><p>English → French, French → English, or a mix. No sound, pictures, or spoilers.</p></div>${button("Open multiple choice →","multiple","btn btn-outline")}</div><p class="smallnote">Say an answer aloud before revealing it; active recall beats rereading.</p>`}
 function library(){let a=W.filter(w=>(S.filter==="all"||w.cat===S.filter||S.filter==="review"&&(S.mastery[w.id]||0)<2)&&(`${w.fr} ${w.en} ${w.def}`.toLowerCase().includes(S.query.toLowerCase())));return header("The word library","All 40 words from your worksheet, with corrected definitions, memory hooks, and French audio.")+`<div class="library-tools"><input class="field" id="word-search" aria-label="Search vocabulary" placeholder="⌕ Search French or English..." value="${esc(S.query)}"><div class="control-row">${["all","verb","noun","adjective","expression","review"].map(f=>`<button class="pill ${S.filter===f?"active":""}" data-filter="${f}">${({all:"All 40",verb:"Verbs",noun:"Nouns",adjective:"Adjectives",expression:"Expressions",review:"Not mastered"})[f]}</button>`).join("")}</div></div><p class="filter-help">${a.length} words · Tap ♫ for pronunciation</p><div class="words-grid">${a.map(w=>`<div class="word-row"><div class="word-emoji">${w.emoji}</div><div class="word-details"><strong>${esc(w.fr)} ${(S.mastery[w.id]||0)>=2?"✓":""}</strong><small>${esc(w.en)}</small><div class="word-category">${esc(w.hook)}</div></div><button class="icon-button" data-speak="${w.id}" aria-label="Pronounce ${esc(w.fr)}">♫</button></div>`).join("")}</div>`}
-function currentWord(){return sorted()[S.idx%40]}
-function learn(){let w=currentWord();return header("Flashcard studio","Hear the word. Recall its meaning. Then reveal the answer and memory connection.")+`<div class="learn-layout"><section><div class="study-card"><div class="card-counter">CARD ${S.idx%40+1} / 40 · ${esc(w.cat.toUpperCase())}</div>${S.reveal?`<div class="study-emoji">${w.emoji}</div>`:""}<button id="flip" class="card-flip-zone"><h2 class="study-word">${esc(w.fr)}</h2><div class="flash-tip">${S.reveal?"Answer revealed":"Tap to reveal translation"}</div></button><button class="pronunciation" data-speak="${w.id}">♫ Listen in French</button>${S.reveal?`<div class="card-translation">${esc(w.en)}</div><div class="card-clue">${esc(w.example)}</div><div class="study-hint"><strong>🧠 Memory hook</strong><br>${esc(w.hook)}<br><span class="muted">Picture: ${esc(w.image)}</span></div>`:`<div class="card-clue">Guess its English meaning before revealing.</div>`}</div><div class="study-bottom">${S.reveal?`<button class="btn btn-outline" data-mark="miss">↻ Study again</button><button class="btn btn-primary" data-mark="know">✓ I remembered</button>`:'<button class="btn btn-primary" id="show-answer">Reveal translation →</button>'}<button class="btn btn-quiet" id="skip-card">Skip →</button></div></section><aside class="learn-side"><div class="tip-panel"><h3>💡 The 3-second rule</h3><p>Try recalling for three full seconds before revealing. If you miss it, choose Study again. Retrieval makes words stick.</p></div><div class="mini-check"><strong>${S.reveal?"Visual connection":"Recall first"}</strong><p>${S.reveal?esc(w.image):"The visual memory hint appears only after you reveal the answer."}</p><span class="tag">${S.mastery[w.id]||0}/2 recalls to mastery</span></div><div class="mini-check"><strong>Try another skill</strong><p>Once you have seen the cards, practise listening without seeing the word.</p>${button("Listening drills →","drill","btn btn-outline")}</div></aside></div>`}
-function reward(w,good){S.mastery[w.id]=good?Math.min(2,(S.mastery[w.id]||0)+1):0;save("mastery",S.mastery)}
+function flashHistory(w){return S.flashHistory[w.id]||{seen:0,missed:0,due:0}}
+function currentWord(){
+  const active=W.filter(w=>(S.mastery[w.id]||0)<2);
+  if(!active.length){S.flashCurrentId=null;save("flashCurrentId",null);return null}
+  const stored=active.find(w=>w.id===S.flashCurrentId);
+  if(stored)return stored;
+  // Missed words repeat after 3 cards; correct-once words repeat after 9.
+  // Every 4th turn gives a new word priority, preventing hard words from blocking the rest.
+  const other=active.filter(w=>w.id!==S.flashLastId);
+  const pool=other.length?other:active;
+  const unseen=pool.filter(w=>flashHistory(w).seen===0);
+  const due=pool.filter(w=>flashHistory(w).seen>0&&flashHistory(w).due<=S.flashStep);
+  let chosen;
+  if(unseen.length&&(S.flashStep%4===0||!due.length))chosen=unseen[0];
+  else if(due.length)chosen=due.sort((a,b)=>flashHistory(a).due-flashHistory(b).due||flashHistory(b).missed-flashHistory(a).missed)[0];
+  else if(unseen.length)chosen=unseen[0];
+  else chosen=[...pool].sort((a,b)=>flashHistory(a).due-flashHistory(b).due)[0];
+  S.flashCurrentId=chosen.id;
+  save("flashCurrentId",S.flashCurrentId);
+  return chosen;
+}
+function markFlash(correct){
+  const w=currentWord();
+  if(!w)return;
+  const prev=flashHistory(w);
+  S.flashHistory[w.id]={seen:prev.seen+1,missed:prev.missed+(correct?0:1),due:S.flashStep+(correct?9:3)};
+  if(correct)S.mastery[w.id]=Math.min(2,(S.mastery[w.id]||0)+1);
+  S.flashStep++;
+  S.flashLastId=w.id;
+  S.flashCurrentId=null;
+  S.reveal=false;
+  save("flashHistory",S.flashHistory);
+  save("flashStep",S.flashStep);
+  save("flashLastId",S.flashLastId);
+  save("flashCurrentId",null);
+  save("mastery",S.mastery);
+  render();
+  if((S.mastery[w.id]||0)===2)toast("Mastered! Retired permanently from flashcards.");
+  else toast(correct?"Correct. This word returns later.":"Missed — this word returns soon.");
+}
+function learn(){
+ const w=currentWord(),done=mastered(),remaining=W.length-done;
+ if(!w)return header("Flashcard studio","Every card has been mastered.")+
+ '<div class="results-card flash-completed"><div class="complete-mark">✓</div><h2>All 40 words mastered.</h2><p>You recalled every word correctly twice. Mastered cards stay retired, including after refreshing.</p><p class="muted">The library and other quizzes remain available. Reset your progress to start these flashcards again.</p><div class="control-row" style="justify-content:center">'+button("Take the final test →","exam")+button("Open word library →","library","btn btn-outline")+'</div></div>';
+ const progress=S.mastery[w.id]||0,history=flashHistory(w);
+ return header("Smart flashcards","Wrong words return soon. Two correct recalls remove a card from practice permanently.")+
+ '<div class="smart-overview"><span><strong>'+remaining+'</strong> remaining</span><span><strong>'+done+'</strong> retired</span><span><strong>'+W.filter(x=>(S.mastery[x.id]||0)<2&&flashHistory(x).seen===0).length+'</strong> not yet seen</span></div>'+
+ `<div class="learn-layout"><section><div class="study-card">
+ <div class="card-counter">ACTIVE FLASHCARD · ${esc(w.cat.toUpperCase())}</div>
+ ${S.reveal?`<div class="study-emoji">${w.emoji}</div>`:""}
+ <button id="flip" class="card-flip-zone"><h2 class="study-word">${esc(w.fr)}</h2><div class="flash-tip">${S.reveal?"Answer revealed":"Tap to reveal the translation"}</div></button>
+ <button class="pronunciation" data-speak="${w.id}">♫ Listen in French</button>
+ ${S.reveal?`<div class="card-translation">${esc(w.en)}</div><div class="card-clue">${esc(w.example)}</div><div class="study-hint"><strong>Memory hook</strong><br>${esc(w.hook)}<br><span class="muted">Visual connection: ${esc(w.image)}</span></div>`:'<div class="card-clue">Recall the meaning first. No pictures or hints until reveal.</div>'}
+ </div><div class="study-bottom">
+ ${S.reveal?`<button class="btn btn-outline" data-mark="miss">✕ Did not know it</button><button class="btn btn-primary" data-mark="know">✓ Got it right</button>`:'<button class="btn btn-primary" id="show-answer">Reveal translation →</button>'}
+ <button class="btn btn-quiet" id="skip-card">Skip & review soon →</button>
+ </div></section><aside class="learn-side"><div class="tip-panel"><h3>Smart review rules</h3><p>Wrong answer → repeat soon.<br>First correct answer → repeat later.<br>Second correct answer → remove for good.</p><p>Mastered cards won't return unless you reset progress.</p></div>
+ <div class="mini-check"><strong>This word's progress</strong><p>${progress} of 2 correct recalls. ${history.missed?history.missed+" misses so far.":"Say the answer before flipping."}</p><span class="tag">${progress===1?"One more correct to master":"Two correct answers to master"}</span></div>
+ <div class="mini-check"><strong>${S.reveal?"Visual connection":"Recall first"}</strong><p>${S.reveal?esc(w.image):"Visual hints appear only after you reveal the answer."}</p></div>
+ </aside></div>`;
+}
 function question(w,mode){const field=mode==="A"?"en":"fr";const choices=shuffle([...shuffle(W.filter(x=>x.id!==w.id)).slice(0,3).map(x=>x[field]),w[field]]);return {w,mode,choices,answered:false,pick:""}}
 function startDrill(){let pool=sorted().slice(0,24),w=pool[Math.floor(Math.random()*pool.length)];S.drill=question(w,S.mode)}
 function qHTML(q,num,total,cap){let field=q.mode==="A"?"en":"fr",correct=q.w[field];return `<div class="question-shell"><div class="question-head"><span>${cap}</span><span>QUESTION ${num+1} OF ${total}</span></div><div class="bar"><span style="width:${100*num/total}%"></span></div><div class="question-card"><span class="q-phase">PART ${q.mode} · ${q.mode==="A"?"FRENCH AUDIO → ENGLISH":q.mode==="B"?"ENGLISH AUDIO → FRENCH":"FRENCH DEFINITION"}</span><div class="q-label">${q.mode==="A"?"Listen and select the English meaning.":q.mode==="B"?"Listen and select the French translation.":"Read the description and select the French word."}</div>${q.mode==="C"?`<h2 class="question-prompt">« ${esc(q.w.def)} »</h2>`:`<div class="audio-prompt"><button class="audio-bubble" id="play-question">♫</button><div><strong>Click to hear ${q.mode==="A"?"the French":"the English"}</strong><p>Replay as often as you need. Audio-only prompt.</p></div></div>`}<div class="options">${q.choices.map((o,i)=>`<button class="answer-option ${q.answered?(o===correct?"correct":o===q.pick?"wrong":""):""}" data-option="${i}" ${q.answered?"disabled":""}><span style="color:#91a89a;margin-right:10px">${"ABCD"[i]}.</span>${esc(o)}</button>`).join("")}</div>${q.answered?`<div class="answer-feedback ${q.pick===correct?"good":"bad"}"><strong>${q.pick===correct?"✓ Correct!":"✕ Not quite."}</strong> ${esc(q.w.fr)} = ${esc(q.w.en)}.<br><b>Memory hook:</b> ${esc(q.w.hook)}</div>`:""}</div><div class="question-actions"><span class="tag">${q.mode==="C"?"Definition recognition":"Audio recognition"}</span>${q.answered?'<button class="btn btn-primary" id="next-question">Next question →</button>':'<span class="shortcut">Keys 1–4 select · space replays audio</span>'}</div></div>`}
@@ -43,7 +101,6 @@ function mcAnswer(i){
   q.picked=q.options[i];q.answered=true;
   const good=q.picked===q.correct;
   if(good)session.score++;else session.wrong.push(q.w);
-  reward(q.w,good);
   render();
 }
 function mcNext(){
@@ -77,14 +134,14 @@ const E=S.exam;if(E.finished)return header("Your mock exam result","Review the m
 return header("Mock exam · Part "+E.questions[E.i].mode,"Complete all 40 questions to get your score and review list.")+qHTML(E.questions[E.i],E.i,40,`FULL EXAM · ${E.score} CORRECT SO FAR`)}
 function currentQ(){return S.page==="drill"?S.drill:S.exam?.questions[S.exam.i]}
 function speakQ(){let q=currentQ();if(q)voice(q.mode==="A"?q.w.fr:q.w.en,q.mode==="A"?"fr-FR":"en-US")}
-function answer(i){let q=currentQ();if(!q||q.answered)return;q.pick=q.choices[i];q.answered=true;let good=q.pick===q.w[q.mode==="A"?"en":"fr"];reward(q.w,good);if(S.page==="exam"){if(good)S.exam.score++;else S.exam.miss.push(q.w)}render()}
+function answer(i){let q=currentQ();if(!q||q.answered)return;q.pick=q.choices[i];q.answered=true;let good=q.pick===q.w[q.mode==="A"?"en":"fr"];if(S.page==="exam"){if(good)S.exam.score++;else S.exam.miss.push(q.w)}render()}
 function render(){const m=mastered();$("#side-mastery-count").textContent=m+" / 40";$("#side-progress-bar").style.width=100*m/40+"%";$("#page").innerHTML=({home,library,learn,drill,multiple,exam})[S.page]();bind()}
 function bind(){const root=$("#page");root.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{if(b.dataset.phase==="3")S.mode="C";S.drill=null;go(b.dataset.go)});
 root.querySelectorAll("[data-speak]").forEach(b=>b.onclick=()=>voice(W[+b.dataset.speak].fr));
 root.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{S.filter=b.dataset.filter;render()});
 $("#word-search")?.addEventListener("input",e=>{S.query=e.target.value;let pos=e.target.selectionStart;render();$("#word-search").focus();$("#word-search").setSelectionRange(pos,pos)});
-$("#flip")?.addEventListener("click",()=>{S.reveal=!S.reveal;render()});$("#show-answer")?.addEventListener("click",()=>{S.reveal=true;render()});$("#skip-card")?.addEventListener("click",()=>{S.idx++;S.reveal=false;render()});
-root.querySelectorAll("[data-mark]").forEach(b=>b.onclick=()=>{reward(currentWord(),b.dataset.mark==="know");S.idx++;S.reveal=false;render()});
+$("#flip")?.addEventListener("click",()=>{S.reveal=!S.reveal;render()});$("#show-answer")?.addEventListener("click",()=>{S.reveal=true;render()});$("#skip-card")?.addEventListener("click",()=>markFlash(false));
+root.querySelectorAll("[data-mark]").forEach(b=>b.onclick=()=>markFlash(b.dataset.mark==="know"));
 root.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{S.mode=b.dataset.mode;startDrill();render()});
 $("#play-question")?.addEventListener("click",speakQ);root.querySelectorAll("[data-option]").forEach(b=>b.onclick=()=>answer(+b.dataset.option));
 $("#next-question")?.addEventListener("click",()=>{if(S.page==="drill")startDrill();else{S.exam.i++;if(S.exam.i===40)S.exam.finished=true}render()});$("#start-exam")?.addEventListener("click",startExam);
@@ -100,8 +157,8 @@ function clock(){const v=String(Math.floor(S.left/60)).padStart(2,"0")+":"+Strin
 setInterval(()=>{if(!S.running)return;let t=Date.now(),secs=Math.floor((t-S.last)/1000);if(secs<1)return;S.last+=secs*1000;S.left=Math.max(0,S.left-secs);save("left",S.left);if(!S.left){S.running=false;toast("Focus session complete!")};clock()},250);
 $("#timer-control").onclick=()=>{if(!S.left)S.left=3600;S.running=!S.running;S.last=Date.now();clock();toast(S.running?"Focus timer started.":"Timer paused.")};
 $("#sound-check").onclick=()=>voice("Bonjour ! Tu peux le faire !");
-$("#reset-progress").onclick=()=>{if(!confirm("Reset progress, timer and current exam?"))return;S.mastery={};S.left=3600;S.running=false;S.idx=0;S.exam=null;S.mc=null;save("mastery",{});save("left",3600);clock();render();toast("Progress reset.")};
+$("#reset-progress").onclick=()=>{if(!confirm("Reset progress, timer and current exam?"))return;S.mastery={};S.flashHistory={};S.flashStep=0;S.flashCurrentId=null;S.flashLastId=null;S.left=3600;S.running=false;S.idx=0;S.exam=null;S.mc=null;save("mastery",{});save("flashHistory",{});save("flashStep",0);save("flashCurrentId",null);save("flashLastId",null);save("left",3600);clock();render();toast("Progress reset.")};
 $("#navigation").onclick=e=>{let b=e.target.closest("[data-page]");if(b)go(b.dataset.page)};
-document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if("1234".includes(e.key)&&e.key.length===1&&["drill","exam","multiple"].includes(S.page)){if(S.page==="multiple"){if(S.mc&&!S.mc.finished&&!S.mc.questions[S.mc.i].answered)mcAnswer(+e.key-1)}else{let q=currentQ();if(q&&!q.answered)answer(+e.key-1)}}else if(e.key===" "&&["drill","exam"].includes(S.page)){e.preventDefault();speakQ()}else if(e.key==="ArrowRight"&&S.page==="learn"){S.idx++;S.reveal=false;render()}});
+document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if("1234".includes(e.key)&&e.key.length===1&&["drill","exam","multiple"].includes(S.page)){if(S.page==="multiple"){if(S.mc&&!S.mc.finished&&!S.mc.questions[S.mc.i].answered)mcAnswer(+e.key-1)}else{let q=currentQ();if(q&&!q.answered)answer(+e.key-1)}}else if(e.key===" "&&["drill","exam"].includes(S.page)){e.preventDefault();speakQ()}else if(e.key==="ArrowRight"&&S.page==="learn"){markFlash(false)}});
 clock();render();
 })();
