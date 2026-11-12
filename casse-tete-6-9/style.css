@@ -22,3 +22,12 @@
 .mc-results{max-width:630px;margin:24px auto;text-align:left}
 .mc-results h3{font:800 18px Outfit}
 @media(max-width:850px){.mc-modes{grid-template-columns:1fr}.mc-mode{min-height:0}.mc-teaser{flex-direction:column;align-items:start}}
+
+/* Adaptive flashcards */
+.smart-overview{display:flex;gap:11px;flex-wrap:wrap;margin:-8px 0 23px}
+.smart-overview span{background:#fff;border:1px solid var(--border);padding:10px 16px;border-radius:11px;color:#718273;font-size:12px}
+.smart-overview strong{font:800 17px Outfit;color:#285942;margin-right:5px}
+.flash-completed{padding:55px 25px}
+.flash-completed h2{font:800 31px Outfit;letter-spacing:-.7px;margin:12px 0}
+.flash-completed p{max-width:500px;margin:10px auto 17px;color:#6e8072;line-height:1.7}
+.complete-mark{margin:0 auto;width:70px;height:70px;display:grid;place-items:center;font:800 38px Outfit;border-radius:50%;color:#22573d;background:#e2f6e3}
