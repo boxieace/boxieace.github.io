@@ -5,6 +5,12 @@ const W=WORDS.map((a,i)=>({id:i,fr:a[0],en:a[1],emoji:a[2],image:a[3],example:a[
 const read=(k,d)=>{try{const v=localStorage.getItem("ctlab-"+k);return v===null?d:JSON.parse(v)}catch{return d}};
 const save=(k,v)=>{try{localStorage.setItem("ctlab-"+k,JSON.stringify(v))}catch{}};
 const S={page:"home",mastery:read("mastery",{}),left:read("left",3600),running:false,last:0,idx:0,reveal:false,filter:"all",query:"",mode:"A",drill:null,exam:null,mcMode:"mixed",mcLength:20,mc:null,flashHistory:read("flashHistory",{}),flashStep:read("flashStep",0),flashCurrentId:read("flashCurrentId",null),flashLastId:read("flashLastId",null)};
+const resetFromLink=new URLSearchParams(window.location.search).get("reset")==="flashcards";
+if(resetFromLink){
+  S.mastery={};S.flashHistory={};S.flashStep=0;S.flashCurrentId=null;S.flashLastId=null;S.reveal=false;S.idx=0;
+  save("mastery",{});save("flashHistory",{});save("flashStep",0);save("flashCurrentId",null);save("flashLastId",null);
+  window.history.replaceState(null,"",window.location.pathname+window.location.hash);
+}
 const esc=v=>String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const mastered=()=>W.filter(w=>(S.mastery[w.id]||0)>=2).length;
 const sorted=()=>[...W].sort((a,b)=>(S.mastery[a.id]||0)-(S.mastery[b.id]||0)||a.id-b.id);
@@ -16,6 +22,12 @@ function button(t,p,cls="btn btn-primary"){return `<button class="${cls}" data-g
 function header(h,s){return `<div class="page-heading"><div><div class="eyebrow">CASSE-TÊTE / VOCABULARY LAB</div><h1>${h}</h1><p>${s}</p></div></div>`}
 function home(){let m=mastered();return `<div class="eyebrow">YOUR PERSONAL FRENCH STUDY SPACE</div><h1 class="hero-title">40 words.<br><em>One focused hour.</em></h1><p class="lede">Learn chapters 6–9 through visual associations, sound, and active recall. Then prove it with a 40-question test in the exact three formats you described.</p><div class="hero-grid"><section class="hero-panel"><div class="hero-number">01 / START HERE</div><h2>Make every word<br>stick in your head.</h2><p>See it. Hear it. Connect it to something familiar. Recall it. Repeat what you miss.</p>${button("Start visual flashcards →","learn","btn btn-accent")}</section><section class="stat-panel"><div class="stat-top"><span>WORDS MASTERED</span><span>✳</span></div><div class="stat-big">${m}<span> / 40</span></div><div class="bar"><span style="width:${m/40*100}%"></span></div><p>Two correct flashcard recalls retire a card. Missed words return sooner.</p></section></div><div class="section-head"><div><h2>Your 60-minute study route</h2><p>A realistic plan to memorize, reinforce, and test all 40 terms.</p></div></div><div class="journey">${SESSION.map((x,i)=>`<button class="journey-card" data-go="${x.page}" data-phase="${i}"><div class="journey-time">0${i+1} · ${x.mins} MIN</div><div class="journey-icon">${["👀","🧠","🎧","📝","🏁"][i]}</div><h3>${x.label}</h3><p>${x.detail}</p></button>`).join("")}</div><div class="mc-teaser"><div><strong>Want quick written practice?</strong><p>English → French, French → English, or a mix. No sound, pictures, or spoilers.</p></div>${button("Open multiple choice →","multiple","btn btn-outline")}</div><p class="smallnote">Say an answer aloud before revealing it; active recall beats rereading.</p>`}
 function library(){let a=W.filter(w=>(S.filter==="all"||w.cat===S.filter||S.filter==="review"&&(S.mastery[w.id]||0)<2)&&(`${w.fr} ${w.en} ${w.def}`.toLowerCase().includes(S.query.toLowerCase())));return header("The word library","All 40 words from your worksheet, with corrected definitions, memory hooks, and French audio.")+`<div class="library-tools"><input class="field" id="word-search" aria-label="Search vocabulary" placeholder="⌕ Search French or English..." value="${esc(S.query)}"><div class="control-row">${["all","verb","noun","adjective","expression","review"].map(f=>`<button class="pill ${S.filter===f?"active":""}" data-filter="${f}">${({all:"All 40",verb:"Verbs",noun:"Nouns",adjective:"Adjectives",expression:"Expressions",review:"Not mastered"})[f]}</button>`).join("")}</div></div><p class="filter-help">${a.length} words · Tap ♫ for pronunciation</p><div class="words-grid">${a.map(w=>`<div class="word-row"><div class="word-emoji">${w.emoji}</div><div class="word-details"><strong>${esc(w.fr)} ${(S.mastery[w.id]||0)>=2?"✓":""}</strong><small>${esc(w.en)}</small><div class="word-category">${esc(w.hook)}</div></div><button class="icon-button" data-speak="${w.id}" aria-label="Pronounce ${esc(w.fr)}">♫</button></div>`).join("")}</div>`}
+function resetFlashcards(){
+  S.mastery={};S.flashHistory={};S.flashStep=0;S.flashCurrentId=null;S.flashLastId=null;S.idx=0;S.reveal=false;
+  save("mastery",{});save("flashHistory",{});save("flashStep",0);save("flashCurrentId",null);save("flashLastId",null);
+  render();
+  toast("All 40 flashcards reset. Starting fresh!");
+}
 function flashHistory(w){return S.flashHistory[w.id]||{seen:0,missed:0,due:0}}
 function currentWord(){
   const active=W.filter(w=>(S.mastery[w.id]||0)<2);
@@ -59,10 +71,10 @@ function markFlash(correct){
 function learn(){
  const w=currentWord(),done=mastered(),remaining=W.length-done;
  if(!w)return header("Flashcard studio","Every card has been mastered.")+
- '<div class="results-card flash-completed"><div class="complete-mark">✓</div><h2>All 40 words mastered.</h2><p>You recalled every word correctly twice. Mastered cards stay retired, including after refreshing.</p><p class="muted">The library and other quizzes remain available. Reset your progress to start these flashcards again.</p><div class="control-row" style="justify-content:center">'+button("Take the final test →","exam")+button("Open word library →","library","btn btn-outline")+'</div></div>';
+ '<div class="results-card flash-completed"><div class="complete-mark">✓</div><h2>All 40 words mastered.</h2><p>You recalled every word correctly twice. Mastered cards stay retired, including after refreshing.</p><p class="muted">The library and other quizzes remain available. Use Reset flashcards to start from zero without changing your other quiz settings.</p><div class="control-row" style="justify-content:center">'+button("Take the final test →","exam")+button("Open word library →","library","btn btn-outline")+'<button class="btn btn-quiet" id="reset-flashcards">Reset flashcards</button>'+'</div></div>';
  const progress=S.mastery[w.id]||0,history=flashHistory(w);
  return header("Smart flashcards","Wrong words return soon. Two correct recalls remove a card from practice permanently.")+
- '<div class="smart-overview"><span><strong>'+remaining+'</strong> remaining</span><span><strong>'+done+'</strong> retired</span><span><strong>'+W.filter(x=>(S.mastery[x.id]||0)<2&&flashHistory(x).seen===0).length+'</strong> not yet seen</span></div>'+
+ '<div class="smart-overview"><span><strong>'+remaining+'</strong> remaining</span><span><strong>'+done+'</strong> retired</span><span><strong>'+W.filter(x=>(S.mastery[x.id]||0)<2&&flashHistory(x).seen===0).length+'</strong> not yet seen</span><button class="btn btn-outline" id="reset-flashcards" style="margin-left:auto">Reset flashcards</button></div>'+
  `<div class="learn-layout"><section><div class="study-card">
  <div class="card-counter">ACTIVE FLASHCARD · ${esc(w.cat.toUpperCase())}</div>
  ${S.reveal?`<div class="study-emoji">${w.emoji}</div>`:""}
@@ -141,6 +153,7 @@ root.querySelectorAll("[data-speak]").forEach(b=>b.onclick=()=>voice(W[+b.datase
 root.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{S.filter=b.dataset.filter;render()});
 $("#word-search")?.addEventListener("input",e=>{S.query=e.target.value;let pos=e.target.selectionStart;render();$("#word-search").focus();$("#word-search").setSelectionRange(pos,pos)});
 $("#flip")?.addEventListener("click",()=>{S.reveal=!S.reveal;render()});$("#show-answer")?.addEventListener("click",()=>{S.reveal=true;render()});$("#skip-card")?.addEventListener("click",()=>markFlash(false));
+$("#reset-flashcards")?.addEventListener("click",()=>{if(confirm("Reset all 40 flashcards and their review history? This will not reset your other quizzes."))resetFlashcards()});
 root.querySelectorAll("[data-mark]").forEach(b=>b.onclick=()=>markFlash(b.dataset.mark==="know"));
 root.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{S.mode=b.dataset.mode;startDrill();render()});
 $("#play-question")?.addEventListener("click",speakQ);root.querySelectorAll("[data-option]").forEach(b=>b.onclick=()=>answer(+b.dataset.option));
@@ -160,5 +173,5 @@ $("#sound-check").onclick=()=>voice("Bonjour ! Tu peux le faire !");
 $("#reset-progress").onclick=()=>{if(!confirm("Reset progress, timer and current exam?"))return;S.mastery={};S.flashHistory={};S.flashStep=0;S.flashCurrentId=null;S.flashLastId=null;S.left=3600;S.running=false;S.idx=0;S.exam=null;S.mc=null;save("mastery",{});save("flashHistory",{});save("flashStep",0);save("flashCurrentId",null);save("flashLastId",null);save("left",3600);clock();render();toast("Progress reset.")};
 $("#navigation").onclick=e=>{let b=e.target.closest("[data-page]");if(b)go(b.dataset.page)};
 document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT")return;if("1234".includes(e.key)&&e.key.length===1&&["drill","exam","multiple"].includes(S.page)){if(S.page==="multiple"){if(S.mc&&!S.mc.finished&&!S.mc.questions[S.mc.i].answered)mcAnswer(+e.key-1)}else{let q=currentQ();if(q&&!q.answered)answer(+e.key-1)}}else if(e.key===" "&&["drill","exam"].includes(S.page)){e.preventDefault();speakQ()}else if(e.key==="ArrowRight"&&S.page==="learn"){markFlash(false)}});
-clock();render();
+clock();if(resetFromLink){go("learn");toast("Flashcards reset: 0 / 40 mastered.")}else render();
 })();
