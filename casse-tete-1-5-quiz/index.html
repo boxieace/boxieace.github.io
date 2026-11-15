@@ -4,7 +4,2428 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 :root{--bg:#090f1c;--panel:#121d32;--panel2:#192741;--edge:#30405c;--text:#f1f5ff;--sub:#adbed6;--teal:#62e6cb;--orange:#ffba76;--blue:#8ab4ff;--red:#ff8796;--green:#a2efbd}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse 65% 38% at 80% -10%,#1e3d50 0%,transparent 70%),radial-gradient(ellipse 45% 25% at 0% 40%,#172346 0%,transparent 75%),var(--bg);color:var(--text);font:15px/1.55 'DM Sans',system-ui,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}h1,h2,h3{font-family:Outfit,sans-serif;line-height:1.12;letter-spacing:-.035em}h1{font-size:clamp(36px,5vw,66px);margin:8px 0 14px}h2{font-size:clamp(26px,3vw,38px)}h3{font-size:22px}p{color:var(--sub)}a{color:var(--teal)}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}.nav{background:#0d1729e8;border-right:1px solid #243750;padding:25px 14px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-family:Outfit;font-size:23px;font-weight:900;padding:0 12px 17px;color:#fff}.brand span{color:var(--teal)}.nav button{border:0;display:flex;align-items:center;gap:12px;padding:13px 15px;border-radius:13px;width:100%;background:none;color:#afc1d9;text-align:left;font-weight:700;margin:3px 0}.nav button:hover,.nav button.active{background:#20304c;color:white}.nav button.active{box-shadow:inset 3px 0 var(--teal)}.nav small{display:block;color:#8294ad;margin:24px 14px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.15em}.main{max-width:1200px;width:100%;margin:0 auto;padding:35px clamp(18px,4vw,54px) 70px}.eyebrow{color:var(--teal);font-weight:800;letter-spacing:.17em;text-transform:uppercase;font-size:11px}.hero{background:linear-gradient(112deg,#182d43,#15213a 55%,#30223d);padding:35px;border:1px solid #365171;border-radius:27px;position:relative;overflow:hidden}.hero:after{content:'✦';font-size:230px;position:absolute;right:10px;top:-95px;color:#ffffff0b;pointer-events:none}.hero>*,.topstats{position:relative;z-index:1}.hero p{max-width:670px}.pill{display:inline-block;border:1px solid #42627a;border-radius:100px;background:#173044;padding:5px 11px;color:#d7f5f3;font-weight:700;font-size:12px;margin:4px 5px 4px 0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:18px 0}.stat,.card,.question,.fact,.sentence,.writingline,.lesson{background:var(--panel);border:1px solid var(--edge);border-radius:19px;padding:21px}.stat strong{font-size:26px;display:block;font-family:Outfit;color:white}.stat span{font-size:12px;color:var(--sub)}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px}.card h3{margin:4px 0 7px}.card .index{color:var(--teal);font-size:12px;font-weight:800}.card p{font-size:13px;min-height:40px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--teal);color:#0b2730;border:0;padding:11px 16px;border-radius:11px;font-weight:800;transition:transform .15s}.btn:hover{transform:translateY(-1px)}.btn.secondary{background:#243651;color:#f0f6ff;border:1px solid #48617d}.btn.warn{background:#f9bf84;color:#38231c}.btn.ghost{background:transparent;border:1px solid #516680;color:#eaf1fa}.btn.sm{padding:7px 11px;font-size:13px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin:30px 0 17px}.muted{color:var(--sub)}.mini{font-size:12px}.positive{color:var(--green)}.negative{color:var(--red)}.space{height:10px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 24px}.tabs button{padding:9px 13px;border-radius:10px;border:1px solid #344967;background:#18243c;color:#afbed6;font-weight:700}.tabs button.selected{background:#29575e;color:#e0fff9;border-color:#60c7b7}.sentence{padding:16px 19px;margin:8px 0}.sentence .fr{font-size:17px;color:white;font-weight:600}.sentence .en{font-size:14px;color:#93dcd0;margin-top:6px}.sentence .source{float:right;color:#758aa5;font-size:11px}.bulletlist{margin:0;padding-left:21px}.bulletlist li{padding:6px 0;color:#d4e0ef}.bulletlist b{color:white}.notice{padding:16px 20px;border-left:3px solid var(--orange);background:#3f312a77;border-radius:12px;color:#f4dfce;margin:18px 0}.question h3{font-size:21px;margin:7px 0 13px;letter-spacing:0}.option{display:block;width:100%;background:#202e47;color:#f1f5fc;border:1px solid #344969;border-radius:11px;padding:14px 16px;text-align:left;margin:9px 0;font-weight:700}.option:hover{border-color:var(--blue)}.option.correct{background:#174c45;border-color:#62e6cb}.option.wrong{background:#5a2834;border-color:#ff8a93}.answer{padding:13px 16px;border-radius:12px;background:#1b3244;border:1px solid #42657b;margin-top:14px}.answer small{color:#8cead0}.progress{height:9px;background:#24314b;border-radius:50px;overflow:hidden;margin:8px 0 20px}.progress div{height:100%;background:linear-gradient(90deg,#5ee2cd,#a6eec8);border-radius:30px;transition:width .25s}.input{background:#0c1729;border:1px solid #40526b;border-radius:12px;color:white;padding:12px 14px;width:100%}.input:focus{outline:2px solid var(--teal)}.check{display:flex;align-items:center;gap:8px;color:#c2d1e3;font-size:13px}.check input{accent-color:#75e8d1}.quizbig{background:linear-gradient(110deg,#172e43,#182339);padding:25px;border:1px solid #3a5b72;border-radius:20px}.listen-icon{height:86px;width:86px;background:linear-gradient(135deg,#5de4ca,#71a8ff);border-radius:25px;color:#052c33;font-size:39px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 10px 40px #5ae6ca2b}.center{text-align:center}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.bar{height:5px;background:#293c57;border-radius:9px;overflow:hidden}.bar>div{background:var(--teal);height:100%} .writingline{margin:8px 0;padding:15px 18px}.writingline strong{font-size:16px}.writingline .hint{color:#91dfd2;font-size:13px}.writingline textarea{min-height:74px;resize:vertical}.writingline .grade{font-size:13px;color:var(--sub);margin:7px 0}.vocab{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #35475f;padding:9px 0}.vocab span:last-child{color:var(--teal)}.hidden{display:none!important}select{background:#182942;color:#e8f4fb;border:1px solid #3b536d;border-radius:10px;padding:9px}.mobiletop{display:none}.footer{margin-top:45px;color:#7f91aa;font-size:12px}.block{margin:22px 0}details{border:1px solid #354968;border-radius:13px;background:#18243a;margin:8px 0;padding:12px 16px}summary{cursor:pointer;font-weight:700}details p{margin:8px 0 1px}.star{color:var(--orange)}.day{border-left:3px solid #5ce5c9;padding:8px 17px;margin:15px 0;background:#13263a}.timer{font-weight:900;font-size:36px;color:var(--teal);font-family:Outfit}.fade{animation:pop .2s ease}@keyframes pop{from{opacity:.6;transform:translateY(5px)}to{opacity:1;transform:none}}@media(max-width:850px){.layout{display:block}.nav{display:none;position:relative;height:auto}.mobiletop{display:flex;position:sticky;top:0;z-index:20;background:#0f1b30f7;border-bottom:1px solid #34445a;padding:10px 14px;gap:6px;overflow-x:auto}.mobiletop button{white-space:nowrap;border:0;border-radius:9px;padding:9px 11px;background:#23334b;color:white;font-size:12px}.main{padding:20px 15px 50px}.hero{padding:23px}.stats{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.question,.card,.stat{padding:17px}}
-</style><link rel="stylesheet" href="focus.css"></head><body><div class="mobiletop" id="mobilenav"></div><div class="layout"><aside class="nav"><div class="brand">CASSE<span>•</span>TÊTE<br><span style="font-size:12px;letter-spacing:.19em">THE QUIZ LAB</span></div><div id="desktopnav"></div><small>Built for your quiz</small><div class="card" style="padding:12px;font-size:12px;color:#b1c2d6">Chapitres 1–5<br><b>Écoute /10</b><br><b>Lecture /10</b><br><b>Écriture /10</b><br><span class="positive">8–10 writing sentences total</span></div></aside><main class="main" id="view" aria-live="polite"></main></div><script src="story.js"></script><script src="study.js"></script><script>
+</style><style>
+/* Reduced-distraction polish and reading comfort */
+.focus-toolbar{position:sticky;top:0;z-index:12;background:#0e1a2aec;border:1px solid #314860;backdrop-filter:blur(10px);border-radius:13px;padding:9px 14px;margin:-14px 0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.toolbar-brand{display:flex;flex-direction:column;gap:0;line-height:1.4}
+.toolbar-brand b{font-family:Outfit,Arial,sans-serif;font-size:14px;letter-spacing:.08em;color:#eefcfb}
+.toolbar-brand span{font-size:11px;color:#9eb1c6}
+.focus-toolbar select{max-width:175px;font-size:12px;padding:7px 9px}
+.focus-on{background:#0b1322;color:#edf4ff}
+.focus-on .nav,.focus-on .mobiletop{display:none!important}
+.focus-on .layout{grid-template-columns:minmax(0,1fr)}
+.focus-on .main{max-width:900px}
+.focus-on .hero{background:#15263a}
+.focus-on .hero:after{display:none}
+.focus-on .focus-toolbar{max-width:none}
+.quicksteps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.quicksteps .lesson{padding:18px}
+.quicksteps h3{font-size:20px;margin:12px 0 8px}
+.quicksteps p{font-size:13px;min-height:68px}
+.quicksteps .eyebrow{color:#a4e4d3}
+.quicksteps .lesson .btn{width:100%}
+.compact-summary{margin:15px 0 19px}
+.tool-drawer{margin-top:16px}
+.tool-drawer summary{color:#d0e8f0}
+.tool-drawer .card{margin-top:0}
+.focus-on .hero h1{font-size:clamp(35px,4.2vw,55px)}
+.focus-on .stat{background:#142238}
+.focus-on .card,.focus-on .question,.focus-on .fact,.focus-on .sentence{box-shadow:none}
+.focus-on .btn{transition:none}
+.focus-on .btn:hover{transform:none}
+.sentence .fr{line-height:1.7}
+.sentence .en{line-height:1.65}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid #76e4ce;outline-offset:3px}
+@media(max-width:750px){.quicksteps{grid-template-columns:1fr}.quicksteps p{min-height:0}.focus-toolbar{margin:-10px 0 20px;flex-wrap:wrap}.toolbar-brand{flex:1}.focus-toolbar select{max-width:150px}.focus-on .main{padding:16px 14px 40px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style></head><body><div class="mobiletop" id="mobilenav"></div><div class="layout"><aside class="nav"><div class="brand">CASSE<span>•</span>TÊTE<br><span style="font-size:12px;letter-spacing:.19em">THE QUIZ LAB</span></div><div id="desktopnav"></div><small>Built for your quiz</small><div class="card" style="padding:12px;font-size:12px;color:#b1c2d6">Chapitres 1–5<br><b>Écoute /10</b><br><b>Lecture /10</b><br><b>Écriture /10</b><br><span class="positive">8–10 writing sentences total</span></div></aside><main class="main" id="view" aria-live="polite"></main></div><script>
+window.CHAPTERS = [
+  {
+    "id": 1,
+    "title": "Justine trouve un projet",
+    "pages": "3–7",
+    "short": "The new boy becomes Justine's project",
+    "summary": "En mathématiques, Justine s'ennuie malgré ses bonnes réponses. Après le cours, elle remarque un nouvel élève blond et réservé. Il refuse gentiment son aide. Justine décide de faire sa connaissance pendant le semestre.",
+    "summaryEn": "Justine is bored in math despite answering correctly. After class, she notices a quiet, blond new student. He politely refuses her help. Getting to know him becomes her project.",
+    "must": [
+      [
+        "M. Clément",
+        "Le professeur de mathématiques; il frappe la table avec sa règle."
+      ],
+      [
+        "Justine Poirier",
+        "Intelligente, curieuse; elle remarque un garçon nouveau."
+      ],
+      [
+        "Émilie Montclair",
+        "Se trompe sur une équation sans x; elle pense au test."
+      ],
+      [
+        "Olivier Desbiens",
+        "Quart-arrière; il demande à aller aux toilettes."
+      ],
+      [
+        "Le garçon blond",
+        "Consulte l'horaire et le plan de l'école; refuse l'aide de Justine."
+      ],
+      [
+        "Le projet",
+        "Justine veut faire connaissance du nouveau garçon."
+      ]
+    ],
+    "vocab": [
+      [
+        "l'horloge",
+        "the clock"
+      ],
+      [
+        "la règle",
+        "ruler"
+      ],
+      [
+        "le tableau",
+        "blackboard"
+      ],
+      [
+        "un garçon",
+        "a boy"
+      ],
+      [
+        "la salle de maths",
+        "math classroom"
+      ],
+      [
+        "curieux / curieuse",
+        "curious"
+      ],
+      [
+        "la cloche",
+        "school bell"
+      ],
+      [
+        "l'horaire",
+        "schedule"
+      ]
+    ],
+    "sections": [
+      {
+        "page": 3,
+        "lines": [
+          [
+            "Justine regarde l'horloge.",
+            "Justine looks at the clock."
+          ],
+          [
+            "Encore huit minutes. Huit longues minutes!",
+            "Eight more minutes. Eight long minutes!"
+          ],
+          [
+            "Elle observe M. Clément qui écrit au tableau et parle d'un ton monotone.",
+            "She watches Mr. Clément, who writes on the board and speaks in a monotonous tone."
+          ],
+          [
+            "Que dit-il? À qui? Pourquoi?",
+            "What is he saying? To whom? Why?"
+          ],
+          [
+            "— Si vous voulez trouver la valeur de x dans l'équation du premier degré : 2x + 15 = 5x, qu'est-ce qu'il faut faire? demande le professeur.",
+            "“If you want to find x in the first-degree equation 2x + 15 = 5x, what must you do?” asks the teacher."
+          ]
+        ]
+      },
+      {
+        "page": 4,
+        "lines": [
+          [
+            "Un silence total règne dans la classe.",
+            "Complete silence reigns in the classroom."
+          ],
+          [
+            "Justine observe l'horloge. La position des aiguilles n'a pas changé.",
+            "Justine watches the clock. The hands have not moved."
+          ],
+          [
+            "Encore huit minutes!",
+            "Eight more minutes!"
+          ],
+          [
+            "— Eh bien, il faut mettre tous les x d'un côté, continue le professeur sans regarder les élèves.",
+            "“Well, we must put all the x's on one side,” continues the teacher without looking at the students."
+          ],
+          [
+            "D'abord, il faut soustraire 2x du côté gauche, mais, pour garder l'équilibre de l'équation, il faut aussi prendre 2x du côté droit.",
+            "First, subtract 2x from the left side, and to keep the equation balanced, subtract 2x from the right as well."
+          ],
+          [
+            "Voilà! Maintenant, on a 15 = 3x.",
+            "There! Now we have 15 = 3x."
+          ],
+          [
+            "Six minutes encore. Justine pense à tous les x que M. Clément enlève des équations.",
+            "Six minutes remain. Justine thinks about all the x's Mr. Clément removes from equations."
+          ],
+          [
+            "Peut-on faire quelque chose d'utile avec ces x abandonnés? À quoi sert un x?",
+            "Could anything useful be done with those abandoned x's? What is an x for?"
+          ],
+          [
+            "Justine prend conscience que ses paupières commencent à se fermer.",
+            "Justine realizes her eyelids are beginning to close."
+          ],
+          [
+            "Non! Elle ne doit pas dormir en classe!",
+            "No! She must not fall asleep in class!"
+          ],
+          [
+            "Elle fait un grand effort pour ouvrir ses yeux, juste au moment où elle entend le professeur prononcer son nom.",
+            "She makes a big effort to open her eyes just as she hears the teacher say her name."
+          ],
+          [
+            "— Maintenant, nous pouvons déterminer la valeur de x! Mademoiselle Poirier, quelle est sa valeur?",
+            "“Now we can find x! Miss Poirier, what is its value?”"
+          ],
+          [
+            "— Cinq, monsieur, répond Justine.",
+            "“Five, sir,” Justine answers."
+          ]
+        ]
+      },
+      {
+        "page": 5,
+        "lines": [
+          [
+            "— Bien, bonne réponse, mademoiselle, dit le prof. Voici un autre exemple.",
+            "“Good, correct answer, miss,” says the teacher. “Here is another example.”"
+          ],
+          [
+            "Il écrit au tableau 6y - 12 = 3y.",
+            "He writes 6y - 12 = 3y on the board."
+          ],
+          [
+            "Il se retourne et surveille les visages des élèves. Justine regarde l'horloge.",
+            "He turns around and watches the students' faces. Justine looks at the clock."
+          ],
+          [
+            "Trois minutes. Le professeur frappe sa table de travail avec la règle qu'il porte toujours.",
+            "Three minutes. The teacher hits his desk with the ruler he always carries."
+          ],
+          [
+            "CRAC! Tout le monde fait attention maintenant.",
+            "CRACK! Everyone pays attention now."
+          ],
+          [
+            "Il choisit une jolie fille aux longs cheveux bruns.",
+            "He chooses a pretty girl with long brown hair."
+          ],
+          [
+            "— Mademoiselle Montclair, que faut-il faire pour trouver la solution?",
+            "“Miss Montclair, what must we do to find the answer?”"
+          ],
+          [
+            "Émilie Montclair arrange ses cheveux et essaie d'avoir un air sérieux.",
+            "Émilie Montclair fixes her hair and tries to look serious."
+          ],
+          [
+            "— On ne peut pas trouver la solution, monsieur, répond-elle de sa voix d'enfant, car il n'y a pas de x.",
+            "“We can't find the answer, sir,” she says in her childlike voice, “because there's no x.”"
+          ],
+          [
+            "Nous n'avons jamais fait d'équation sans x.",
+            "“We've never done an equation without x.”"
+          ],
+          [
+            "Merci, Émilie, pense Justine. Voilà une jolie anecdote à raconter à la cafétéria à midi.",
+            "Thanks, Émilie, Justine thinks. That will make a funny story to tell in the cafeteria at lunch."
+          ],
+          [
+            "Un garçon qui porte un chandail de football lève la main.",
+            "A boy wearing a football jersey raises his hand."
+          ],
+          [
+            "M. Clément semble surpris, parce qu'Olivier Desbiens, le quart-arrière de l'équipe, ne répond pas souvent.",
+            "Mr. Clément seems surprised because Olivier Desbiens, the team's quarterback, doesn't answer often."
+          ]
+        ]
+      },
+      {
+        "page": 6,
+        "lines": [
+          [
+            "— Oui, monsieur Desbiens. Voulez-vous expliquer la solution à la classe?",
+            "“Yes, Mr. Desbiens. Would you explain the solution to the class?”"
+          ],
+          [
+            "— Puis-je aller aux toilettes, monsieur? C'est vraiment urgent.",
+            "“May I go to the washroom, sir? It's really urgent.”"
+          ],
+          [
+            "Émilie lève la main.",
+            "Émilie raises her hand."
+          ],
+          [
+            "— Monsieur, demande-t-elle, est-ce que je dois savoir tout cela pour le test?",
+            "“Sir,” she asks, “do I have to know all this for the test?”"
+          ],
+          [
+            "Le mot « test » suscite une vague de panique dans la classe.",
+            "The word “test” causes a wave of panic in the class."
+          ],
+          [
+            "Des questions et des commentaires s'élèvent de tous les coins.",
+            "Questions and comments rise from every corner."
+          ],
+          [
+            "— Un test? Quel test? Nous avons un test?",
+            "“A test? What test? We have a test?”"
+          ],
+          [
+            "— Mais j'ai déjà un test de français demain! Ce n'est pas juste!",
+            "“But I already have a French test tomorrow! That's not fair!”"
+          ],
+          [
+            "— J'ai manqué un test? Mais je n'ai pas été absente!",
+            "“Did I miss a test? But I haven't been absent!”"
+          ],
+          [
+            "M. Clément frappe la table avec sa règle.",
+            "Mr. Clément strikes the desk with his ruler."
+          ],
+          [
+            "Trente secondes. Il annonce la date du test.",
+            "Thirty seconds. He announces the date of the test."
+          ],
+          [
+            "La cloche sonne pour indiquer la fin du cours.",
+            "The bell rings to mark the end of class."
+          ],
+          [
+            "Justine prend ses livres et suit ses camarades vers la porte.",
+            "Justine picks up her books and follows her classmates toward the door."
+          ],
+          [
+            "C'est à ce moment qu'elle remarque, au fond de la salle, un garçon qu'elle n'a jamais vu.",
+            "At that moment she notices a boy at the back of the room whom she has never seen."
+          ],
+          [
+            "Il est blond et assez beau. Il porte un jean délavé et un t-shirt sans logo.",
+            "He is blond and quite good-looking. He wears faded jeans and a plain T-shirt."
+          ],
+          [
+            "Justine est surprise.",
+            "Justine is surprised."
+          ],
+          [
+            "D'habitude, M. Clément annonce l'arrivée d'une nouvelle personne... une grande présentation qui embarrasse cette personne et le reste de la classe.",
+            "Normally Mr. Clément announces a new student's arrival with a big introduction that embarrasses the person and the rest of the class."
+          ]
+        ]
+      },
+      {
+        "page": 7,
+        "lines": [
+          [
+            "Le garçon est en train de consulter son horaire et aussi le plan de l'école.",
+            "The boy is looking at his schedule and the school map."
+          ],
+          [
+            "Quand il se rend compte que Justine le regarde, il ramasse ses affaires et se lève.",
+            "When he realizes Justine is looking at him, he gathers his things and stands."
+          ],
+          [
+            "— Salut, dit Justine. Tu cherches où a lieu ton prochain cours? Je peux t'aider à trouver la salle.",
+            "“Hi,” Justine says. “Are you looking for your next class? I can help you find the room.”"
+          ],
+          [
+            "— Merci, dit le garçon, la tête baissée. Ça va. Je vais la trouver moi-même. Merci. Bonne journée.",
+            "“Thanks,” the boy says, lowering his head. “It's okay. I'll find it myself. Thanks. Have a good day.”"
+          ],
+          [
+            "Puis il part rapidement.",
+            "Then he leaves quickly."
+          ],
+          [
+            "— Curieux, pense Justine, mais il semble assez gentil.",
+            "“Strange,” Justine thinks, “but he seems nice enough.”"
+          ],
+          [
+            "Je crois que je viens de trouver mon projet pour le semestre.",
+            "“I think I've just found my project for the semester.”"
+          ],
+          [
+            "Son objectif choisi, elle quitte la salle de maths et se dirige vers son cours de littérature française.",
+            "Having chosen her goal, she leaves math and heads to French literature."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Il a un prénom",
+    "pages": "9–12",
+    "short": "The new boy reveals his first name",
+    "summary": "Justine se décrit comme une élève indépendante qui adore la littérature. Dans le cours de Mme Laroche, elle parle encore au nouveau garçon pendant une activité sur les émotions. Elle apprend qu'il s'appelle Thomas.",
+    "summaryEn": "Justine values independence and loves literature. During Ms. Laroche's class activity about emotions, she speaks to the new boy again and learns his name: Thomas.",
+    "must": [
+      [
+        "Notes de Justine",
+        "Meilleures que celles de beaucoup d'élèves, sans obsession pour les notes."
+      ],
+      [
+        "Olivier",
+        "Il rêve d'une carrière de football professionnel."
+      ],
+      [
+        "« Les trois B »",
+        "Émilie et ses amies : belles, bien habillées et bêtes, selon Justine."
+      ],
+      [
+        "Mme Laroche",
+        "Professeure de littérature française; demande un autoportrait émotionnel."
+      ],
+      [
+        "Projet d'avenir",
+        "Justine veut étudier la littérature à l'université et devenir prof."
+      ],
+      [
+        "Le prénom",
+        "Le nouveau garçon dit : « Je suis Thomas. »"
+      ]
+    ],
+    "vocab": [
+      [
+        "être indépendante",
+        "to be independent"
+      ],
+      [
+        "la littérature",
+        "literature"
+      ],
+      [
+        "la poésie",
+        "poetry"
+      ],
+      [
+        "l'angoisse",
+        "anxiety"
+      ],
+      [
+        "briser la glace",
+        "break the ice"
+      ],
+      [
+        "chuchoter",
+        "whisper"
+      ],
+      [
+        "un autoportrait",
+        "self-portrait"
+      ],
+      [
+        "le prénom",
+        "first name"
+      ]
+    ],
+    "sections": [
+      {
+        "page": 9,
+        "lines": [
+          [
+            "Justine pense à sa place dans cette école.",
+            "Justine thinks about her place in the school."
+          ],
+          [
+            "Elle a de meilleures notes que la plupart des élèves de sa classe, mais elle n'est pas obsédée par le succès à l'école.",
+            "She has better grades than most classmates, but isn't obsessed with success at school."
+          ],
+          [
+            "Elle n'est pas la chouchoute de la classe. Elle ne fait pas le clown pendant les cours.",
+            "She isn't the teacher's pet, and she doesn't act like the class clown."
+          ],
+          [
+            "Elle est à l'école pour apprendre et pour se préparer un bel avenir.",
+            "She is at school to learn and prepare for a good future."
+          ],
+          [
+            "En route vers son cours de littérature française, Justine regarde ses camarades de classe.",
+            "On the way to French literature, Justine looks at her classmates."
+          ],
+          [
+            "Elle voit Olivier : sa vie, c'est le football.",
+            "She sees Olivier: football is his life."
+          ],
+          [
+            "Il pense qu'il va jouer au football professionnel et gagner des millions.",
+            "He thinks he'll play professional football and make millions."
+          ],
+          [
+            "À part ça, il est content de faire rire tout le monde.",
+            "Otherwise, he likes making everyone laugh."
+          ],
+          [
+            "Justine écoute rire Émilie et ses amies.",
+            "Justine hears Émilie and her friends laughing."
+          ],
+          [
+            "Justine les appelle « les trois B » : belles, bien habillées et bêtes.",
+            "Justine calls them the “three B's”: beautiful, well-dressed, and silly."
+          ]
+        ]
+      },
+      {
+        "page": 10,
+        "lines": [
+          [
+            "Elle ne veut pas être membre d'une des cliques qui ne parlent que des vêtements qu'on porte, de la musique qu'on écoute et des bêtises qu'on fait en classe.",
+            "She doesn't want to join one of the cliques that only talks about clothes, music, and foolish things done in class."
+          ],
+          [
+            "Elle veut tout simplement être une personne individuelle, indépendante de toutes les pressions sociales.",
+            "She simply wants to be an individual, independent of social pressure."
+          ],
+          [
+            "Parfois, ça peut être difficile.",
+            "Sometimes that can be difficult."
+          ],
+          [
+            "Justine entre dans la salle de classe pour le cours de littérature française.",
+            "Justine enters the classroom for French literature."
+          ],
+          [
+            "C'est son cours préféré. Elle aime lire les romans historiques et aussi les romans policiers.",
+            "It's her favourite class. She likes historical novels and detective stories."
+          ],
+          [
+            "Elle aime écrire et elle a déjà contribué des articles dans le journal de l'école.",
+            "She likes writing and has already contributed articles to the school newspaper."
+          ],
+          [
+            "Elle a l'intention d'étudier la littérature à l'université et de devenir prof.",
+            "She plans to study literature at university and become a teacher."
+          ],
+          [
+            "Aujourd'hui, elle n'est pas très contente : elle doit étudier la poésie et elle trouve le style difficile à comprendre.",
+            "Today she isn't happy because they must study poetry, and she finds the style hard to understand."
+          ],
+          [
+            "Mme Laroche demande aux élèves d'expliquer, en moins de cent mots, l'angoisse de leur adolescence.",
+            "Ms. Laroche asks the students to explain the anxiety of adolescence in fewer than one hundred words."
+          ],
+          [
+            "Justine soupire.",
+            "Justine sighs."
+          ],
+          [
+            "— Réfléchissez à votre existence, dit la prof. Comment vous sentez-vous?",
+            "“Reflect on your existence,” the teacher says. “How do you feel?”"
+          ],
+          [
+            "Quelles peurs cachez-vous au fond du cœur? Examinez l'arc-en-ciel de vos émotions et mettez ces couleurs émotionnelles en mots.",
+            "“What fears do you hide deep in your heart? Examine the rainbow of your emotions and put those emotional colours into words.”"
+          ],
+          [
+            "— Madame, j'ai besoin d'un mot qui rime avec orange! crie un garçon.",
+            "“Miss, I need a word that rhymes with orange!” cries a boy."
+          ]
+        ]
+      },
+      {
+        "page": 11,
+        "lines": [
+          [
+            "— Très drôle, Samuel. Au travail, tout le monde.",
+            "“Very funny, Samuel. Everyone, get to work.”"
+          ],
+          [
+            "Dans une heure, tout le monde doit faire part de son autoportrait à la classe.",
+            "In one hour, everyone must share their self-portrait with the class."
+          ],
+          [
+            "Les élèves sont assis en groupes de quatre. Ils travaillent seuls.",
+            "The students sit in groups of four. They work individually."
+          ],
+          [
+            "Justine voit le nouveau garçon assis à sa table.",
+            "Justine sees the new boy seated at her table."
+          ],
+          [
+            "Il a l'air très sérieux. Il tape son crayon sur la table, mais il n'écrit rien.",
+            "He looks very serious. He taps his pencil on the table but writes nothing."
+          ],
+          [
+            "Il semble perdu dans ses pensées.",
+            "He seems lost in thought."
+          ],
+          [
+            "— Souris un peu, pense Justine. Tu es vraiment très beau, mais tu devrais sourire.",
+            "“Smile a little,” Justine thinks. “You're very handsome, but you should smile.”"
+          ],
+          [
+            "Pour la deuxième fois ce matin-là, Justine décide de briser la glace.",
+            "For the second time that morning, Justine decides to break the ice."
+          ],
+          [
+            "— Pas d'inspiration? chuchote-t-elle.",
+            "“No inspiration?” she whispers."
+          ],
+          [
+            "Surpris par ces mots, le garçon sursaute un peu.",
+            "Surprised by these words, the boy jumps a little."
+          ],
+          [
+            "— Non... je ne peux pas... c'est-à-dire, je ne sais pas.",
+            "“No... I can't... I mean, I don't know.”"
+          ],
+          [
+            "— Tu es nouveau. C'est ton premier jour ici? demande-t-elle.",
+            "“You're new. Is this your first day here?” she asks."
+          ],
+          [
+            "— Oui.",
+            "“Yes.”"
+          ],
+          [
+            "— Je m'appelle Justine. Justine Poirier.",
+            "“My name is Justine. Justine Poirier.”"
+          ],
+          [
+            "— Salut.",
+            "“Hi.”"
+          ]
+        ]
+      },
+      {
+        "page": 12,
+        "lines": [
+          [
+            "— Salut. Et toi, comment t'appelles-tu?",
+            "“Hi. And you, what's your name?”"
+          ],
+          [
+            "— Oh, je m'excuse. Je suis Thomas.",
+            "“Oh, sorry. I'm Thomas.”"
+          ],
+          [
+            "Justine sourit.",
+            "Justine smiles."
+          ],
+          [
+            "— Ce garçon ne parle pas beaucoup, pense-t-elle.",
+            "“This boy doesn't speak much,” she thinks."
+          ],
+          [
+            "Pour faire sa connaissance, ça va prendre du temps.",
+            "“Getting to know him will take time.”"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Une invitation et un refus",
+    "pages": "13–14",
+    "short": "Thomas refuses Justine's Friday invitation",
+    "summary": "Thomas reste silencieux et seul à la cafétéria. Justine lui parle et réussit à le faire sourire un peu. Elle l'invite au cinéma vendredi, mais il refuse en disant qu'il doit travailler et faire ses devoirs. Il ne révèle pas encore son nom de famille.",
+    "summaryEn": "Thomas remains quiet and alone in the cafeteria. Justine makes him smile a little and invites him to the movies on Friday. He refuses, saying he has work and homework. He still won't share his surname.",
+    "must": [
+      [
+        "Comportement",
+        "Thomas parle très peu, reste poli, mais ne cherche pas l'attention."
+      ],
+      [
+        "Cafétéria",
+        "Thomas est toujours seul; Justine s'assoit en face de lui."
+      ],
+      [
+        "Frites",
+        "Justine offre des frites, Thomas refuse."
+      ],
+      [
+        "M. Clément",
+        "Une plaisanterie sur sa règle fait presque sourire Thomas."
+      ],
+      [
+        "Vendredi soir",
+        "Justine invite Thomas au cinéma, puis au restaurant ou chez un ami."
+      ],
+      [
+        "Refus",
+        "Thomas dit qu'il doit travailler et qu'il a beaucoup de devoirs."
+      ],
+      [
+        "Nom de famille",
+        "Justine demande « Thomas quoi? », il répond « Je sais » et part."
+      ]
+    ],
+    "vocab": [
+      [
+        "une invitation",
+        "invitation"
+      ],
+      [
+        "un refus",
+        "refusal"
+      ],
+      [
+        "être mal à l'aise",
+        "be uncomfortable"
+      ],
+      [
+        "refuser",
+        "refuse"
+      ],
+      [
+        "les devoirs",
+        "homework"
+      ],
+      [
+        "être seul",
+        "be alone"
+      ],
+      [
+        "hausser les épaules",
+        "shrug"
+      ],
+      [
+        "la cafétéria",
+        "cafeteria"
+      ]
+    ],
+    "sections": [
+      {
+        "page": 13,
+        "lines": [
+          [
+            "Le temps passe et Justine ne réussit pas à avoir une conversation avec Thomas.",
+            "Time passes, and Justine doesn't manage to have a conversation with Thomas."
+          ],
+          [
+            "Il est là, dans les mêmes cours tous les jours, mais il garde le silence.",
+            "He's there in the same classes every day, but he stays silent."
+          ],
+          [
+            "Elle sourit et lui dit bonjour, il la salue (sans sourire), et c'est tout.",
+            "She smiles and says hello; he greets her without smiling, and that's all."
+          ],
+          [
+            "En classe, ses réponses aux questions des profs sont brèves et précises.",
+            "In class, his answers to teachers are short and precise."
+          ],
+          [
+            "Il est évident pour Justine que Thomas ne veut pas attirer l'attention.",
+            "It's clear to Justine that Thomas doesn't want to attract attention."
+          ],
+          [
+            "Chaque jour, Justine voit Thomas à la cafétéria.",
+            "Every day, Justine sees Thomas in the cafeteria."
+          ],
+          [
+            "Il est toujours seul. D'autres élèves essaient de lui parler.",
+            "He is always alone. Other students try to talk to him."
+          ],
+          [
+            "Il répond poliment, mais il ne fait aucun effort pour être amical.",
+            "He answers politely, but makes no effort to be friendly."
+          ],
+          [
+            "Tout le monde le laisse seul. Tout le monde sauf Justine.",
+            "Everyone leaves him alone. Everyone except Justine."
+          ],
+          [
+            "Elle n'est pas encore prête à abandonner son « projet ».",
+            "She isn't ready to give up her “project” yet."
+          ],
+          [
+            "Un jour, elle le voit dans son coin habituel.",
+            "One day she sees him in his usual corner."
+          ],
+          [
+            "Elle se dirige vers sa table, y dépose son plateau et s'assoit en face de lui.",
+            "She walks to his table, puts down her tray, and sits across from him."
+          ],
+          [
+            "— Salut, Thomas, dit-elle. Comment ça va?",
+            "“Hi, Thomas,” she says. “How are you?”"
+          ],
+          [
+            "Il ne semble pas très content de son arrivée.",
+            "He doesn't seem very happy about her arrival."
+          ],
+          [
+            "— Pas mal... Tu veux quelque chose?",
+            "“Not bad... Do you want something?”"
+          ],
+          [
+            "— Non. Je suis comme tout le monde, je viens ici pour manger. Veux-tu des frites?",
+            "“No. I'm like everyone else; I come here to eat. Want some fries?”"
+          ],
+          [
+            "Bien sûr, Thomas refuse son offre.",
+            "Of course Thomas refuses her offer."
+          ],
+          [
+            "Pendant que Justine mange, elle regarde Thomas.",
+            "While Justine eats, she watches Thomas."
+          ],
+          [
+            "Il semble très mal à l'aise. Il regarde à gauche et à droite.",
+            "He seems very uncomfortable. He looks left and right."
+          ],
+          [
+            "— Tu aimes tes profs? demande-t-elle.",
+            "“Do you like your teachers?” she asks."
+          ]
+        ]
+      },
+      {
+        "page": 14,
+        "lines": [
+          [
+            "Thomas hausse les épaules.",
+            "Thomas shrugs."
+          ],
+          [
+            "— Je ne sais pas... Ce sont des profs.",
+            "“I don't know... They're teachers.”"
+          ],
+          [
+            "— M. Clément... il est drôle, avec sa règle.",
+            "“Mr. Clément... he's funny with that ruler.”"
+          ],
+          [
+            "Un jour, quelqu'un va avoir un accident s'il continue de frapper la table comme ça!",
+            "“Someone will have an accident one day if he keeps hitting the table like that!”"
+          ],
+          [
+            "Elle voit un tout petit sourire aux coins de la bouche de Thomas.",
+            "She sees a tiny smile at the corners of Thomas's mouth."
+          ],
+          [
+            "Encouragée par cette réaction, elle décide de risquer d'entendre un autre refus.",
+            "Encouraged by this reaction, she decides to risk another rejection."
+          ],
+          [
+            "— Dis, fais-tu quelque chose de spécial vendredi soir?",
+            "“Say, are you doing anything special Friday night?”"
+          ],
+          [
+            "Quelques amis et moi allons au cinéma et, après, au restaurant ou chez l'un de nous.",
+            "“Some friends and I are going to the movies and afterward to a restaurant or to one of our homes.”"
+          ],
+          [
+            "Si tu veux venir avec nous...",
+            "“If you'd like to come with us...”"
+          ],
+          [
+            "— Je ne sais pas... euh... je ne peux pas. Je dois travailler. J'ai beaucoup de devoirs.",
+            "“I don't know... um... I can't. I have to work. I have lots of homework.”"
+          ],
+          [
+            "Il se lève pour partir.",
+            "He gets up to leave."
+          ],
+          [
+            "— C'est dommage, dit Justine. Une autre fois, peut-être?",
+            "“That's too bad,” Justine says. “Maybe another time?”"
+          ],
+          [
+            "— Peut-être.",
+            "“Maybe.”"
+          ],
+          [
+            "Thomas ramasse ses affaires sans même regarder Justine.",
+            "Thomas gathers his things without even looking at Justine."
+          ],
+          [
+            "— Hé! dit Justine, c'est Thomas quoi? Tu ne m'as jamais dit ton nom.",
+            "“Hey!” says Justine. “Thomas what? You never told me your surname.”"
+          ],
+          [
+            "— Je sais, répond Thomas.",
+            "“I know,” Thomas answers."
+          ],
+          [
+            "Il se retourne et quitte la cafétéria, presque en courant.",
+            "He turns and leaves the cafeteria, almost running."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Scandale!",
+    "pages": "15–18",
+    "short": "Wild rumours and Justine's invented sect story",
+    "summary": "M. Clément révèle par hasard le nom Thomas Desjardins. Émilie, Monique et Diane inventent ou répètent des histoires criminelles sur lui. Pour les piéger, Justine invente une histoire encore plus absurde au sujet d'une secte et d'un tatouage. Les filles la croient.",
+    "summaryEn": "Mr. Clément accidentally reveals Thomas's surname. Émilie, Monique and Diane share wild criminal rumours. To fool them, Justine invents an even more outrageous story about a cult and a tattoo. They believe her.",
+    "must": [
+      [
+        "Nom complet",
+        "Thomas Desjardins, révélé par M. Clément pendant le cours de maths."
+      ],
+      [
+        "Équation",
+        "12 + 3x = 6x; Thomas répond x = 4."
+      ],
+      [
+        "Rumeur 1",
+        "Émilie dit qu'il a saboté les ordinateurs et incendié le bureau du directeur (non confirmé)."
+      ],
+      [
+        "Rumeur 2",
+        "Diane rapporte un centre de détention et un dépanneur attaqué (non confirmé)."
+      ],
+      [
+        "Mensonge de Justine",
+        "Une secte l'aurait enlevé; tatouage de chauve-souris sur l'épaule gauche."
+      ],
+      [
+        "Réaction",
+        "Émilie est bouche bée; Monique et Diane ouvrent de grands yeux."
+      ],
+      [
+        "Attention",
+        "Les histoires sont des rumeurs et une invention, pas des faits sur Thomas."
+      ]
+    ],
+    "vocab": [
+      [
+        "le nom de famille",
+        "surname"
+      ],
+      [
+        "un scandale",
+        "scandal"
+      ],
+      [
+        "une rumeur",
+        "rumour"
+      ],
+      [
+        "un mensonge",
+        "lie"
+      ],
+      [
+        "une secte",
+        "cult"
+      ],
+      [
+        "une chauve-souris",
+        "bat"
+      ],
+      [
+        "un tatouage",
+        "tattoo"
+      ],
+      [
+        "bouche bée",
+        "speechless / mouth agape"
+      ]
+    ],
+    "sections": [
+      {
+        "page": 15,
+        "lines": [
+          [
+            "C'est grâce à M. Clément que Justine découvre le nom de famille de Thomas.",
+            "Thanks to Mr. Clément, Justine learns Thomas's last name."
+          ]
+        ]
+      },
+      {
+        "page": 16,
+        "lines": [
+          [
+            "— Monsieur Desjardins! crie le prof, c'est à vous de donner la solution.",
+            "“Mr. Desjardins!” the teacher shouts. “It's your turn to give the answer.”"
+          ],
+          [
+            "Allez-y! 12 + 3x = 6x. Quelle est la valeur de x?",
+            "“Go ahead! 12 + 3x = 6x. What is x?”"
+          ],
+          [
+            "— x égale 4, monsieur.",
+            "“x equals 4, sir.”"
+          ],
+          [
+            "Alors, pense Justine, c'est Thomas Desjardins.",
+            "“So,” thinks Justine, “it's Thomas Desjardins.”"
+          ],
+          [
+            "Pas facile de garder les secrets, ici!",
+            "“It's not easy to keep secrets here!”"
+          ],
+          [
+            "Ce n'est pas seulement Justine qui est fascinée par Thomas.",
+            "Justine isn't the only one fascinated by Thomas."
+          ],
+          [
+            "Le refus de parler du garçon pique la curiosité de ses camarades de classe.",
+            "The boy's refusal to talk sparks his classmates' curiosity."
+          ],
+          [
+            "En moins de deux semaines, il est devenu le sujet de plusieurs histoires fantastiques.",
+            "In less than two weeks, he has become the subject of several fantastic stories."
+          ],
+          [
+            "Chaque nouveau récit est plus incroyable que le précédent.",
+            "Each new account is more incredible than the last."
+          ],
+          [
+            "À la cafétéria, Justine entend Émilie Montclair et ses amies Monique et Diane parler de Thomas.",
+            "In the cafeteria Justine hears Émilie Montclair and her friends Monique and Diane talking about Thomas."
+          ],
+          [
+            "Elle a de la difficulté à ne pas éclater de rire en entendant leur conversation.",
+            "She has trouble keeping herself from bursting out laughing as she listens."
+          ],
+          [
+            "— On dit, annonce Émilie, que le directeur de sa dernière école l'a renvoyé!",
+            "“They say,” Émilie announces, “that his last school's principal expelled him!”"
+          ],
+          [
+            "— Qu'a-t-il fait? demande Monique.",
+            "“What did he do?” asks Monique."
+          ],
+          [
+            "— Mon amie dit qu'il a saboté tous les ordinateurs de l'administration.",
+            "“My friend says he sabotaged all the administration's computers.”"
+          ],
+          [
+            "Le directeur a critiqué son comportement et, cette nuit-là, Thomas est entré dans l'école par une fenêtre et a mis le feu au bureau du directeur!",
+            "“The principal criticized him, and that night Thomas came through a window and set the principal's office on fire!”"
+          ],
+          [
+            "— Niaiseuses, pense Justine. Thomas ne parle pas aux autres. Comment pouvez-vous savoir?",
+            "“Fools,” thinks Justine. “Thomas doesn't talk to others. How could you know?”"
+          ]
+        ]
+      },
+      {
+        "page": 17,
+        "lines": [
+          [
+            "Diane a des détails délicieux à ajouter.",
+            "Diane has juicy details to add."
+          ],
+          [
+            "— Mon ami me dit que Thomas a passé du temps dans un centre de détention.",
+            "“My friend tells me Thomas spent time in a detention centre.”"
+          ],
+          [
+            "Il a dévalisé un dépanneur et a menacé le propriétaire d'un bâton de baseball!",
+            "“He robbed a convenience store and threatened its owner with a baseball bat!”"
+          ],
+          [
+            "— Pas vrai! dit Émilie, en battant des mains.",
+            "“No way!” says Émilie, clapping her hands."
+          ],
+          [
+            "Si vous voulez un scandale, pense Justine, je vais vous donner un scandale.",
+            "“If you want a scandal,” Justine thinks, “I'll give you a scandal.”"
+          ],
+          [
+            "Elle prend une place à la table avec les autres.",
+            "She takes a seat at the table with the others."
+          ],
+          [
+            "— Vous parlez de Thomas Desjardins? demande-t-elle sérieusement et à voix basse.",
+            "“Are you talking about Thomas Desjardins?” she asks seriously in a low voice."
+          ],
+          [
+            "— Il semble être assez intelligent et sympa, soupire Monique.",
+            "“He seems pretty smart and nice,” sighs Monique."
+          ],
+          [
+            "Il est difficile de croire qu'un gars comme ça peut être un criminel.",
+            "“It's hard to believe a guy like that could be a criminal.”"
+          ]
+        ]
+      },
+      {
+        "page": 18,
+        "lines": [
+          [
+            "— Je sais la vérité, dit Justine d'un ton grave. J'ai parlé à Thomas personnellement.",
+            "“I know the truth,” says Justine gravely. “I've spoken to Thomas personally.”"
+          ],
+          [
+            "Il y a trois ans, une secte l'a enlevé.",
+            "“Three years ago, a cult kidnapped him.”"
+          ],
+          [
+            "Il est allé habiter dans les forêts du Grand Nord où la secte a une résidence.",
+            "“He lived in the forests of the Far North where the cult had a residence.”"
+          ],
+          [
+            "Il a dû manger des vers et des insectes.",
+            "“He had to eat worms and insects.”"
+          ],
+          [
+            "Il a participé à des cérémonies secrètes vraiment effrayantes.",
+            "“He took part in really frightening secret ceremonies.”"
+          ],
+          [
+            "Il porte le tatouage d'une chauve-souris à l'épaule gauche.",
+            "“He has a bat tattoo on his left shoulder.”"
+          ],
+          [
+            "Tous les membres de la secte ont le même tatouage.",
+            "“All the cult members have the same tattoo.”"
+          ],
+          [
+            "Enfin, sa famille l'a retrouvé. Il a dû participer à une longue déprogrammation.",
+            "“Finally his family found him. He had to go through a long deprogramming process.”"
+          ],
+          [
+            "À présent, il est ici.",
+            "“And now he's here.”"
+          ],
+          [
+            "Le récit a l'effet désiré. Émilie est bouche bée.",
+            "The story has its intended effect. Émilie is speechless."
+          ],
+          [
+            "Monique et Diane ont les yeux grands ouverts.",
+            "Monique and Diane's eyes are wide open."
+          ],
+          [
+            "— Mais, continue Justine, ne dites rien à Thomas!",
+            "“But,” Justine continues, “don't say anything to Thomas!”"
+          ],
+          [
+            "Il est très sensible sur ce sujet.",
+            "“He's very sensitive about this subject.”"
+          ],
+          [
+            "Vous allez augmenter ses problèmes si vous essayez de lui parler de cette partie de sa vie.",
+            "“You'll make his problems worse if you try to talk to him about that part of his life.”"
+          ],
+          [
+            "Justine prend ses livres et quitte la cafétéria.",
+            "Justine takes her books and leaves the cafeteria."
+          ],
+          [
+            "Une fois dans le couloir, elle commence à rire.",
+            "Once in the hallway, she starts laughing."
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Une vie ordinaire",
+    "pages": "19–22",
+    "short": "The rumour's consequences and Thomas's real-life details",
+    "summary": "La semaine suivante, Thomas confronte Justine à la bibliothèque : les élèves veulent voir son faux tatouage. Elle trouve sa blague drôle, mais lui est furieux. Sur un banc, Thomas lui parle de Trois-Rivières, de sa vie ordinaire, de sa mère et de son père qui voyage. Justine lui dit qu'elle veut être son amie.",
+    "summaryEn": "The next week Thomas confronts Justine in the library: students want to see his imaginary tattoo. She sees a joke; he is furious. On a bench, he describes Trois-Rivières, his ordinary routine, his mother and his frequently travelling father. Justine says she wants to be his friend.",
+    "must": [
+      [
+        "Endroit 1",
+        "La bibliothèque : Thomas est furieux et la bibliothécaire leur demande de partir."
+      ],
+      [
+        "Tatouage",
+        "Des élèves veulent voir le faux tatouage de chauve-souris."
+      ],
+      [
+        "Désaccord",
+        "Justine appelle cela une blague; Thomas refuse que sa vie devienne un sujet de commérages."
+      ],
+      [
+        "Endroit 2",
+        "Ils s'assoient sur un banc dans le foyer de l'école."
+      ],
+      [
+        "Origine de Thomas",
+        "Trois-Rivières; l'école Saint-Simon (pas Montréal)."
+      ],
+      [
+        "Déménagement",
+        "Il a déménagé au début du semestre."
+      ],
+      [
+        "Famille",
+        "Thomas dit être enfant unique, habiter avec sa mère; son père voyage beaucoup et est absent pour le moment."
+      ],
+      [
+        "Dernière phrase importante",
+        "Justine lui dit : « Je voudrais être ton amie. C'est tout. »"
+      ]
+    ],
+    "vocab": [
+      [
+        "furieux / furieuse",
+        "furious"
+      ],
+      [
+        "la bibliothécaire",
+        "librarian"
+      ],
+      [
+        "les commérages",
+        "gossip"
+      ],
+      [
+        "l'anonymat",
+        "anonymity"
+      ],
+      [
+        "déménager",
+        "move homes"
+      ],
+      [
+        "enfant unique",
+        "only child"
+      ],
+      [
+        "se dépêcher",
+        "hurry"
+      ],
+      [
+        "le foyer de l'école",
+        "school lobby"
+      ]
+    ],
+    "sections": [
+      {
+        "page": 19,
+        "lines": [
+          [
+            "La semaine suivante, à la bibliothèque, Justine a une surprise quand elle voit Thomas devant elle.",
+            "The following week, in the library, Justine is surprised when Thomas appears in front of her."
+          ],
+          [
+            "Il n'a pas l'air content.",
+            "He doesn't look happy."
+          ],
+          [
+            "— Tout le monde veut voir mon tatouage! dit-il brusquement.",
+            "“Everyone wants to see my tattoo!” he says abruptly."
+          ],
+          [
+            "On dit que tu as raconté une histoire à mon sujet.",
+            "“People say you've told a story about me.”"
+          ],
+          [
+            "Il est furieux.",
+            "He is furious."
+          ],
+          [
+            "— Chut! dit la bibliothécaire. Assieds-toi, s'il te plaît!",
+            "“Shh!” says the librarian. “Please sit down!”"
+          ],
+          [
+            "— Salut, Thomas, lance Justine.",
+            "“Hi, Thomas,” calls Justine."
+          ],
+          [
+            "— Quels mensonges as-tu racontés à mon sujet? demande-t-il.",
+            "“What lies have you told about me?” he asks."
+          ],
+          [
+            "Justine hausse les épaules. Pourquoi est-il si agité?",
+            "Justine shrugs. Why is he so upset?"
+          ]
+        ]
+      },
+      {
+        "page": 20,
+        "lines": [
+          [
+            "— J'ai fait une petite blague, Thomas.",
+            "“I played a little joke, Thomas.”"
+          ],
+          [
+            "J'ai entendu des filles raconter des histoires ridicules.",
+            "“I heard some girls telling ridiculous stories.”"
+          ],
+          [
+            "J'ai créé un récit excessif pour les duper.",
+            "“I made up an exaggerated story to fool them.”"
+          ],
+          [
+            "Si elles ont cru mon récit, tant pis pour elles.",
+            "“If they believed my story, too bad for them.”"
+          ],
+          [
+            "Elles sont bêtes. C'est tout.",
+            "“They're silly. That's all.”"
+          ],
+          [
+            "Justine essaie de rire, mais Thomas ne voit pas l'humour de la situation.",
+            "Justine tries to laugh, but Thomas sees no humour in the situation."
+          ],
+          [
+            "— Maintenant, dit-il, tout le monde me regarde. Tout le monde parle de moi.",
+            "“Now,” he says, “everyone stares at me. Everyone talks about me.”"
+          ],
+          [
+            "Je n'aime pas ça!",
+            "“I don't like that!”"
+          ],
+          [
+            "— Chut! Chut! répète la bibliothécaire.",
+            "“Shh! Shh!” repeats the librarian."
+          ],
+          [
+            "— Calme-toi, chuchote Justine.",
+            "“Calm down,” whispers Justine."
+          ],
+          [
+            "Tout le monde t'observe depuis ton arrivée dans cette école.",
+            "“Everyone has watched you since you arrived at this school.”"
+          ],
+          [
+            "Tu refuses de communiquer avec les autres, alors, ils inventent des histoires scandaleuses.",
+            "“You refuse to communicate with others, so they invent scandalous stories.”"
+          ],
+          [
+            "Les gens vont croire ce qu'ils veulent croire... vrai ou non.",
+            "“People will believe what they want to believe... true or not.”"
+          ],
+          [
+            "— Ma vie n'est pas un sujet de commérages! dit-il.",
+            "“My life isn't a subject for gossip!” he says."
+          ],
+          [
+            "Ma vie ne les concerne pas.",
+            "“My life is none of their business.”"
+          ],
+          [
+            "— Mais, plus tu te caches, plus les autres vont parler, explique Justine qui ne comprend pas sa colère.",
+            "“But the more you hide, the more people will talk,” explains Justine, who doesn't understand his anger."
+          ],
+          [
+            "La bibliothécaire vient à leur table.",
+            "The librarian comes to their table."
+          ],
+          [
+            "— Mademoiselle, monsieur, vous êtes dans la bibliothèque.",
+            "“Miss, sir, you're in the library.”"
+          ],
+          [
+            "On ne vient pas ici pour parler. Trouvez un autre endroit pour discuter.",
+            "“You don't come here to talk. Find somewhere else to discuss this.”"
+          ],
+          [
+            "Justine ramasse ses livres et quitte la bibliothèque, accompagnée par Thomas.",
+            "Justine gathers her books and leaves the library, accompanied by Thomas."
+          ],
+          [
+            "Ils trouvent un banc au foyer de l'école. Thomas se croise les bras.",
+            "They find a bench in the school lobby. Thomas crosses his arms."
+          ],
+          [
+            "— D'accord, dit-il, il est évident que tu ne vas pas me laisser en paix.",
+            "“Fine,” he says, “it's clear you're not going to leave me alone.”"
+          ],
+          [
+            "Que veux-tu savoir?",
+            "“What do you want to know?”"
+          ],
+          [
+            "Son ton résigné et froid indique à Justine que la conversation ne va pas être agréable.",
+            "His resigned, cold tone tells Justine the conversation won't be pleasant."
+          ],
+          [
+            "— Ce n'est pas une interrogation, tu sais, dit-elle.",
+            "“It's not an interrogation, you know,” she says."
+          ],
+          [
+            "Thomas soupire profondément.",
+            "Thomas sighs deeply."
+          ]
+        ]
+      },
+      {
+        "page": 21,
+        "lines": [
+          [
+            "— Je le sais, dit-il. Mais, je t'avertis, tu vas me trouver très ordinaire.",
+            "“I know,” he says. “But I'm warning you, you'll find me very ordinary.”"
+          ],
+          [
+            "Vraiment, Justine, je ne mérite pas toute cette attention.",
+            "“Really, Justine, I don't deserve all this attention.”"
+          ],
+          [
+            "— Alors, laisse les autres décider que tu n'es pas très intéressant.",
+            "“Then let others decide you're not very interesting.”"
+          ],
+          [
+            "Ils vont trouver un autre sujet de conversation.",
+            "“They'll find another topic of conversation.”"
+          ],
+          [
+            "— Eh bien, vas-y, pose tes questions.",
+            "“Well, go ahead, ask your questions.”"
+          ],
+          [
+            "Justine est surprise de cette réaction.",
+            "Justine is surprised by this reaction."
+          ],
+          [
+            "Thomas va-t-il vraiment parler de sa vie?",
+            "Is Thomas really going to talk about his life?"
+          ],
+          [
+            "Il existe une seule façon de le savoir : poser des questions.",
+            "There's only one way to find out: ask questions."
+          ],
+          [
+            "— Bien. Viens-tu d'une autre école de Montréal?",
+            "“Okay. Are you from another school in Montreal?”"
+          ],
+          [
+            "— Non. De Trois-Rivières. De l'école Saint-Simon.",
+            "“No. From Trois-Rivières. From Saint-Simon School.”"
+          ],
+          [
+            "— Je n'ai jamais visité Trois-Rivières. On dit que c'est une belle ville.",
+            "“I've never visited Trois-Rivières. They say it's a beautiful city.”"
+          ],
+          [
+            "Petite et amicale.",
+            "“Small and friendly.”"
+          ],
+          [
+            "— Trop petite. Tout le monde connaît les affaires des autres.",
+            "“Too small. Everyone knows everyone else's business.”"
+          ],
+          [
+            "La vie d'une grande ville est plus anonyme... enfin, pas toujours, ajoute-t-il d'un ton sarcastique.",
+            "“Life in a big city is more anonymous... well, not always,” he adds sarcastically."
+          ]
+        ]
+      },
+      {
+        "page": 22,
+        "lines": [
+          [
+            "Justine pose quelques autres questions sur le sport et les activités parascolaires.",
+            "Justine asks some more questions about sports and extracurricular activities."
+          ],
+          [
+            "Thomas répond brièvement, puis la conversation devient ennuyante.",
+            "Thomas answers briefly, and the conversation becomes boring."
+          ],
+          [
+            "— Ensuite, au début de ce semestre, nous avons déménagé ici.",
+            "“Then, at the start of this semester, we moved here.”"
+          ],
+          [
+            "Maman prépare mes repas, je viens à l'école, je fais mes devoirs, je mange, je dors.",
+            "“Mom makes my meals, I come to school, I do my homework, I eat, I sleep.”"
+          ],
+          [
+            "Voilà! Tout est ordinaire. Tout est normal. Es-tu contente?",
+            "“There! Everything is ordinary. Everything is normal. Are you happy?”"
+          ],
+          [
+            "Thomas arrête de parler. Justine le regarde attentivement.",
+            "Thomas stops talking. Justine watches him closely."
+          ],
+          [
+            "Non, elle n'est pas contente.",
+            "No, she isn't satisfied."
+          ],
+          [
+            "Pourquoi cacher une vie ordinaire? Est-il embarrassé d'avoir la vie de tout le monde? Impossible!",
+            "Why hide an ordinary life? Is he embarrassed to have a life like everyone else? Impossible!"
+          ],
+          [
+            "— As-tu des frères ou des sœurs? demande-t-elle.",
+            "“Do you have brothers or sisters?” she asks."
+          ],
+          [
+            "— Non, répond-il, je suis enfant unique.",
+            "“No,” he replies, “I'm an only child.”"
+          ],
+          [
+            "J'habite avec ma mère.",
+            "“I live with my mother.”"
+          ],
+          [
+            "Mon père... euh... il voyage beaucoup.",
+            "“My father... um... he travels a lot.”"
+          ],
+          [
+            "Il n'est pas avec nous pour le moment.",
+            "“He isn't with us for the moment.”"
+          ],
+          [
+            "Thomas semble inquiet. Il ne regarde pas Justine quand il parle de son père.",
+            "Thomas seems worried. He doesn't look at Justine when he speaks about his father."
+          ],
+          [
+            "La cloche sonne pour marquer la fin du cours.",
+            "The bell rings to mark the end of class."
+          ],
+          [
+            "Thomas se lève et ramasse ses affaires.",
+            "Thomas stands and gathers his things."
+          ],
+          [
+            "— Je dois me dépêcher, dit-il. Je ne veux pas être en retard.",
+            "“I have to hurry,” he says. “I don't want to be late.”"
+          ],
+          [
+            "— Merci de m'avoir parlé, Thomas, dit Justine doucement.",
+            "“Thank you for talking to me, Thomas,” Justine says gently."
+          ],
+          [
+            "Tu sais... je voudrais être ton amie. C'est tout.",
+            "“You know... I'd like to be your friend. That's all.”"
+          ],
+          [
+            "— Oui, dit-il.",
+            "“Yes,” he says."
+          ],
+          [
+            "Et il disparaît dans la foule.",
+            "And he disappears into the crowd."
+          ]
+        ]
+      }
+    ]
+  }
+];
+
+</script><script>
+window.STUDY = {
+  "prompts": [
+    {
+      "id": "justine",
+      "title": "Pourquoi Justine veut-elle faire la connaissance de Thomas? Que fait-elle?",
+      "en": "Why does Justine want to get to know Thomas? What does she do?",
+      "prob": "High-priority prediction · chapters 1–3",
+      "core": [
+        [
+          "Justine est curieuse parce que Thomas est nouveau et très silencieux.",
+          "Justine is curious because Thomas is new and very quiet."
+        ],
+        [
+          "Elle lui parle en classe et à la cafétéria, mais il répond très peu.",
+          "She talks to him in class and in the cafeteria, but he says very little."
+        ],
+        [
+          "Elle l'invite au cinéma, mais il refuse parce qu'il dit avoir des devoirs.",
+          "She invites him to the movies, but he refuses because he says he has homework."
+        ]
+      ],
+      "keywords": [
+        "curieuse",
+        "silencieux",
+        "la cafétéria",
+        "au cinéma",
+        "refuse"
+      ]
+    },
+    {
+      "id": "thomas",
+      "title": "Décris Thomas. Pourquoi préfère-t-il rester seul?",
+      "en": "Describe Thomas. Why does he prefer to be alone?",
+      "prob": "High-priority prediction · chapters 2, 3 and 5",
+      "core": [
+        [
+          "Thomas est poli, réservé et il ne veut pas attirer l'attention.",
+          "Thomas is polite, reserved and does not want attention."
+        ],
+        [
+          "Il reste souvent seul et il ne parle pas beaucoup aux autres.",
+          "He often stays alone and doesn't talk much to others."
+        ],
+        [
+          "Il dit que sa vie est ordinaire et il n'aime pas les commérages.",
+          "He says his life is ordinary and he doesn't like gossip."
+        ]
+      ],
+      "keywords": [
+        "réservé",
+        "l'attention",
+        "seul",
+        "ordinaire",
+        "commérages"
+      ]
+    },
+    {
+      "id": "rumours",
+      "title": "Quelles histoires circulent sur Thomas? Explique l'action de Justine et ses conséquences.",
+      "en": "What rumours spread about Thomas? Explain what Justine does and the consequences.",
+      "prob": "High-priority prediction · chapters 4–5",
+      "core": [
+        [
+          "Émilie et ses amies racontent des histoires incroyables sur Thomas.",
+          "Émilie and her friends tell unbelievable stories about Thomas."
+        ],
+        [
+          "Pour leur faire une blague, Justine invente une histoire de secte et de tatouage.",
+          "To play a joke on them, Justine invents a story about a cult and a tattoo."
+        ],
+        [
+          "Thomas est furieux parce que tout le monde parle de lui et veut voir son tatouage.",
+          "Thomas is furious because everyone talks about him and wants to see his tattoo."
+        ]
+      ],
+      "keywords": [
+        "Émilie",
+        "inventer",
+        "une secte",
+        "tatouage",
+        "furieux"
+      ]
+    }
+  ],
+  "intros": [
+    [
+      "Dans les chapitres un à cinq de Casse-tête, cette situation est importante.",
+      "In chapters one to five of Casse-tête, this situation is important."
+    ],
+    [
+      "Dans Casse-tête, les actions des personnages nous aident à comprendre l'histoire.",
+      "In Casse-tête, the characters' actions help us understand the story."
+    ]
+  ],
+  "endings": [
+    [
+      "À mon avis, cela nous aide à mieux comprendre les personnages.",
+      "In my opinion, this helps us understand the characters better."
+    ],
+    [
+      "Cette situation montre que les actions peuvent avoir des conséquences.",
+      "This situation shows that actions can have consequences."
+    ]
+  ],
+  "facts": [
+    [
+      1,
+      "Justine répond correctement que x vaut cinq dans la première équation.",
+      true,
+      "She answers 5 for 2x + 15 = 5x."
+    ],
+    [
+      1,
+      "M. Clément enseigne la littérature française.",
+      false,
+      "He teaches mathematics."
+    ],
+    [
+      1,
+      "Justine regarde souvent l'horloge pendant le cours de maths.",
+      true,
+      "She keeps watching the clock."
+    ],
+    [
+      1,
+      "Émilie pense qu'une équation sans x ne peut pas être résolue.",
+      true,
+      "She is confused by 6y - 12 = 3y."
+    ],
+    [
+      1,
+      "Olivier Desbiens demande à résoudre l'équation devant toute la classe.",
+      false,
+      "He asks to go to the washroom."
+    ],
+    [
+      1,
+      "Le nouveau garçon porte un t-shirt avec un grand logo.",
+      false,
+      "It has no logo."
+    ],
+    [
+      1,
+      "Justine propose au garçon de l'aider à trouver sa salle.",
+      true,
+      "She offers help after maths."
+    ],
+    [
+      1,
+      "Le nouveau garçon accepte l'aide de Justine.",
+      false,
+      "He politely refuses."
+    ],
+    [
+      1,
+      "Le garçon regarde son horaire et le plan de l'école.",
+      true,
+      "Schedule and school map."
+    ],
+    [
+      1,
+      "Justine décide que le nouveau garçon sera son projet pour le semestre.",
+      true,
+      "End of Chapter 1."
+    ],
+    [
+      1,
+      "M. Clément annonce toujours l'arrivée des nouveaux élèves d'une façon discrète.",
+      false,
+      "His introductions are large and embarrassing."
+    ],
+    [
+      1,
+      "Justine s'endort réellement pendant le cours.",
+      false,
+      "She nearly falls asleep but keeps awake."
+    ],
+    [
+      1,
+      "M. Clément frappe parfois la table avec une règle.",
+      true,
+      "He uses his ruler."
+    ],
+    [
+      1,
+      "Justine ne connaît pas le nom du nouveau garçon à la fin du chapitre un.",
+      true,
+      "She learns Thomas in chapter 2."
+    ],
+    [
+      1,
+      "Émilie demande s'il faut connaître la matière pour un test.",
+      true,
+      "She asks about the test."
+    ],
+    [
+      2,
+      "Justine a de meilleures notes que beaucoup de ses camarades.",
+      true,
+      "She is a strong student."
+    ],
+    [
+      2,
+      "Justine veut devenir joueuse de football professionnelle.",
+      false,
+      "Olivier has the football dream."
+    ],
+    [
+      2,
+      "Justine veut étudier la littérature à l'université.",
+      true,
+      "She hopes to become a teacher."
+    ],
+    [
+      2,
+      "Le cours préféré de Justine est la littérature française.",
+      true,
+      "She enjoys novels and writing."
+    ],
+    [
+      2,
+      "Justine aime particulièrement la poésie difficile.",
+      false,
+      "She finds its style hard to understand."
+    ],
+    [
+      2,
+      "Justine appelle Émilie et ses amies « les trois B ».",
+      true,
+      "Belles, bien habillées et bêtes."
+    ],
+    [
+      2,
+      "Justine veut faire partie d'une clique scolaire.",
+      false,
+      "She values independence."
+    ],
+    [
+      2,
+      "Mme Laroche demande un autoportrait des émotions de l'adolescence.",
+      true,
+      "Under 100 words."
+    ],
+    [
+      2,
+      "Samuel cherche un mot qui rime avec orange.",
+      true,
+      "He makes a joke."
+    ],
+    [
+      2,
+      "Thomas écrit beaucoup pendant l'activité de littérature.",
+      false,
+      "He taps his pencil and writes nothing."
+    ],
+    [
+      2,
+      "Thomas dit lui-même à Justine qu'il s'appelle Thomas.",
+      true,
+      "End of chapter 2."
+    ],
+    [
+      2,
+      "Thomas est très bavard pendant sa deuxième rencontre avec Justine.",
+      false,
+      "He barely speaks."
+    ],
+    [
+      2,
+      "Justine révèle d'abord son propre prénom et son nom de famille.",
+      true,
+      "Justine Poirier."
+    ],
+    [
+      2,
+      "Mme Laroche est la professeure de mathématiques.",
+      false,
+      "She teaches French literature."
+    ],
+    [
+      2,
+      "Thomas sourit largement quand Justine lui pose sa première question.",
+      false,
+      "He is startled and quiet."
+    ],
+    [
+      3,
+      "Thomas s'assoit habituellement avec un grand groupe d'amis à la cafétéria.",
+      false,
+      "He is generally alone."
+    ],
+    [
+      3,
+      "Justine s'assoit en face de Thomas à la cafétéria.",
+      true,
+      "She brings her lunch tray."
+    ],
+    [
+      3,
+      "Thomas accepte immédiatement les frites de Justine.",
+      false,
+      "He refuses them."
+    ],
+    [
+      3,
+      "Thomas répond poliment aux autres élèves.",
+      true,
+      "But does not try to be friendly."
+    ],
+    [
+      3,
+      "Thomas veut attirer l'attention des autres élèves.",
+      false,
+      "He tries not to be noticed."
+    ],
+    [
+      3,
+      "Une remarque sur la règle de M. Clément fait sourire Thomas légèrement.",
+      true,
+      "His smile is tiny."
+    ],
+    [
+      3,
+      "Justine invite Thomas au cinéma vendredi soir.",
+      true,
+      "Movies, then restaurant or a friend's house."
+    ],
+    [
+      3,
+      "Thomas accepte l'invitation de Justine.",
+      false,
+      "He refuses."
+    ],
+    [
+      3,
+      "Thomas explique qu'il doit travailler et qu'il a beaucoup de devoirs.",
+      true,
+      "That's his stated reason, not necessarily verified."
+    ],
+    [
+      3,
+      "Thomas révèle son nom de famille à Justine avant de quitter la cafétéria.",
+      false,
+      "He avoids the question."
+    ],
+    [
+      3,
+      "Thomas quitte la cafétéria presque en courant.",
+      true,
+      "He leaves rapidly."
+    ],
+    [
+      3,
+      "Justine abandonne définitivement son projet au chapitre trois.",
+      false,
+      "She keeps trying."
+    ],
+    [
+      3,
+      "Justine et Thomas suivent plusieurs cours ensemble.",
+      true,
+      "They have the same classes."
+    ],
+    [
+      3,
+      "Thomas pose beaucoup de questions personnelles à Justine.",
+      false,
+      "Justine does most of the questioning."
+    ],
+    [
+      3,
+      "Thomas dit « Peut-être » quand Justine suggère une autre fois.",
+      true,
+      "He gives a noncommittal maybe."
+    ],
+    [
+      4,
+      "Le professeur appelle le garçon « Monsieur Desjardins ».",
+      true,
+      "Reveals his surname."
+    ],
+    [
+      4,
+      "Thomas donne la réponse x égale quatre pour 12 + 3x = 6x.",
+      true,
+      "Correct math."
+    ],
+    [
+      4,
+      "Émilie raconte des histoires sur Thomas à la bibliothèque.",
+      false,
+      "At the cafeteria."
+    ],
+    [
+      4,
+      "Les filles prétendent que Thomas aurait saboté des ordinateurs.",
+      true,
+      "It's a rumour, not a verified event."
+    ],
+    [
+      4,
+      "Les filles ont la preuve que Thomas a incendié un bureau.",
+      false,
+      "It is only hearsay."
+    ],
+    [
+      4,
+      "Diane raconte une histoire de dépanneur et de bâton de baseball.",
+      true,
+      "An unverified rumour."
+    ],
+    [
+      4,
+      "Justine croit que toutes les histoires des filles sont vraies.",
+      false,
+      "She finds them absurd."
+    ],
+    [
+      4,
+      "Justine invente une histoire sur une secte.",
+      true,
+      "To fool the girls."
+    ],
+    [
+      4,
+      "Dans l'histoire de Justine, le tatouage est un chat sur le bras droit.",
+      false,
+      "A bat on the left shoulder."
+    ],
+    [
+      4,
+      "Dans le récit inventé par Justine, la secte vit dans le Grand Nord.",
+      true,
+      "Still a made-up story."
+    ],
+    [
+      4,
+      "Émilie, Monique et Diane semblent croire Justine.",
+      true,
+      "They are stunned."
+    ],
+    [
+      4,
+      "Justine dit aux filles de demander directement à Thomas si son histoire est vraie.",
+      false,
+      "She tells them not to mention it."
+    ],
+    [
+      4,
+      "Justine éclate de rire après être sortie de la cafétéria.",
+      true,
+      "She laughs in the corridor."
+    ],
+    [
+      4,
+      "Le livre confirme que Thomas a vraiment été membre d'une secte.",
+      false,
+      "The cult story is invented by Justine."
+    ],
+    [
+      4,
+      "Les histoires criminelles sont présentées comme des rumeurs.",
+      true,
+      "They are not established facts."
+    ],
+    [
+      5,
+      "Thomas rencontre Justine à la bibliothèque la semaine suivante.",
+      true,
+      "Beginning of Chapter 5."
+    ],
+    [
+      5,
+      "Thomas est content que tout le monde parle de lui.",
+      false,
+      "He is furious."
+    ],
+    [
+      5,
+      "Des élèves veulent voir le tatouage de Thomas.",
+      true,
+      "The imaginary tattoo from Justine's rumour."
+    ],
+    [
+      5,
+      "Justine présente son histoire comme une petite blague.",
+      true,
+      "Her interpretation, not Thomas's."
+    ],
+    [
+      5,
+      "La bibliothécaire encourage les deux élèves à parler plus fort.",
+      false,
+      "She orders them to be quiet and talk elsewhere."
+    ],
+    [
+      5,
+      "Thomas pense que sa vie est un sujet public intéressant.",
+      false,
+      "He insists it is private."
+    ],
+    [
+      5,
+      "Thomas et Justine poursuivent leur conversation sur un banc au foyer de l'école.",
+      true,
+      "They leave the library."
+    ],
+    [
+      5,
+      "Thomas vient de l'école Saint-Simon à Trois-Rivières.",
+      true,
+      "He says this explicitly."
+    ],
+    [
+      5,
+      "Thomas dit être originaire d'une autre école de Montréal.",
+      false,
+      "He says Trois-Rivières."
+    ],
+    [
+      5,
+      "Thomas a déménagé au début du semestre.",
+      true,
+      "He describes the move."
+    ],
+    [
+      5,
+      "Thomas trouve Trois-Rivières trop petite.",
+      true,
+      "Everyone knows others' business."
+    ],
+    [
+      5,
+      "Thomas décrit sa vie quotidienne comme ordinaire.",
+      true,
+      "Meals, school, homework, eating, sleeping."
+    ],
+    [
+      5,
+      "Thomas explique qu'il a deux frères.",
+      false,
+      "He is an only child."
+    ],
+    [
+      5,
+      "Thomas vit avec sa mère.",
+      true,
+      "He says so."
+    ],
+    [
+      5,
+      "Thomas dit que son père voyage beaucoup.",
+      true,
+      "His father is absent for now."
+    ],
+    [
+      5,
+      "Thomas paraît mal à l'aise quand il parle de son père.",
+      true,
+      "He looks worried and avoids eye contact."
+    ],
+    [
+      5,
+      "Justine dit qu'elle veut être son amie.",
+      true,
+      "Her closing statement."
+    ],
+    [
+      5,
+      "Thomas explique en détail pourquoi son père est absent.",
+      false,
+      "He does not provide detailed reasons."
+    ],
+    [
+      5,
+      "Thomas et Justine deviennent officiellement les meilleurs amis au chapitre cinq.",
+      false,
+      "Justine expresses the wish for friendship; no such outcome confirmed."
+    ],
+    [
+      5,
+      "Thomas trouve l'histoire inventée par Justine très drôle.",
+      false,
+      "He is upset by it."
+    ]
+  ],
+  "mc": [
+    [
+      1,
+      "Comment s'appelle le professeur de mathématiques?",
+      [
+        "M. Clément",
+        "M. Laroche",
+        "M. Desjardins"
+      ],
+      0,
+      "M. Clément teaches mathematics."
+    ],
+    [
+      1,
+      "Que regarde le nouveau garçon à la fin du premier chapitre?",
+      [
+        "Un menu",
+        "Son horaire et le plan de l'école",
+        "Une carte de Trois-Rivières"
+      ],
+      1,
+      "He checks his schedule and school map."
+    ],
+    [
+      1,
+      "Quelle réponse Justine donne-t-elle à 2x + 15 = 5x?",
+      [
+        "3",
+        "4",
+        "5"
+      ],
+      2,
+      "She answers five."
+    ],
+    [
+      1,
+      "Pourquoi Olivier lève-t-il la main?",
+      [
+        "Pour aller aux toilettes",
+        "Pour répondre à une équation",
+        "Pour inviter Thomas"
+      ],
+      0,
+      "He needs to use the washroom."
+    ],
+    [
+      2,
+      "Comment Justine décrit-elle les amies d'Émilie?",
+      [
+        "Les trois C",
+        "Les trois B",
+        "Les trois D"
+      ],
+      1,
+      "The three B's."
+    ],
+    [
+      2,
+      "Quel est le cours préféré de Justine?",
+      [
+        "Mathématiques",
+        "Sciences",
+        "Littérature française"
+      ],
+      2,
+      "She loves French literature."
+    ],
+    [
+      2,
+      "Qui demande un autoportrait des émotions?",
+      [
+        "Mme Laroche",
+        "Émilie",
+        "Mme Clément"
+      ],
+      0,
+      "Ms. Laroche."
+    ],
+    [
+      2,
+      "Comment le nouveau garçon se présente-t-il?",
+      [
+        "Je suis Olivier.",
+        "Je suis Thomas.",
+        "Je suis Samuel."
+      ],
+      1,
+      "He says Thomas."
+    ],
+    [
+      3,
+      "Où Justine rejoint-elle Thomas?",
+      [
+        "À la cafétéria",
+        "Dans le gymnase",
+        "À la bibliothèque"
+      ],
+      0,
+      "Their lunch encounter."
+    ],
+    [
+      3,
+      "Qu'est-ce que Justine propose de manger?",
+      [
+        "Une pizza",
+        "Des frites",
+        "Un sandwich"
+      ],
+      1,
+      "She offers fries."
+    ],
+    [
+      3,
+      "Pour quel jour Justine invite-t-elle Thomas?",
+      [
+        "Mardi",
+        "Jeudi",
+        "Vendredi"
+      ],
+      2,
+      "Friday evening."
+    ],
+    [
+      3,
+      "Pourquoi Thomas refuse-t-il l'invitation, selon ses paroles?",
+      [
+        "Il a des devoirs et doit travailler",
+        "Il déteste Justine",
+        "Il part pour Paris"
+      ],
+      0,
+      "What he says, rather than what we can independently prove."
+    ],
+    [
+      4,
+      "Qui révèle le nom de famille de Thomas?",
+      [
+        "M. Clément",
+        "La bibliothécaire",
+        "Monique"
+      ],
+      0,
+      "Teacher calls him Mr. Desjardins."
+    ],
+    [
+      4,
+      "Quel est son nom complet?",
+      [
+        "Thomas Poirier",
+        "Thomas Desjardins",
+        "Thomas Montclair"
+      ],
+      1,
+      "Thomas Desjardins."
+    ],
+    [
+      4,
+      "Quel animal Justine utilise-t-elle dans son histoire inventée?",
+      [
+        "Un chien",
+        "Une grenouille",
+        "Une chauve-souris"
+      ],
+      2,
+      "A bat tattoo."
+    ],
+    [
+      4,
+      "Quelle partie du corps Justine mentionne-t-elle pour le tatouage?",
+      [
+        "L'épaule gauche",
+        "Le genou droit",
+        "La main gauche"
+      ],
+      0,
+      "Left shoulder."
+    ],
+    [
+      4,
+      "Qu'est-ce qu'Émilie affirme au sujet de Thomas?",
+      [
+        "Il a gagné un prix",
+        "Il a saboté des ordinateurs",
+        "Il aime la poésie"
+      ],
+      1,
+      "A rumour, not a fact."
+    ],
+    [
+      4,
+      "Comment réagissent les trois filles au récit de Justine?",
+      [
+        "Elles rient immédiatement",
+        "Elles ignorent Justine",
+        "Elles sont choquées"
+      ],
+      2,
+      "They seem to believe her."
+    ],
+    [
+      5,
+      "Où Thomas confronte-t-il Justine?",
+      [
+        "À la bibliothèque",
+        "Au cinéma",
+        "Dans l'autobus"
+      ],
+      0,
+      "In the library."
+    ],
+    [
+      5,
+      "Pourquoi Thomas est-il furieux?",
+      [
+        "Il a perdu un match",
+        "Tout le monde parle de lui",
+        "Il a oublié ses devoirs"
+      ],
+      1,
+      "Rumours and attention."
+    ],
+    [
+      5,
+      "D'où vient Thomas?",
+      [
+        "Ottawa",
+        "Montréal",
+        "Trois-Rivières"
+      ],
+      2,
+      "He attended Saint-Simon."
+    ],
+    [
+      5,
+      "Avec qui Thomas habite-t-il?",
+      [
+        "Sa mère",
+        "Ses deux frères",
+        "Ses grands-parents"
+      ],
+      0,
+      "He says he lives with his mother."
+    ],
+    [
+      5,
+      "Combien de frères et sœurs Thomas a-t-il?",
+      [
+        "Trois",
+        "Aucun",
+        "Un"
+      ],
+      1,
+      "Only child."
+    ],
+    [
+      5,
+      "Que dit Justine à Thomas à la fin du chapitre cinq?",
+      [
+        "Tu dois partir.",
+        "Je n'aime pas les rumeurs.",
+        "Je voudrais être ton amie."
+      ],
+      2,
+      "She wants to be his friend."
+    ]
+  ],
+  "comprehension": [
+    [
+      1,
+      "Pourquoi Justine observe-t-elle l'horloge pendant le cours?",
+      "Elle s'ennuie pendant le cours de mathématiques.",
+      "She is bored in math class."
+    ],
+    [
+      1,
+      "Pourquoi Justine pense-t-elle avoir trouvé un projet?",
+      "Elle veut faire la connaissance du nouveau garçon.",
+      "She wants to get to know the new boy."
+    ],
+    [
+      2,
+      "Quels livres Justine aime-t-elle lire?",
+      "Elle aime les romans historiques et les romans policiers.",
+      "Historical novels and detective novels."
+    ],
+    [
+      2,
+      "Pourquoi Thomas n'écrit-il rien pendant l'activité?",
+      "Il semble perdu dans ses pensées; le texte ne donne pas de raison certaine.",
+      "He seems lost in thought; the book does not confirm why."
+    ],
+    [
+      3,
+      "Quelle invitation Justine fait-elle à Thomas?",
+      "Elle l'invite au cinéma le vendredi soir avec des amis.",
+      "Friday-night movies with friends."
+    ],
+    [
+      3,
+      "Comment Thomas réagit-il à cette invitation?",
+      "Il refuse en disant qu'il doit travailler et faire ses devoirs.",
+      "He refuses, citing work and homework."
+    ],
+    [
+      4,
+      "Comment Justine apprend-elle le nom de famille de Thomas?",
+      "M. Clément l'appelle « Monsieur Desjardins » en classe.",
+      "Mr. Clément says his surname in class."
+    ],
+    [
+      4,
+      "Pourquoi Justine invente-t-elle une histoire de secte?",
+      "Elle veut tromper les filles qui répètent des rumeurs.",
+      "She wants to fool the gossiping girls."
+    ],
+    [
+      5,
+      "Pourquoi Thomas est-il en colère contre Justine?",
+      "Les élèves parlent de lui et veulent voir son faux tatouage.",
+      "The rumours draw unwanted attention."
+    ],
+    [
+      5,
+      "Que sait-on de la famille de Thomas?",
+      "Il est enfant unique, habite avec sa mère, et son père voyage beaucoup.",
+      "Only child, lives with his mother, father travels a lot."
+    ],
+    [
+      5,
+      "Pourquoi Thomas préfère-t-il la vie d'une grande ville?",
+      "Parce qu'une grande ville peut offrir plus d'anonymat.",
+      "More anonymity."
+    ],
+    [
+      5,
+      "Que veut Justine à la fin du chapitre cinq?",
+      "Elle veut être l'amie de Thomas.",
+      "She wants to be his friend."
+    ]
+  ]
+};
+
+</script><script>
+const CHAPTERS=window.CHAPTERS,STUDY=window.STUDY;
 const NAV=[['home','⌂','Mission'],['story','▤','Bilingual story'],['notes','✎','Chapter memory'],['listening','♫','Écoute lab'],['reading','◈','Lecture quiz'],['writing','✦','Écriture trainer'],['exam','★','Mock quiz'],['schedule','◷','3-day plan']];
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 let state={page:'home',chapter:1,storyEnglish:true,storyMode:'all',listenCh:'all',listenQ:[],listenIndex:0,listenAnswer:null,listenReveal:false,listenScore:0,readMode:'mc',readCh:'all',readQ:[],readIndex:0,readAnswer:null,readScore:0,writePrompt:'justine',writeIntro:0,writeEnd:0,writeMode:'learn',writeLine:0,writeTry:0,writeReveal:false,mock:[],mockIndex:0,mockScore:0,mockAnswer:null,mockPart:'listen'};
@@ -80,4 +2501,263 @@ function schedule(){return top('STATION 07 · THREE-DAY SPRINT','A practical pla
 '<div class="sectionhead"><h3>Your practice counters</h3></div><div class="stats"><div class="stat"><strong>'+(progress.listen||0)+'</strong><span>listening answers submitted</span></div><div class="stat"><strong>'+(progress.read||0)+'</strong><span>reading MC answers submitted</span></div><div class="stat"><strong>'+(progress.write||0)+'</strong><span>writing checks performed</span></div><div class="stat"><strong>2</strong><span>writing questions to answer on quiz</span></div></div><button class="btn ghost sm" onclick="if(confirm(\'Reset your practice counters?\')){progress={};save();render()}">Reset counters</button>'}
 function render(){navigation();const map={home,story,notes,listening,reading,writing,exam:mock,schedule};$('#view').innerHTML=(map[state.page]||home)()+'<div class="footer">Casse-tête · Chapters 1–5 study companion · Based on the five supplied scans and your quiz outline. Practice questions and English translations are authored study aids, not official teacher questions. Browser voice support varies. No account or server-side progress collection; simple counters are stored on your device.</div>'}
 render();
-</script><script src="enhancements.js"></script></body></html>
+</script><script>
+/* Casse-tête Quiz Lab — focused productivity + retention improvements */
+(function () {
+  'use strict';
+  let focusOn = true;
+  try { focusOn = localStorage.getItem('ct-focus-v2') !== 'off'; } catch (e) {}
+  state.listenSpeed = Number(progress.listenSpeed || 0.85);
+  state.autoPlayListen = progress.autoListen !== false;
+  state.listenReviewMode = false;
+  state.shortDraft = '';
+  state._readIndexSeen = -1;
+  progress.mistakes = progress.mistakes || {};
+  progress.writeMastery = progress.writeMastery || {};
+  progress.writeDrafts = progress.writeDrafts || {};
+
+  STUDY.intros = [
+    ['Dans Casse-tête, la relation entre Justine et Thomas change peu à peu.', 'In Casse-tête, the relationship between Justine and Thomas changes little by little.'],
+    ['Dans les premiers chapitres de Casse-tête, Justine essaie de mieux comprendre Thomas.', 'In the first chapters of Casse-tête, Justine tries to understand Thomas better.']
+  ];
+  STUDY.endings = [
+    ['Cette situation montre que la confiance est importante dans une amitié.', 'This situation shows that trust is important in a friendship.'],
+    ['À mon avis, Justine doit respecter les sentiments de Thomas.', 'In my opinion, Justine should respect Thomas’s feelings.']
+  ];
+
+  function missedCount() { return Object.keys(progress.mistakes).filter(k => Number(progress.mistakes[k]) > 0).length; }
+  function clampedSpeed() { return [0.72,0.85,1,1.12].includes(state.listenSpeed) ? state.listenSpeed : 0.85; }
+  function playQuestion() {
+    if (!state.autoPlayListen || !state.listenQ.length || state.listenIndex >= state.listenQ.length) return;
+    speak(state.listenQ[state.listenIndex][1], clampedSpeed());
+  }
+  function chooseBalanced(pool, n) {
+    const count = Math.min(n, pool.length);
+    const a = sample(pool.filter(q => q[2] === true), Math.ceil(count / 2));
+    const b = sample(pool.filter(q => q[2] === false), Math.floor(count / 2));
+    let out = a.concat(b);
+    const chosen = new Set(out);
+    if (out.length < count) out = out.concat(sample(pool.filter(q => !chosen.has(q)), count - out.length));
+    return rand(out);
+  }
+
+  window.CT = {
+    toggleFocus: function() {
+      focusOn = !focusOn;
+      try { localStorage.setItem('ct-focus-v2', focusOn ? 'on' : 'off'); } catch(e) {}
+      render();
+    },
+    start: function() {
+      focusOn = true;
+      try { localStorage.setItem('ct-focus-v2','on'); } catch(e) {}
+      state.listenCh = 'all';
+      navigate('listening');
+      newListen(10);
+    },
+    setSpeed: function(v) {
+      state.listenSpeed = Number(v);
+      progress.listenSpeed = state.listenSpeed; save();
+    },
+    setAuto: function(v) {
+      state.autoPlayListen = Boolean(v);
+      progress.autoListen = Boolean(v); save();
+    },
+    retryMisses: function() {
+      if (!missedCount()) return;
+      state.listenCh = 'all';
+      navigate('listening');
+      newListen(10, true);
+    },
+    shortDraft: function(v) { state.shortDraft = v; },
+    writeDraft: function(v) { progress.writeDrafts[state.writePrompt] = v; save(); },
+    clearWriteDraft: function() { delete progress.writeDrafts[state.writePrompt]; save(); render(); },
+    resetMistakes: function() {
+      if (confirm('Clear your saved missed-listening questions?')) {
+        progress.mistakes = {}; save(); render();
+      }
+    }
+  };
+
+  navigate = function(page) {
+    if ('speechSynthesis' in window && window.speechSynthesis) window.speechSynthesis.cancel();
+    state.page = page; render();
+    if (window.scrollTo) window.scrollTo({top:0,behavior:'smooth'});
+  };
+
+  // One purpose per session: a direct start plus three learning targets.
+  home = function() {
+    const errs=missedCount();
+    return '<div class="hero focus-hero"><div class="eyebrow">TUESDAY QUIZ • CHAPTERS 1–5</div>'+
+    '<h1>Be ready.<br><span style="color:#78dfcc">Without the noise.</span></h1>'+
+    '<p>A streamlined plan: understand the story, drill French audio without text clues, then write two five-sentence answers from memory. Start with the highest-value practice.</p>'+
+    '<div class="row"><button class="btn" onclick="CT.start()">▶ Start 10-question Écoute sprint</button>'+
+    '<button class="btn secondary" onclick="navigate(\'notes\')">Review chapter facts</button></div>'+
+    '</div>'+
+    '<div class="quicksteps">'+
+    '<div class="lesson"><div class="eyebrow">01 · 7 MIN</div><h3>Understand the plot</h3><p>Skim five chapter summaries and the key names, locations and rumours.</p><button class="btn sm secondary" onclick="navigate(\'notes\')">Memory notes →</button></div>'+
+    '<div class="lesson"><div class="eyebrow">02 · 10 MIN</div><h3>Listen without seeing</h3><p>Do ten spoken vrai/faux questions. Wrong answers enter your personal retry deck.</p><button class="btn sm secondary" onclick="CT.start()">Audio drills →</button></div>'+
+    '<div class="lesson"><div class="eyebrow">03 · 10 MIN</div><h3>Write with recall</h3><p>Learn two common openings, three topic sentences, and one ending per question.</p><button class="btn sm secondary" onclick="navigate(\'writing\')">Writing trainer →</button></div></div>'+
+    '<div class="card compact-summary"><div class="row" style="justify-content:space-between"><div><div class="eyebrow">YOUR ACTIVE RETRY DECK</div><h3 style="margin:4px 0">'+errs+' listening '+(errs===1?'mistake':'mistakes')+' to revisit</h3><p style="margin:4px 0">A missed fact leaves the deck after two later correct answers.</p></div>'+
+    '<button class="btn secondary" onclick="CT.retryMisses()" '+(errs?'':'disabled')+'>Retry my mistakes →</button></div></div>'+
+    '<details class="tool-drawer"><summary>See all study tools and the full story</summary>'+
+    '<div class="cards" style="margin-top:15px">'+NAV.slice(1).map(function(x,i){return '<div class="card"><div class="eyebrow">TOOL '+(i+1)+'</div><h3>'+esc(x[2])+'</h3><button class="btn sm secondary" onclick="navigate(\''+x[0]+'\')">Open →</button></div>';}).join('')+'</div></details>'+
+    '<div class="notice"><b>From your teacher’s outline:</b> Écoute is 10 vrai/faux marks. Lecture is 10 marks with comprehension questions / possible multiple choice. Écriture is an 8–10-sentence paragraph answering two chosen comprehension questions. The three practice prompts are predictions, not the teacher’s exact questions.</div>';
+  };
+
+  // Listening: preserve speed, correct balance, replay misses until mastered.
+  newListen = function(n, reviewOnly) {
+    n = n || 10; reviewOnly = Boolean(reviewOnly);
+    let pool = STUDY.facts.filter(q => state.listenCh === 'all' || String(q[0]) === String(state.listenCh));
+    if (reviewOnly) pool = pool.filter(q => progress.mistakes[String(STUDY.facts.indexOf(q))] > 0);
+    if (!pool.length) {
+      if(reviewOnly) alert('Your listening mistake deck is clear. Great work!');
+      else alert('No statements found for this filter.');
+      return;
+    }
+    state.listenReviewMode = reviewOnly;
+    state.listenQ = chooseBalanced(pool,n);
+    state.listenIndex = 0; state.listenScore = 0;
+    state.listenAnswer = null; state.listenReveal = false;
+    render(); playQuestion();
+  };
+  answerListen = function(v) {
+    if (state.listenAnswer !== null) return;
+    const q = state.listenQ[state.listenIndex];
+    const key = String(STUDY.facts.indexOf(q));
+    state.listenAnswer = v;
+    if (v === q[2]) {
+      state.listenScore++;
+      progress.listenCorrect = (progress.listenCorrect || 0) + 1;
+      if (progress.mistakes[key]) {
+        progress.mistakes[key]--;
+        if (progress.mistakes[key] <= 0) delete progress.mistakes[key];
+      }
+    } else {
+      progress.mistakes[key] = 2;
+    }
+    progress.listen = (progress.listen || 0) + 1;
+    save(); render();
+  };
+  nextListen = function() {
+    state.listenIndex++;
+    state.listenAnswer = null;
+    render(); playQuestion();
+  };
+  const originalListening = listening;
+  listening = function() {
+    let h = originalListening();
+    h = h.replace('<select id="speed">','<select id="speed" onchange="CT.setSpeed(this.value)">');
+    h = h.replace('value=".85" selected','value=".85"');
+    h = h.replace('value="'+clampedSpeed()+'"', 'value="'+clampedSpeed()+'" selected');
+    h = h.replace('<button class="btn ghost" onclick="newListen(25)">Endurance: 25</button>',
+      '<button class="btn ghost" onclick="newListen(25)">Endurance: 25</button>'+
+      '<button class="btn secondary" '+(missedCount()?'':'disabled')+' onclick="CT.retryMisses()">↺ Retry mistakes ('+missedCount()+')</button>');
+    h = h.replace('<button class="btn secondary" onclick="newListen(10)">New 10-question set</button>',
+      '<label class="check"><input type="checkbox" '+(state.autoPlayListen?'checked':'')+' onchange="CT.setAuto(this.checked)"> Auto-play next</label>'+
+      '<button class="btn secondary" onclick="newListen(10)">New 10-question set</button>');
+    if(state.listenReviewMode) h = h.replace('<div class="quizbig',
+      '<div class="notice">Mistake review: get each fact right in two later attempts to remove it from your retry deck.</div><div class="quizbig');
+    if (state.listenQ.length && state.listenIndex >= state.listenQ.length) {
+      h += '<div class="card" style="margin-top:15px"><div class="row" style="justify-content:space-between"><div><h3 style="margin:4px 0">Your next best move</h3><p style="margin:5px 0">'+missedCount()+' facts still need review. Target 9/10 before moving on.</p></div>'+
+      (missedCount()?'<button class="btn" onclick="CT.retryMisses()">↺ Redrill errors</button>':'<button class="btn" onclick="navigate(\'writing\')">Start writing recall →</button>')+
+      '</div></div>';
+    }
+    return h;
+  };
+
+  // Reading: retain what the student typed even after the answer is revealed.
+  const originalNewRead = newRead;
+  newRead = function(n) {
+    state.shortDraft=''; state._readIndexSeen=-1;
+    return originalNewRead(n);
+  };
+  const originalReading = reading;
+  reading = function() {
+    if (state.readMode === 'short' && state._readIndexSeen !== state.readIndex) {
+      state.shortDraft=''; state._readIndexSeen=state.readIndex;
+    }
+    let h=originalReading();
+    if (state.readMode === 'short') {
+      h=h.replace(/(<textarea class="input" rows="3" placeholder="[^"]*")><\/textarea>/,
+        function(_,start){return start+' oninput="CT.shortDraft(this.value)">'+esc(state.shortDraft)+'</textarea>';});
+      if (state.readAnswer === 'show' || state.readAnswer === 'graded') {
+        h=h.replace('<div class="answer"><b>Réponse modèle</b>',
+          '<div class="answer"><b>Your own response</b><p>'+esc(state.shortDraft||'(You left this blank.)')+'</p></div>'+
+          '<div class="answer"><b>Réponse modèle</b>');
+      }
+    }
+    return h;
+  };
+
+  // Writing: hide setup controls during recall, retain drafts and score in order.
+  const originalWriting = writing;
+  writing = function() {
+    let h=originalWriting();
+    if(state.writeMode !== 'learn') {
+      const start='<div class="sectionhead"><h3>Step 1. Pick a story question</h3></div>';
+      const target='<div class="sectionhead"><h3>Step 3. Learn the 5-sentence answer</h3></div>';
+      const i=h.indexOf(start), j=h.indexOf(target);
+      if(i>=0 && j>i) {
+        const setup=h.slice(i,j);
+        h=h.slice(0,i)+h.slice(j)+
+        '<details class="tool-drawer"><summary>Change question, universal opening or ending</summary>'+setup+'</details>';
+      }
+    }
+    if(state.writeMode === 'full') {
+      const value = progress.writeDrafts[state.writePrompt] || '';
+      h = h.replace(/(<textarea id="fulltext"[^>]*placeholder="[^"]*")><\/textarea>/,
+        function(_,start){return start+' oninput="CT.writeDraft(this.value)">'+esc(value)+'</textarea>';});
+      h += '<button class="btn ghost sm" style="margin-top:12px" onclick="CT.clearWriteDraft()">Clear saved full-answer draft</button>';
+    }
+    if(state.writeMode==='guided') {
+      const k=state.writePrompt+':'+state.writeLine;
+      const mastered=Math.min(2,progress.writeMastery[k]||0);
+      h=h.replace('<div class="eyebrow">MEMORY ROUND · SENTENCE',
+        '<div class="eyebrow">Recall: '+mastered+'/2 successful tries · SENTENCE');
+    }
+    return h;
+  };
+  checkWriting = function() {
+    const el=document.getElementById('writebox');
+    const own=el ? el.value : '';
+    const expected=writeLines()[state.writeLine][0];
+    const a=normalize(own).split(' ').filter(Boolean);
+    const b=normalize(expected).split(' ').filter(Boolean);
+    const dp=Array.from({length:a.length+1},()=>Array(b.length+1).fill(0));
+    for(let i=1;i<=a.length;i++) for(let j=1;j<=b.length;j++) {
+      dp[i][j]=a[i-1]===b[j-1]?dp[i-1][j-1]+1:Math.max(dp[i-1][j],dp[i][j-1]);
+    }
+    const score=Math.round(100*dp[a.length][b.length]/Math.max(a.length,b.length,1));
+    const key=state.writePrompt+':'+state.writeLine;
+    progress.writeMastery[key]=score>=88 ? Math.min(2,(progress.writeMastery[key]||0)+1):0;
+    progress.write=(progress.write||0)+1; save();
+    const level=progress.writeMastery[key];
+    const html='<div class="answer"><b class="'+(score>=88?'positive':'negative')+'">'+
+      (score>=88?'Solid recall':'Keep practising')+'</b> · Similarity '+score+'% · '+
+      (level===2?'Mastered (2 successful recalls)':'Successful recalls: '+level+'/2')+
+      '<p style="color:#fff"><b>Model:</b> '+esc(expected)+'</p>'+
+      '<p class="mini">This checks word order and approximate matching, not full French grammar. Fix missing articles and accents before the real quiz.</p>'+
+      '<button class="btn sm secondary" onclick="speak(writeLines()[state.writeLine][0],.8)">♫ Hear it</button></div>';
+    const feedback=document.getElementById('writingfeedback');
+    if(feedback) feedback.innerHTML=html;
+  };
+
+  const originalRender=render;
+  render=function() {
+    originalRender();
+    document.body.classList.toggle('focus-on',focusOn);
+    const current=NAV.find(x=>x[0]===state.page);
+    const bar='<div class="focus-toolbar">'+
+      '<div class="toolbar-brand"><b>CASSE-TÊTE</b><span>'+(current?esc(current[2]):'Study')+'</span></div>'+
+      '<div class="row">'+
+      '<select aria-label="Jump to another station" onchange="navigate(this.value)">'+
+      NAV.map(x=>'<option value="'+x[0]+'" '+(x[0]===state.page?'selected':'')+'>'+esc(x[2])+'</option>').join('')+
+      '</select>'+
+      '<button class="btn sm ghost" aria-label="Toggle distraction-free mode" onclick="CT.toggleFocus()">'+
+      (focusOn?'◧ Full menu':'◩ Focus mode')+'</button></div></div>';
+    const main=document.getElementById('view');
+    main.insertAdjacentHTML('afterbegin',bar);
+  };
+  render();
+})();
+</script></body></html>
