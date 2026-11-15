@@ -1,0 +1,33 @@
+/* Reduced-distraction polish and reading comfort */
+.focus-toolbar{position:sticky;top:0;z-index:12;background:#0e1a2aec;border:1px solid #314860;backdrop-filter:blur(10px);border-radius:13px;padding:9px 14px;margin:-14px 0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.toolbar-brand{display:flex;flex-direction:column;gap:0;line-height:1.4}
+.toolbar-brand b{font-family:Outfit,Arial,sans-serif;font-size:14px;letter-spacing:.08em;color:#eefcfb}
+.toolbar-brand span{font-size:11px;color:#9eb1c6}
+.focus-toolbar select{max-width:175px;font-size:12px;padding:7px 9px}
+.focus-on{background:#0b1322;color:#edf4ff}
+.focus-on .nav,.focus-on .mobiletop{display:none!important}
+.focus-on .layout{grid-template-columns:minmax(0,1fr)}
+.focus-on .main{max-width:900px}
+.focus-on .hero{background:#15263a}
+.focus-on .hero:after{display:none}
+.focus-on .focus-toolbar{max-width:none}
+.quicksteps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.quicksteps .lesson{padding:18px}
+.quicksteps h3{font-size:20px;margin:12px 0 8px}
+.quicksteps p{font-size:13px;min-height:68px}
+.quicksteps .eyebrow{color:#a4e4d3}
+.quicksteps .lesson .btn{width:100%}
+.compact-summary{margin:15px 0 19px}
+.tool-drawer{margin-top:16px}
+.tool-drawer summary{color:#d0e8f0}
+.tool-drawer .card{margin-top:0}
+.focus-on .hero h1{font-size:clamp(35px,4.2vw,55px)}
+.focus-on .stat{background:#142238}
+.focus-on .card,.focus-on .question,.focus-on .fact,.focus-on .sentence{box-shadow:none}
+.focus-on .btn{transition:none}
+.focus-on .btn:hover{transform:none}
+.sentence .fr{line-height:1.7}
+.sentence .en{line-height:1.65}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid #76e4ce;outline-offset:3px}
+@media(max-width:750px){.quicksteps{grid-template-columns:1fr}.quicksteps p{min-height:0}.focus-toolbar{margin:-10px 0 20px;flex-wrap:wrap}.toolbar-brand{flex:1}.focus-toolbar select{max-width:150px}.focus-on .main{padding:16px 14px 40px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
