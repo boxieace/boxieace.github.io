@@ -2952,12 +2952,12 @@ render=function(){
  state.page=previous;
  navigation();
  const main=document.getElementById('view');
- const bar=main.querySelector('.focus-toolbar');
  const footer='<div class="footer">All 100 English questions are based on the supplied Casse-tête chapters 1–5. Study explanations are original, not official teacher answers.</div>';
- const body=englishQuiz()+footer;
- // Preserve the focus toolbar so focus mode and page switching still work.
- if(bar){const toolbar=bar.outerHTML;main.innerHTML=toolbar+body;}
- else main.innerHTML=body;
+ const toolbar='<div class="focus-toolbar"><div class="toolbar-brand"><b>CASSE-TÊTE</b><span>English Deep Dive</span></div>'+
+ '<div class="row"><select aria-label="Jump to another station" onchange="navigate(this.value)">'+
+ NAV.map(x=>'<option value="'+x[0]+'" '+(x[0]==='english'?'selected':'')+'>'+esc(x[2])+'</option>').join('')+
+ '</select><button class="btn sm ghost" onclick="CT.toggleFocus()">◧ Toggle Focus Mode</button></div></div>';
+ main.innerHTML=toolbar+englishQuiz()+footer;
 };
 render();
 </script></body></html>
