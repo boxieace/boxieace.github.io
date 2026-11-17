@@ -2760,4 +2760,204 @@ render();
   };
   render();
 })();
+</script><!-- ENGLISH_DEEP_DIVE_V1 -->
+<style>
+/* English-only mastery panel — calm, uncluttered and responsive */
+.en-summary-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:22px 0}
+.en-summary-row>div{background:#17253b;border:1px solid #334a64;border-radius:14px;padding:14px;display:flex;flex-direction:column}
+.en-summary-row strong{font-size:25px;font-family:Outfit,sans-serif;color:#e9faff}
+.en-summary-row span{font-size:12px;color:#a8b9ce}
+.en-toolbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;background:#142136;border:1px solid #354861;border-radius:16px;padding:18px;margin:12px 0}
+.en-field{font-size:12px;color:#a9bbd1;font-weight:700;display:flex;flex-direction:column;gap:6px}
+.en-field select{width:100%;max-width:100%;min-width:0;background:#0d1b2d;color:#e7f4ff}
+.en-actions{margin:16px 0 22px}
+.en-intro{background:#14243b;border:1px solid #3b536c;border-radius:20px;padding:25px;margin-top:18px}
+.en-intro h3{margin:4px 0;font-size:22px}
+.en-intro p{max-width:600px}
+.en-tips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.en-tips span{background:#1d3b41;border:1px solid #35645c;border-radius:20px;color:#c5fae8;padding:5px 10px;font-size:12px}
+.en-map{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:20px}
+.en-chapter-tile{background:#15263a;border:1px solid #334b64;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:5px}
+.en-chapter-tile b{color:#b8eade}.en-chapter-tile span{color:#a9bdd3;font-size:12px}
+.en-question{background:#15243c;border:1px solid #42607b;border-radius:22px;padding:clamp(18px,3vw,30px);margin-top:18px}
+.en-question-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;color:#a8dcd3;font-size:12px;font-weight:700}
+.en-question .progress{margin-top:17px}
+.en-question h3{font-size:clamp(21px,2.6vw,30px);letter-spacing:-.015em;line-height:1.35;margin:25px 0 22px;max-width:850px}
+.en-question .option{font-size:15px;padding:16px 17px;line-height:1.4}
+.en-feedback{margin:20px 0;background:#17333f;border:1px solid #4a7283;border-radius:14px;padding:18px}
+.en-feedback p{margin:10px 0 2px;color:#dae7f0}
+.en-next{margin-top:4px}
+.en-finish{text-align:center;background:#15283c;border:1px solid #436a75;border-radius:22px;margin-top:22px;padding:35px 24px}
+.en-finish h2{font-size:60px;color:#89edca;margin:7px 0}
+.en-finish p{margin:8px 0 17px}
+.en-review{margin:15px 0}
+.en-home-banner{display:flex;align-items:center;justify-content:space-between;gap:20px;background:#162d3b;border:1px solid #448378;border-radius:17px;margin:17px 0;padding:19px}
+.en-home-banner h3{margin:7px 0}.en-home-banner p{margin:4px 0}
+.en-home-banner .btn{flex-shrink:0}
+@media(max-width:750px){.en-toolbar{grid-template-columns:repeat(2,minmax(0,1fr));padding:14px}.en-summary-row{grid-template-columns:repeat(2,minmax(0,1fr))}.en-map{grid-template-columns:repeat(3,minmax(0,1fr))}.en-home-banner{flex-direction:column;align-items:flex-start}.en-question .option{font-size:14px}}
+@media(max-width:420px){.en-map{grid-template-columns:repeat(2,minmax(0,1fr))}.en-toolbar{grid-template-columns:1fr 1fr}}
+</style>
+<script>window.EN_DETAIL_Q12=[{"c":1,"d":"easy","t":"mc","q":"What class is Justine in at the opening?","o":["Mathematics","French literature","Art","History"],"a":0,"why":"M. Clément is teaching mathematics; her French literature lesson is later."},{"c":1,"d":"hard","t":"tf","q":"Mr. Clément speaks in a lively, energetic tone.","a":false,"why":"The narration calls his voice monotonous. Justine finds his lesson boring."},{"c":1,"d":"hard","t":"mc","q":"Which equation does M. Clément explain first?","o":["6y - 12 = 3y","2x + 15 = 5x","12 + 3x = 6x","2x + 15 = 3x"],"a":1,"why":"The first equation is 2x + 15 = 5x."},{"c":1,"d":"easy","t":"tf","q":"Justine correctly answers that x equals 5.","a":true,"why":"Subtracting 2x on both sides gives 15 = 3x, so x = 5."},{"c":1,"d":"hard","t":"mc","q":"Why does the teacher subtract 2x from both sides?","o":["To make x negative","To change the unknown letter","To remove the constant","To preserve the equation's balance"],"a":3,"why":"He explains that taking 2x from both sides keeps the equation balanced."},{"c":1,"d":"easy","t":"mc","q":"What does Justine repeatedly look at during math class?","o":["Her notebook","The classroom clock","Olivier's shirt","A hallway poster"],"a":1,"why":"She repeatedly watches the clock, counting the minutes remaining."},{"c":1,"d":"hard","t":"tf","q":"Justine notices that the clock hands seem not to have moved.","a":true,"why":"She looks at the clock and observes that its hands are unchanged."},{"c":1,"d":"hard","t":"mc","q":"What second equation appears on the board?","o":["6x - 12 = 3x","2x + 15 = 5x","6y - 12 = 3y","12 + 3x = 6x"],"a":2,"why":"The second equation is 6y - 12 = 3y, which confuses Émilie."},{"c":1,"d":"hard","t":"mc","q":"Why does Émilie think that second equation has no solution?","o":["It does not contain x","It has a negative number","It is written in French","It has two sides"],"a":0,"why":"She says she has never done an equation without x; this equation uses y."},{"c":1,"d":"easy","t":"tf","q":"M. Clément hits his desk with a ruler.","a":true,"why":"He strikes his desk with the ruler that he always carries."},{"c":1,"d":"hard","t":"mc","q":"What position does Olivier Desbiens play in football?","o":["Goalkeeper","Tight end","Quarterback","Wide receiver"],"a":2,"why":"Olivier Desbiens is the team's quarterback."},{"c":1,"d":"hard","t":"tf","q":"Olivier raises his hand because he wants to solve the second equation.","a":false,"why":"Instead, he asks urgently if he can go to the washroom."},{"c":1,"d":"easy","t":"mc","q":"What word causes panic in the math classroom?","o":["Quiz","Homework","Report card","Test"],"a":3,"why":"When Émilie mentions a test, students everywhere start asking questions."},{"c":1,"d":"hard","t":"tf","q":"One student complains about already having a French test the next day.","a":true,"why":"A classmate says she has a French test tomorrow and calls it unfair."},{"c":1,"d":"easy","t":"mc","q":"Where is the unfamiliar new boy sitting?","o":["At the back of the math classroom","In the library","At the teacher's desk","In the cafeteria"],"a":0,"why":"Justine notices him at the back of the math room after the lesson."},{"c":1,"d":"hard","t":"mc","q":"How is the boy dressed when Justine notices him?","o":["A football uniform","Faded jeans and a T-shirt without a logo","A school blazer","A sweatshirt with a large brand logo"],"a":1,"why":"He is blond and wears faded jeans and a plain, logo-free T-shirt."},{"c":1,"d":"hard","t":"tf","q":"M. Clément gives the new boy a big, embarrassing introduction that day.","a":false,"why":"Justine expects a big introduction because that is the teacher's usual habit, but there is none."},{"c":1,"d":"easy","t":"mc","q":"What is the new boy studying after class?","o":["A grade report and homework sheet","A lunch menu and a calendar","His schedule and a map of the school","A book and a class photograph"],"a":2,"why":"He is consulting his timetable and the school plan."},{"c":1,"d":"easy","t":"tf","q":"The new boy eagerly accepts Justine's help finding his next classroom.","a":false,"why":"He thanks her politely and insists on finding the room himself."},{"c":1,"d":"easy","t":"mc","q":"What does Justine decide the mysterious boy will become?","o":["Her mathematics tutor","A subject for her poetry assignment","A future football teammate","Her project for the semester"],"a":3,"why":"She ends Chapter 1 thinking she has found her project for the semester."},{"c":2,"d":"easy","t":"mc","q":"How are Justine's grades compared with most of her classmates?","o":["Worse than most","Better than most","Exactly average","Not discussed at all"],"a":1,"why":"The text says she has better grades than most students."},{"c":2,"d":"hard","t":"tf","q":"Justine likes to behave as the class clown.","a":false,"why":"The narration explicitly says she does not act as the class clown."},{"c":2,"d":"easy","t":"tf","q":"Justine is obsessed with academic success.","a":false,"why":"Although she earns good grades, she is not obsessed with school success."},{"c":2,"d":"hard","t":"mc","q":"Which statement best describes why Justine attends school?","o":["To learn and prepare for her future","To become the teacher's pet","To make everyone laugh","To join the most popular clique"],"a":0,"why":"She is not a teacher's pet or clown; she wants to learn and prepare for the future."},{"c":2,"d":"easy","t":"mc","q":"What is Olivier's ambition?","o":["Become a detective","Become a literature professor","Play professional football and earn millions","Become a poet"],"a":2,"why":"Olivier hopes to make millions playing professional football."},{"c":2,"d":"hard","t":"mc","q":"What does Justine mean by calling Émilie and friends 'the three Bs'?","o":["Brave, bold and brilliant","Bashful, bright and busy","Beautiful, brave and brainy","Beautiful, well-dressed and foolish"],"a":3,"why":"The French words are belles, bien habillées et bêtes."},{"c":2,"d":"hard","t":"tf","q":"Justine wants to join a clique that only discusses clothes, music and classroom foolishness.","a":false,"why":"She resists such groups and social pressure."},{"c":2,"d":"easy","t":"mc","q":"Which class is Justine's favourite?","o":["Physical education","French literature","Mathematics","History"],"a":1,"why":"She identifies French literature as her favourite class."},{"c":2,"d":"hard","t":"mc","q":"What kinds of novels does Justine like?","o":["Historical and detective novels","Romance and science-fiction novels","Fantasy and graphic novels","Travel and sports memoirs"],"a":0,"why":"Her preferred genres are historical fiction and detective stories."},{"c":2,"d":"hard","t":"tf","q":"Justine has already written articles for her school's newspaper.","a":true,"why":"The book says she has contributed articles to the school newspaper."},{"c":2,"d":"easy","t":"mc","q":"What career does Justine hope to pursue?","o":["Sports coach","Doctor","Teacher","Accountant"],"a":2,"why":"She wants to study literature at university and become a teacher."},{"c":2,"d":"hard","t":"mc","q":"What is Justine unhappy about studying in literature class that day?","o":["Mystery novels","School journalism","Historical fiction","Poetry"],"a":3,"why":"She finds the style of poetry difficult to understand."},{"c":2,"d":"hard","t":"mc","q":"What does Mme Laroche ask the students to write about in under 100 words?","o":["A football game","The fears and anxieties of adolescence","Their favourite teacher","Their plans for summer"],"a":1,"why":"The assignment asks for an emotional self-portrait of their adolescent anxieties."},{"c":2,"d":"hard","t":"tf","q":"Samuel asks the teacher for a word that rhymes with orange.","a":true,"why":"He interrupts the instructions with that joke."},{"c":2,"d":"hard","t":"mc","q":"How long before students must present their emotional self-portraits?","o":["Ten minutes","Thirty minutes","One hour","The next morning"],"a":2,"why":"Mme Laroche says they will share their work in an hour."},{"c":2,"d":"easy","t":"tf","q":"Students sit in groups of four but do their work individually.","a":true,"why":"The text says they are seated four together yet work on their own."},{"c":2,"d":"hard","t":"mc","q":"What is Thomas doing while classmates begin their assignment?","o":["Tapping his pencil without writing anything","Reading a finished essay","Talking nonstop to Samuel","Drawing a school map"],"a":0,"why":"He looks very serious and lost in thought, tapping his pencil on the table."},{"c":2,"d":"easy","t":"tf","q":"Thomas immediately says his own first name when Justine introduces herself.","a":false,"why":"He first just says hello; she must ask his name specifically."},{"c":2,"d":"easy","t":"mc","q":"What first name does the new student reveal?","o":["Olivier","Samuel","Alex","Thomas"],"a":3,"why":"He finally introduces himself as Thomas."},{"c":2,"d":"easy","t":"tf","q":"Justine thinks that getting to know Thomas will take time.","a":true,"why":"After their brief conversation, she recognizes that he does not say much."}];
+</script>
+<script>window.EN_DETAIL_Q345=[{"c":3,"d":"easy","t":"mc","q":"How does Thomas usually answer teachers?","o":["At length","Briefly and precisely","With jokes","He never answers"],"a":1,"why":"His answers are short and precise."},{"c":3,"d":"hard","t":"tf","q":"Thomas smiles when Justine greets him in the corridor.","a":false,"why":"He greets her without smiling."},{"c":3,"d":"easy","t":"tf","q":"Thomas generally sits alone in the cafeteria.","a":true,"why":"Justine sees him alone every day."},{"c":3,"d":"hard","t":"mc","q":"What happens when other students attempt conversation?","o":["They follow Thomas","They invite him to football","Most leave him alone","He becomes their friend"],"a":2,"why":"Thomas answers politely but makes little effort to be friendly."},{"c":3,"d":"easy","t":"mc","q":"Where does Justine sit at Thomas's lunch table?","o":["Across from him","Next to Émilie","By the door","Behind him"],"a":0,"why":"She places her tray down and sits facing Thomas."},{"c":3,"d":"hard","t":"mc","q":"How does Thomas first respond to Justine at lunch?","o":["'Great, thanks!'","'I must go.'","'The teacher is waiting.'","'Not bad ... do you want something?'"],"a":3,"why":"He says 'Pas mal ... Tu veux quelque chose?'"},{"c":3,"d":"easy","t":"tf","q":"Thomas accepts Justine's offer of French fries.","a":false,"why":"He refuses her fries."},{"c":3,"d":"hard","t":"mc","q":"How does Thomas show discomfort as Justine eats?","o":["He falls asleep","He looks left and right","He sings","He hides his tray"],"a":1,"why":"He looks around uneasily."},{"c":3,"d":"easy","t":"mc","q":"What does Thomas say about liking his teachers?","o":["'They're excellent.'","'I love maths.'","'I don't know; they're teachers.'","'I haven't met them.'"],"a":2,"why":"He says 'Je ne sais pas ... Ce sont des profs.'"},{"c":3,"d":"hard","t":"tf","q":"Thomas laughs loudly at Justine's joke about the ruler.","a":false,"why":"He gives only a tiny smile."},{"c":3,"d":"hard","t":"mc","q":"What does Justine joke will happen if M. Clément keeps hitting the desk?","o":["Someone could have an accident","He'll become principal","The test will be cancelled","The clock will break"],"a":0,"why":"She jokes somebody could be hurt."},{"c":3,"d":"easy","t":"mc","q":"Where does Justine invite Thomas on Friday evening?","o":["Poetry reading","Football match","Library","Cinema with friends"],"a":3,"why":"Her group also plans a restaurant or someone's house afterward."},{"c":3,"d":"hard","t":"tf","q":"Justine invites Thomas alone to a Saturday concert.","a":false,"why":"She invites him on Friday with a group to the cinema."},{"c":3,"d":"easy","t":"mc","q":"Why does Thomas say he cannot attend?","o":["He's sick","He must work and has homework","He's moving","He dislikes movies"],"a":1,"why":"He cites work and homework; the text does not verify the reason."},{"c":3,"d":"hard","t":"mc","q":"What does Thomas say when Justine suggests another time?","o":["'Tomorrow!'","'Never.'","'Maybe.'","'Ask Olivier.'"],"a":2,"why":"He replies 'Peut-être.'"},{"c":3,"d":"hard","t":"tf","q":"Thomas voluntarily reveals his family name at the cafeteria.","a":false,"why":"He avoids Justine's question."},{"c":3,"d":"hard","t":"mc","q":"What does Thomas say when Justine points out he never gave his surname?","o":["'I know.'","'Poirier.'","'Montclair.'","'I forgot.'"],"a":0,"why":"He simply says 'Je sais.'"},{"c":3,"d":"easy","t":"mc","q":"How does Thomas leave the cafeteria after that exchange?","o":["Slowly","With Émilie","Smiling","Almost running"],"a":3,"why":"He leaves almost at a run."},{"c":3,"d":"hard","t":"tf","q":"Thomas is polite when other students speak to him.","a":true,"why":"He responds politely but not warmly."},{"c":3,"d":"easy","t":"tf","q":"Justine abandons her project by the end of Chapter 3.","a":false,"why":"She remains determined to know him."},{"c":4,"d":"easy","t":"mc","q":"How does Justine discover Thomas's surname?","o":["Newspaper","School map","M. Clément says Desjardins","Thomas writes it"],"a":2,"why":"The teacher calls on 'Monsieur Desjardins.'"},{"c":4,"d":"hard","t":"mc","q":"What is Thomas's answer to 12 + 3x = 6x?","o":["3","4","5","6"],"a":1,"why":"Subtract 3x: 12 = 3x, so x = 4."},{"c":4,"d":"hard","t":"tf","q":"Thomas had revealed his family name at lunch before M. Clément did.","a":false,"why":"He refused to tell Justine earlier."},{"c":4,"d":"hard","t":"mc","q":"How quickly is Thomas the subject of fantastic rumours?","o":["In less than two weeks","After a school year","In several years","Before he arrives"],"a":0,"why":"Less than two weeks pass."},{"c":4,"d":"easy","t":"mc","q":"Where does Justine overhear the three girls gossiping?","o":["Library","Hallway","Football field","Cafeteria"],"a":3,"why":"They gossip at lunch."},{"c":4,"d":"hard","t":"mc","q":"What does Émilie's rumour accuse Thomas of doing?","o":["Stealing an exam","Sabotaging computers and burning a principal's office","Stealing a ruler","Breaking football equipment"],"a":1,"why":"These are unverified allegations."},{"c":4,"d":"hard","t":"tf","q":"Émilie's story says Thomas entered the school through a window at night.","a":true,"why":"That is part of her unverified story."},{"c":4,"d":"hard","t":"mc","q":"Who asks Émilie what Thomas supposedly did to get expelled?","o":["Diane","Justine","Monique","Olivier"],"a":2,"why":"Monique asks."},{"c":4,"d":"hard","t":"mc","q":"What claim does Diane add?","o":["He robbed a convenience store and threatened its owner with a baseball bat","He stole a bus","He stole a test","He started a football fight"],"a":0,"why":"Diane repeats an unverified robbery and detention tale."},{"c":4,"d":"hard","t":"tf","q":"Justine knows the criminal rumours are true because Thomas confessed.","a":false,"why":"Justine finds them absurd; no evidence confirms them."},{"c":4,"d":"easy","t":"mc","q":"Why does Justine join the girls at their table?","o":["To join their group","To invite them out","To discuss homework","To trick them with an invented story"],"a":3,"why":"She wants to give them an outrageous 'scandal.'"},{"c":4,"d":"hard","t":"tf","q":"Justine's invented story claims a cult kidnapped Thomas three years earlier.","a":true,"why":"The three-year kidnapping is a fabricated detail."},{"c":4,"d":"hard","t":"tf","q":"The invented cult story says Thomas had to eat worms and insects.","a":true,"why":"That claim is part of Justine's false tale."},{"c":4,"d":"hard","t":"mc","q":"Where does Justine say the imaginary cult lived?","o":["Montreal","A school building","Forests of the Far North","Trois-Rivières"],"a":2,"why":"She invents a forest residence in the Grand Nord."},{"c":4,"d":"hard","t":"mc","q":"Which tattoo does she invent for Thomas?","o":["A bat on his left shoulder","A skull on his right arm","A wolf on his ankle","A snake on his neck"],"a":0,"why":"A bat on the left shoulder."},{"c":4,"d":"hard","t":"mc","q":"What does she claim happened after Thomas's family found him?","o":["Detention","Football practice","Another kidnapping","A long deprogramming process"],"a":3,"why":"This is also part of the fictional story."},{"c":4,"d":"easy","t":"tf","q":"Émilie is speechless, while Monique and Diane look astonished.","a":true,"why":"They seem to believe the tale."},{"c":4,"d":"hard","t":"mc","q":"Why does Justine tell the girls not to speak to Thomas about the story?","o":["Teacher forbade it","She claims he is sensitive about it","Thomas requested it","The librarian is near"],"a":1,"why":"She claims discussing it could worsen his problems."},{"c":4,"d":"easy","t":"mc","q":"What does Justine do after leaving the cafeteria?","o":["Visits principal","Apologizes","Laughs in the hallway","Phones her mother"],"a":2,"why":"She laughs in the corridor."},{"c":4,"d":"easy","t":"tf","q":"The text proves Thomas was a criminal and a cult member.","a":false,"why":"The allegations are unverified; Justine's cult tale is invented."},{"c":5,"d":"easy","t":"mc","q":"Where does Thomas confront Justine the following week?","o":["Cafeteria","Library","Gym","School bus"],"a":1,"why":"The confrontation is in the library."},{"c":5,"d":"hard","t":"mc","q":"What shows that Justine's invented tale spread?","o":["Everyone wants to see his supposed tattoo","School cancels classes","Newspaper publishes it","He is sent home"],"a":0,"why":"Thomas says everyone wants to see his tattoo."},{"c":5,"d":"easy","t":"tf","q":"The librarian encourages the two students to continue speaking loudly.","a":false,"why":"She repeatedly asks them to be quiet and leave to talk elsewhere."},{"c":5,"d":"hard","t":"mc","q":"How does Justine initially describe the rumour she started?","o":["Verified report","Serious confession","Class assignment","An exaggerated little joke"],"a":3,"why":"She says she wanted to fool the gossiping girls."},{"c":5,"d":"hard","t":"tf","q":"Thomas finds Justine's story funny and harmless.","a":false,"why":"He is furious and does not see its humour."},{"c":5,"d":"easy","t":"mc","q":"Why is Thomas angry?","o":["He failed maths","Lost his map","Everyone now watches and discusses him","Dislikes lunch"],"a":2,"why":"He hates the attention and gossip."},{"c":5,"d":"hard","t":"mc","q":"Why does Justine say other students invent stories?","o":["Thomas talks too much","Thomas refuses to communicate","Thomas plays football","Thomas writes for newspaper"],"a":1,"why":"She argues that his silence encourages gossip."},{"c":5,"d":"hard","t":"tf","q":"Thomas insists that his life is none of the students' business.","a":true,"why":"He directly rejects the gossip about his private life."},{"c":5,"d":"easy","t":"mc","q":"Why do Thomas and Justine leave the library?","o":["The librarian sends them elsewhere to talk","School closes","Teacher calls them","Bell rings for lunch"],"a":0,"why":"They are told to continue their conversation somewhere else."},{"c":5,"d":"easy","t":"tf","q":"They continue their conversation on a bench in the school foyer.","a":true,"why":"They sit on a bench after leaving the library."},{"c":5,"d":"hard","t":"mc","q":"What does Thomas do with his arms while on the bench?","o":["Stretches them","Raises them","Covers his face","Crosses them"],"a":3,"why":"Thomas crosses his arms."},{"c":5,"d":"hard","t":"mc","q":"Which city and former school does Thomas name?","o":["Montreal, Saint-Pierre","Trois-Rivières, Saint-Simon","Ottawa, Laroche","Quebec City, Montclair"],"a":1,"why":"He says he went to École Saint-Simon in Trois-Rivières."},{"c":5,"d":"hard","t":"tf","q":"Thomas confirms he moved from a different school in Montreal.","a":false,"why":"He came from Trois-Rivières."},{"c":5,"d":"hard","t":"mc","q":"Why is Trois-Rivières too small according to Thomas?","o":["No football","No library","Everyone knows one another's business","Far from school"],"a":2,"why":"He dislikes how people know others' affairs."},{"c":5,"d":"easy","t":"mc","q":"How does Thomas describe his everyday routine?","o":["Mom prepares meals; he goes to school, does homework, eats, sleeps","Daily football training","Writing articles all day","Visiting cinema every afternoon"],"a":0,"why":"He characterizes an ordinary life."},{"c":5,"d":"easy","t":"tf","q":"Thomas tells Justine he has no brothers or sisters.","a":true,"why":"He says he is an only child."},{"c":5,"d":"easy","t":"mc","q":"With whom does Thomas say he lives?","o":["Father","Grandparents","Friends","Mother"],"a":3,"why":"He lives with his mother."},{"c":5,"d":"hard","t":"tf","q":"Thomas looks relaxed and directly at Justine while discussing his father.","a":false,"why":"He seems worried and avoids her eyes."},{"c":5,"d":"hard","t":"mc","q":"What does Thomas say about his father?","o":["He teaches at school","He travels often and is absent at the moment","He plays football","He lives permanently in Trois-Rivières"],"a":1,"why":"Thomas says his father travels and is away for now; no explanation is confirmed."},{"c":5,"d":"easy","t":"tf","q":"Justine tells Thomas she wants to be his friend.","a":true,"why":"She says 'Je voudrais être ton amie. C'est tout.'"}];
+</script>
+<script>/* English-only Casse-tête Chapter 1–5 detail mastery */
+const ENGLISH_BANK = [
+  ...(window.EN_DETAIL_Q12 || []),
+  ...(window.EN_DETAIL_Q345 || [])
+].map((q,i)=>({...q,id:i+1}));
+const enSaveKey='casseEnglishMasteryV1';
+let enStore={missed:{},seen:0,correct:0,mastery:{}};
+try {const p=JSON.parse(localStorage.getItem(enSaveKey)||'{}');enStore={...enStore,...p,missed:p.missed||{},mastery:p.mastery||{}}}catch(e){}
+let enState={chapter:'all',level:'all',type:'all',size:10,mode:'all',list:[],index:0,selected:null,score:0,sessionWrong:[],completed:false,showAnswers:false};
+const enSave=()=>{try{localStorage.setItem(enSaveKey,JSON.stringify(enStore))}catch(e){}};
+function enPool(){
+ return ENGLISH_BANK.filter(x=>
+ (enState.chapter==='all'||String(x.c)===enState.chapter)&&
+ (enState.level==='all'||x.d===enState.level)&&
+ (enState.type==='all'||x.t===enState.type)&&
+ (enState.mode!=='mistakes'||enStore.missed[x.id])
+ );
+}
+function enStart(){
+ const pool=enPool();
+ if(!pool.length){alert(enState.mode==='mistakes'?'No missed questions match these filters. Change the filters or start a new set.':'No questions match these filters.');return}
+ const asked=Number(enState.size)||10;
+ enState.list=rand(pool).slice(0,asked===1000?pool.length:Math.min(asked,pool.length));
+ enState.index=0;enState.selected=null;enState.score=0;enState.sessionWrong=[];
+ enState.completed=false;enState.showAnswers=false;
+ render();
+}
+function enChoose(v){
+ if(enState.selected!==null)return;
+ const q=enState.list[enState.index];
+ enState.selected=v;
+ enStore.seen+=1;
+ if(v===q.a){
+   enState.score++;
+   enStore.correct++;
+   if(enStore.missed[q.id]){
+     enStore.mastery[q.id]=Math.min(2,(enStore.mastery[q.id]||0)+1);
+     if(enStore.mastery[q.id]>=2){delete enStore.missed[q.id];delete enStore.mastery[q.id]}
+   }
+ }else{
+   enStore.missed[q.id]=1;enStore.mastery[q.id]=0;
+   enState.sessionWrong.push(q.id);
+ }
+ enSave();render();
+}
+function enNext(){
+ enState.index++;
+ enState.selected=null;
+ if(enState.index>=enState.list.length)enState.completed=true;
+ render();
+}
+function enRevisit(){
+ enState.chapter='all';enState.level='all';enState.type='all';enState.mode='mistakes';
+ enState.size=1000;enStart();
+}
+function enRevealList(){
+ enState.showAnswers=!enState.showAnswers;render();
+}
+function enReset(){
+ if(confirm('Clear your English quiz progress and saved mistakes?')){enStore={missed:{},seen:0,correct:0,mastery:{}};enSave();enState.list=[];enState.selected=null;render()}
+}
+function enSetting(name,value){
+ if(name==='size')enState[name]=Number(value);else enState[name]=value;
+ enState.list=[];enState.selected=null;enState.completed=false;render();
+}
+function enEnc(x){return esc(String(x))}
+function enSelector(name,label,opts,value){
+ return '<label class="en-field">'+label+' <select onchange="enSetting(\''+name+'\',this.value)">'+
+ opts.map(opt=>'<option value="'+enEnc(opt[0])+'" '+(String(value)===String(opt[0])?'selected':'')+'>'+enEnc(opt[1])+'</option>').join('')+
+ '</select></label>';
+}
+function englishQuiz(){
+ const missed=Object.keys(enStore.missed).filter(id=>enStore.missed[id]).length;
+ const byChapter=[1,2,3,4,5].map(c=>ENGLISH_BANK.filter(q=>q.c===c).length);
+ let s='<div class="eyebrow">100 FACT-CHECKED DETAIL QUESTIONS · ENGLISH ONLY</div>'+
+ '<h2 style="margin:8px 0 10px">English Deep-Dive Challenge</h2>'+
+ '<p>Learn the <b>tiny details</b> from all five chapters. No French comprehension required here: every question, option and explanation is in English. The traps are precise, not trick wording.</p>'+
+ '<div class="en-summary-row"><div><strong>100</strong><span>Total questions</span></div>'+
+ '<div><strong>5 × 20</strong><span>Questions per chapter</span></div>'+
+ '<div><strong>'+missed+'</strong><span>Saved mistakes</span></div>'+
+ '<div><strong>'+enStore.seen+'</strong><span>Answers submitted</span></div></div>'+
+ '<div class="en-toolbar">'+
+ enSelector('chapter','Chapter',[['all','All five'],...[1,2,3,4,5].map(x=>[x,'Chapter '+x])],enState.chapter)+
+ enSelector('level','Difficulty',[['all','Easy + hard'],['easy','Easy'],['hard','Hard details']],enState.level)+
+ enSelector('type','Question type',[['all','Mixed'],['mc','Multiple choice'],['tf','True / False']],enState.type)+
+ enSelector('size','Set size',[['10','10 questions'],['20','20 questions'],['40','40 questions'],['1000','All available']],enState.size)+
+ '</div>'+
+ '<div class="row en-actions"><button class="btn" onclick="enState.mode=\'all\';enStart()">▶ Start selected test</button>'+
+ '<button class="btn secondary" onclick="enRevisit()" '+(!missed?'disabled':'')+'>↺ Retry missed ('+missed+')</button>'+
+ '<button class="btn ghost" onclick="enReset()">Reset saved progress</button></div>';
+ if(enState.list.length===0){
+   s+='<div class="en-intro"><h3>Try a detail-heavy English test</h3><p>These are based on the five provided chapters, including classroom behavior, exact events, dialogue, appearances, motivations, numbers, and rumours versus reality.</p>'+
+   '<div class="en-tips"><span>✓ No timer</span><span>✓ No French required</span><span>✓ Answers hidden until you choose</span><span>✓ Wrong answers saved</span></div>'+
+   '<button class="btn" onclick="enState.chapter=\'all\';enState.level=\'hard\';enState.size=20;enState.mode=\'all\';enStart()">Start 20 hard questions →</button></div>'+
+   '<div class="en-map">'+byChapter.map((n,i)=>'<div class="en-chapter-tile"><b>CH. '+(i+1)+'</b><span>'+n+' questions</span></div>').join('')+'</div>';
+   return s;
+ }
+ if(enState.completed){
+   const score=enState.score, total=enState.list.length,pct=Math.round(score/total*100);
+   s+='<div class="en-finish"><div class="eyebrow">QUIZ COMPLETED</div><h2>'+score+' / '+total+'</h2><p>'+pct+'% correct</p>'+
+   '<p>'+(pct>=95?'Excellent detail mastery. Try another chapter or difficulty.':pct>=80?'Strong! Repeat the mistakes to secure the fine details.':'Review the explanations, then redrill missed facts for retention.')+'</p>'+
+   '<div class="row" style="justify-content:center"><button class="btn" onclick="enStart()">Try a fresh set</button>'+
+   '<button class="btn secondary" onclick="enRevisit()" '+(!missed?'disabled':'')+'>Retry saved mistakes</button>'+
+   '<button class="btn ghost" onclick="enRevealList()">'+(enState.showAnswers?'Hide':'Show')+' questions & answers</button></div></div>';
+   if(enState.showAnswers){
+     s+='<div class="en-review">'+enState.list.map((q,i)=>'<details><summary>Question '+(i+1)+' · Chapter '+q.c+' · '+enEnc(q.q)+'</summary>'+
+     '<p><b>Correct:</b> '+enEnc(q.t==='tf'?(q.a?'True':'False'):q.o[q.a])+'</p><p>'+enEnc(q.why)+'</p></details>').join('')+'</div>';
+   }
+   return s;
+ }
+ const q=enState.list[enState.index],i=enState.index;
+ s+='<div class="en-question"><div class="en-question-top"><span>Question '+(i+1)+' of '+enState.list.length+'</span>'+
+ '<span>Chapter '+q.c+' · '+(q.d==='hard'?'Hard detail':'Easy recall')+' · '+(q.t==='tf'?'True / False':'Multiple choice')+'</span>'+
+ '<span>Score '+enState.score+'</span></div>'+
+ '<div class="progress" aria-label="Quiz progress"><div style="width:'+(i/enState.list.length*100)+'%"></div></div>'+
+ '<h3>'+enEnc(q.q)+'</h3><div class="en-options">'+
+ (q.t==='tf'?[['True',true],['False',false]]:q.o.map((x,j)=>[String.fromCharCode(65+j)+'. '+x,j]))
+ .map(([label,value])=>'<button class="option '+(enState.selected!==null?(value===q.a?'correct':value===enState.selected?'wrong':''):'')+
+ '" onclick="enChoose('+(typeof value==='boolean'?value:Number(value))+')" '+(enState.selected!==null?'disabled':'')+'>'+
+ enEnc(label)+'</button>').join('')+'</div>'+
+ (enState.selected===null?'<p class="mini muted">Think about the actual chapter detail before answering. There are no penalties for wrong answers.</p>':
+ '<div class="en-feedback"><strong class="'+(enState.selected===q.a?'positive':'negative')+'">'+
+ (enState.selected===q.a?'✓ Correct!':'✕ Not quite — saved for review')+'</strong>'+
+ '<div><b>Correct answer:</b> '+enEnc(q.t==='tf'?(q.a?'True':'False'):q.o[q.a])+'</div>'+
+ '<p>'+enEnc(q.why)+'</p></div>'+
+ '<button class="btn en-next" onclick="enNext()">'+(i===enState.list.length-1?'Finish and score →':'Next question →')+'</button>')+
+ '</div>';
+ return s;
+}
+NAV.splice(NAV.findIndex(x=>x[0]==='writing'),0,['english','⌕','English Deep Dive']);
+const enOldHome=home;
+home=function(){
+ let h=enOldHome();
+ const marker='<div class="card compact-summary">';
+ if(h.includes(marker))h=h.replace(marker,
+   '<div class="en-home-banner"><div><div class="eyebrow">NEW · ALL FIVE CHAPTERS</div><h3>100 English-only detail questions</h3>'+
+   '<p>Easy + difficult multiple choice and true/false. Catch the tiny facts you might miss in the story.</p></div>'+
+   '<button class="btn" onclick="navigate(\'english\')">Train English details →</button></div>'+marker);
+ return h;
+};
+const enOldRender=render;
+render=function(){
+ const target=state.page==='english';
+ if(!target){enOldRender();return;}
+ // Use the established page shell without changing global navigation or focus behavior.
+ const previous=state.page;
+ state.page='home';
+ enOldRender();
+ state.page=previous;
+ navigation();
+ const main=document.getElementById('view');
+ const bar=main.querySelector('.focus-toolbar');
+ const footer='<div class="footer">All 100 English questions are based on the supplied Casse-tête chapters 1–5. Study explanations are original, not official teacher answers.</div>';
+ const body=englishQuiz()+footer;
+ // Preserve the focus toolbar so focus mode and page switching still work.
+ if(bar){const toolbar=bar.outerHTML;main.innerHTML=toolbar+body;}
+ else main.innerHTML=body;
+};
+render();
 </script></body></html>
